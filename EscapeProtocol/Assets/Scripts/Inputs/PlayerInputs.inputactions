@@ -44,8 +44,8 @@
             ],
             "bindings": [
                 {
-                    "name": "WASD",
-                    "id": "8a225fa7-6cd5-4485-88a5-0c9497058480",
+                    "name": "2D Vector",
+                    "id": "f9ec081c-42b5-4676-b43d-600e27b7586f",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -56,7 +56,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "d2834774-80b3-401b-83ca-c225d7a7948b",
+                    "id": "8608887f-c1bc-4ae6-a69d-0778c56946d6",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -67,7 +67,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "01f8b715-0a76-4a38-8f21-f1388f19cb9b",
+                    "id": "bdd9e286-9e92-47e0-8f55-e17a6fe0e2b2",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -78,7 +78,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "d1bfba4c-244c-48bf-98c3-6313e3b1a03d",
+                    "id": "38a393e5-b293-476e-aee9-e442db9f0a7d",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -89,7 +89,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "5669715f-04ec-4677-ab0e-58fa63e0265b",
+                    "id": "b86ee69c-8de6-4798-b8fd-d586ce6be122",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
