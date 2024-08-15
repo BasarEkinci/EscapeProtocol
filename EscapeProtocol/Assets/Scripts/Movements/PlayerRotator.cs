@@ -1,7 +1,5 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Movements
 {
@@ -9,15 +7,13 @@ namespace Movements
     {
         [SerializeField] private Transform playerBody;
 
-        
         private Camera _mainCamera;
         
-        private Vector3 _playerWorldPosition;
-        private Vector3 _playerScreenPosition;
         private Vector3 _mousePosition;
         private Vector3 _screenCenter;
         private Vector3 _aimPosition;
         
+        private float _previousDistance; 
         private float _mouseX;
         private float _mouseY;
 
@@ -26,29 +22,27 @@ namespace Movements
             _mainCamera = Camera.main;
         }
 
-        private void Update()
+        private void Start()
         {
-            GetMousePosition();
-            GetPlayerScreenPosition();
-            RotatePlayer();
-            GetAim();
+            _previousDistance = Mathf.Abs(_aimPosition.x - transform.position.x);
         }
 
-        private void GetPlayerScreenPosition()
-        {
-            _playerWorldPosition = transform.position;
-            _playerScreenPosition = _mainCamera.WorldToScreenPoint(_playerWorldPosition);
-        }
-        
-        private void GetMousePosition()
+        internal void GetMousePosition()
         {
             _mousePosition = Input.mousePosition;
             _mousePosition.z = transform.position.z;
         }
-        
-        private void RotatePlayer()
+
+        internal bool IsMovingForward()
         {
-            if(_mousePosition.x > _playerScreenPosition.x)
+            float currentDistance = Mathf.Abs(transform.position.x - _aimPosition.x);
+            bool isMovingForward = currentDistance < _previousDistance;
+            _previousDistance = currentDistance;
+            return isMovingForward;
+        }
+        internal void RotatePlayer()
+        {
+            if(_aimPosition.x > transform.position.x)
             {
                 transform.DORotate(Vector3.up * 90, 0.1f);
             }
@@ -58,7 +52,7 @@ namespace Movements
             }
         }
 
-        private void GetAim()
+        internal void GetAim()
         {
             Ray ray = _mainCamera.ScreenPointToRay(_mousePosition);
             RaycastHit hit;

@@ -16,11 +16,13 @@ namespace Inputs
             _playerInputs.Player.Enable();            
             _playerInputs.Player.DefaultFire.performed += context => IsFiring = context.ReadValueAsButton();
             _playerInputs.Player.PowerShoot.performed += context => IsPowerShootPressed = context.ReadValueAsButton();
-            _playerInputs.Player.Jump.performed += context => IsJumped = context.ReadValueAsButton();
-            
             _playerInputs.Enable();
         }
 
+        public bool GetJumpInput()
+        {
+            return _playerInputs.Player.Jump.triggered;
+        }
         private Vector2 GetMovementDirection()
         {
             return _playerInputs.Player.Move.ReadValue<Vector2>();

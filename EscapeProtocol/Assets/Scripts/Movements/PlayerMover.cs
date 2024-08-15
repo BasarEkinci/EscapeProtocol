@@ -1,5 +1,4 @@
-﻿using Inputs;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Movements
 {
@@ -7,22 +6,15 @@ namespace Movements
     {
         [SerializeField] private float speed;
         
-        private InputHandler _inputHandler;
-        
+        private Transform _playerTransform;
         private void Awake()
         {
-            _inputHandler = new InputHandler();
+            _playerTransform = transform;
         }
-        
-        private void Update()
+        internal void Move(float direction)
         {
-            if(_inputHandler.LeftRight.x != 0)
-                Move(_inputHandler.LeftRight, speed);
-        }
-        
-        private void Move(Vector2 direction, float Speed)
-        {
-            transform.position += new Vector3(direction.x, 0, 0) * (Speed * Time.deltaTime);
+            Vector3 moveVector = new Vector3(direction, 0, 0) * (speed * Time.deltaTime);
+            _playerTransform.position += moveVector;
         }
     }
 }
