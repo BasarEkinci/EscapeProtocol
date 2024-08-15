@@ -1,5 +1,4 @@
-﻿using System;
-using Inputs;
+﻿using Inputs;
 using Movements;
 using UnityEngine;
 
@@ -35,7 +34,6 @@ namespace Controllers
             playerRotator.RotatePlayer();
             playerRotator.GetAim();
             HandleJump();
-            Debug.Log(IsPlayerGrounded());
         }
 
         private void HandleJump()
@@ -48,7 +46,7 @@ namespace Controllers
         
         private float HorizontalMovement()
         {
-            return _inputHandler.LeftRight.x;
+            return _inputHandler.GetMovementDirection().x;
         }
 
         private bool IsPlayerGrounded()
