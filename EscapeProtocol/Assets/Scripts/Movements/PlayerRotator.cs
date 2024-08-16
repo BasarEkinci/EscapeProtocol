@@ -33,12 +33,18 @@ namespace Movements
             _mousePosition.z = transform.position.z;
         }
 
-        internal bool IsMovingForward()
+        internal bool IsMovingForward(Vector3 direction)
         {
-            float currentDistance = Mathf.Abs(transform.position.x - _aimPosition.x);
-            bool isMovingForward = currentDistance < _previousDistance;
-            _previousDistance = currentDistance;
-            return isMovingForward;
+            bool isMovingForward;
+            if(_aimPosition.x > transform.position.x)
+            {
+                isMovingForward = direction.x > 0;
+            }
+            else
+            {
+                isMovingForward = direction.x < 0;
+            }
+            return isMovingForward;     
         }
         internal void RotatePlayer()
         {

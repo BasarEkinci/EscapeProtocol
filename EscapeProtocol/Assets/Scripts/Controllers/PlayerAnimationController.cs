@@ -10,9 +10,9 @@ namespace Controllers
         
         private IState _currentState;
         
-        private static readonly int IsMoving = Animator.StringToHash("IsMoving");
-        private static readonly int IsMovingForward = Animator.StringToHash("IsMovingForward");
-        private static readonly int IsJumping = Animator.StringToHash("IsJumping");
+        private readonly int _isMoving = Animator.StringToHash("IsMoving");
+        private readonly int _isMovingForward = Animator.StringToHash("IsMovingForward");
+        private readonly int _isGrounded = Animator.StringToHash("IsGrounded");
 
         private void Start()
         {
@@ -22,9 +22,9 @@ namespace Controllers
 
         private void Update()
         {
-            animator.SetBool(IsMoving, playerMovementController.IsMoving);
-            animator.SetBool(IsMovingForward, playerMovementController.IsMovingForward);
-            animator.SetBool(IsJumping, !playerMovementController.IsGrounded);
+            animator.SetBool(_isMoving, playerMovementController.IsMoving);
+            animator.SetBool(_isMovingForward, playerMovementController.IsMovingForward);
+            animator.SetBool(_isGrounded, playerMovementController.IsGrounded);
         }
 
         public void ChangeState(IState newState)

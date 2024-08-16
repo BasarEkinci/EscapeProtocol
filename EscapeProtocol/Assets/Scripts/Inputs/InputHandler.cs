@@ -1,31 +1,36 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Inputs
 {
     public class InputHandler
     {
         private PlayerInputs _playerInputs;
-
+        
+        private bool _isAttacking;
         public InputHandler()
         {
             _playerInputs = new PlayerInputs();
+            _playerInputs.Player.DefaultFire.performed += DefaultAttackPerformed;
+            _playerInputs.Player.DefaultFire.canceled += DefaultAttackCanceled;
             _playerInputs.Player.Enable();            
-            _playerInputs.Enable();
         }
 
+        private void DefaultAttackCanceled(InputAction.CallbackContext obj)
+        {
+            _isAttacking = false;
+        }
+        private void DefaultAttackPerformed(InputAction.CallbackContext obj)
+        {
+            _isAttacking = true;
+        }
+        public bool GetAttackInput()
+        {
+            return _isAttacking;
+        }
         public bool GetJumpInput()
         {
             return _playerInputs.Player.Jump.triggered;
-        }
-        
-        public bool GetRightClick()
-        {
-            return _playerInputs.Player.PowerShoot.triggered;
-        }
-
-        public bool GetLeftClick()
-        {
-            return _playerInputs.Player.DefaultFire.triggered;
         }
         public Vector2 GetMovementDirection()
         {
