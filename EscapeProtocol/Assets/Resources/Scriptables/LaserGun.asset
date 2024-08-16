@@ -15,5 +15,5 @@ MonoBehaviour:
   GunData:
     BaseAttackDamage: 0
     HeavyAttackDamage: 0
-    BaseAttackFireRate: 0.5
+    BaseAttackFireRate: 0.2
     HeavyAttackFireRate: 0

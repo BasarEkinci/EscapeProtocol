@@ -1,15 +1,28 @@
+using System;
 using UnityEngine;
 
 namespace CombatObjects
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float _speed;
-        [SerializeField] private float _damage;
+        [SerializeField] private ParticleSystem impactEffect;
+        
+        private Rigidbody _rb;
 
-        private void Update()
+        private void Awake()
         {
-            transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
+            _rb = GetComponent<Rigidbody>();
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            Vector3 hitPoints = other.GetContact(0).point;
+            impactEffect.transform.position = hitPoints;
+
+            if (impactEffect.isStopped)
+                impactEffect.Play();
+            
+            _rb.velocity = Vector3.zero;
         }
     }
 }
