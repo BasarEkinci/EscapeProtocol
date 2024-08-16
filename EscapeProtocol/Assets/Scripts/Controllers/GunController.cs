@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using CombatObjects;
 using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using Inputs;
@@ -81,10 +80,10 @@ namespace Controllers
             if (_bullets.Count > 0)
             {
                 GameObject bullet = _bullets.Dequeue();
+                bullet.SetActive(true);
                 bullet.transform.position = firePoint.position;
                 bullet.transform.rotation = firePoint.rotation;
-                bullet.SetActive(true);
-                bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * -150;                
+                bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * -50;                
                 ReturnToPool(bullet).Forget();
             }
             SoundManager.PLaySound(soundData,"Attack",null,1);

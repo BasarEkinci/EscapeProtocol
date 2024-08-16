@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace CombatObjects
@@ -18,11 +17,9 @@ namespace CombatObjects
         {
             Vector3 hitPoints = other.GetContact(0).point;
             impactEffect.transform.position = hitPoints;
-
+            
             if (impactEffect.isStopped)
                 impactEffect.Play();
-            
-            _rb.velocity = Vector3.zero;
         }
     }
 }
