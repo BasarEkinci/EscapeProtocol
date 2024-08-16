@@ -6,7 +6,7 @@ namespace Movements
     public class PlayerRotator : MonoBehaviour
     {
         [SerializeField] private Transform playerBody;
-
+        
         private Camera _mainCamera;
         
         private Vector3 _mousePosition;
