@@ -24400,6 +24400,38 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &731360784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731360785}
+  m_Layer: 0
+  m_Name: EnemyBot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731360785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731360784}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.7071079}
+  m_LocalPosition: {x: -3.8854413, y: 0, z: 0.4564421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2428782410633986300}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &758210448
 GameObject:
   m_ObjectHideFlags: 0
@@ -51525,7 +51557,7 @@ GameObject:
   - component: {fileID: 2198795332930852819}
   - component: {fileID: 2198795332940707953}
   m_Layer: 0
-  m_Name: Mesh
+  m_Name: PlayerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53484,7 +53516,7 @@ GameObject:
   - component: {fileID: 2428782410633986300}
   - component: {fileID: 2428782410626281310}
   m_Layer: 0
-  m_Name: EnemyBot
+  m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55013,8 +55045,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2428782410633698524}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: -3.8854413, y: 0, z: 0.4564421}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55025,7 +55057,7 @@ Transform:
   - {fileID: 2428782410633986206}
   - {fileID: 2428782410633986200}
   - {fileID: 2428782410633986186}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 731360785}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &2428782410633986302
 Transform:
@@ -73754,4 +73786,4 @@ SceneRoots:
   - {fileID: 992628570}
   - {fileID: 1429061229}
   - {fileID: 804039719}
-  - {fileID: 2428782410633986300}
+  - {fileID: 731360785}

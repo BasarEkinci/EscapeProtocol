@@ -1,9 +1,10 @@
-﻿using PlayerStateMachine;
+﻿using AnimationStateMachine;
 using UnityEngine;
+using Utilities;
 
 namespace Controllers
 {
-    public class PlayerAnimationController : MonoBehaviour
+    public class PlayerAnimationController : MonoSingleton<PlayerAnimationController>
     {
         [SerializeField] private PlayerMovementController playerMovementController;
         [SerializeField] private Animator animator;
@@ -17,7 +18,7 @@ namespace Controllers
         private void Start()
         {
             _currentState = new IdleState();
-            _currentState.EnterState(this,playerMovementController);
+            _currentState.EnterState();
         }
 
         private void Update()
@@ -29,9 +30,9 @@ namespace Controllers
 
         public void ChangeState(IState newState)
         {
-            _currentState.ExitState(this,playerMovementController);
+            _currentState.ExitState();
             _currentState = newState;
-            _currentState.EnterState(this,playerMovementController);
+            _currentState.EnterState();
         }
     }
 }

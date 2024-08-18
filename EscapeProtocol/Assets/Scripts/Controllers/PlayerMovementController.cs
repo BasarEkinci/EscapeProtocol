@@ -4,12 +4,12 @@ using Data.UnityObjects;
 using Inputs;
 using Managers;
 using Movements;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using Utilities;
 
 namespace Controllers
 {
-    public class PlayerMovementController : MonoBehaviour
+    public class PlayerMovementController : MonoSingleton<PlayerMovementController>
     {
         public bool IsMovingForward => _isMovingForward;
         public bool IsMoving => _inputHandler.GetMovementDirection().x != 0;
@@ -40,9 +40,10 @@ namespace Controllers
         private Vector3 _moveDirection;
         private bool _isGrounded;
         private bool _isMovingForward;
-        
-        private void Awake()
+
+        protected override void Awake()
         {
+            base.Awake();
             _inputHandler = new InputHandler();
             _characterController = GetComponent<CharacterController>();
             _rb = GetComponent<Rigidbody>();
