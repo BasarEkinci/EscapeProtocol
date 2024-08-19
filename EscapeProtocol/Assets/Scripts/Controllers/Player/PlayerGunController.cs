@@ -23,13 +23,17 @@ namespace Controllers.Player
         private InputHandler _inputHandler;
         private bool _canBaseShoot = true;
         private bool _isFiring;
+        
+        private const int BulletPoolSize = 20;
+        private const int BulletSpeed = 50;
+        private const int BulletReturnTime = 3500;
 
         private void Awake()
         {
             _inputHandler = new InputHandler();
             _bullets = new Queue<GameObject>();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < BulletPoolSize; i++)
             {
                 GameObject bullet = Instantiate(bulletPrefab, bulletsParent);
                 bullet.SetActive(false); 
@@ -62,17 +66,25 @@ namespace Controllers.Player
 
 
         private async UniTaskVoid FireRepeatedly(CancellationToken token)
-        { 
-            while (_inputHandler.GetAttackInput() && !token.IsCancellationRequested) 
-            { 
-                if (_canBaseShoot) 
+        {
+            try
+            {
+                while (_inputHandler.GetAttackInput() && !token.IsCancellationRequested) 
                 { 
-                    Fire(); 
-                    _canBaseShoot = false; 
-                    await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate), cancellationToken: token);
-                    _canBaseShoot = true;
+                    token.ThrowIfCancellationRequested();
+                    if (_canBaseShoot) 
+                    { 
+                        Fire(); 
+                        _canBaseShoot = false; 
+                        await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate), cancellationToken: token);
+                        _canBaseShoot = true;
+                    }
+                    await UniTask.Yield();    
                 }
-                await UniTask.Yield();
+            }
+            finally
+            {
+                _isFiring = false;
             }
         }
 
@@ -84,7 +96,7 @@ namespace Controllers.Player
                 bullet.SetActive(true);
                 bullet.transform.position = firePoint.position;
                 bullet.transform.rotation = firePoint.rotation;
-                bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * -50;                
+                bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * -BulletSpeed;                
                 ReturnToPool(bullet).Forget();
             }
             SoundManager.PLaySound(soundData,"LaserGun",null,1);
@@ -92,7 +104,7 @@ namespace Controllers.Player
 
         private async UniTaskVoid ReturnToPool(GameObject bullet)
         {
-            await UniTask.Delay(3500);
+            await UniTask.Delay(BulletReturnTime);
             if(bullet.activeSelf)
                 bullet.SetActive(false);
             _bullets.Enqueue(bullet);
