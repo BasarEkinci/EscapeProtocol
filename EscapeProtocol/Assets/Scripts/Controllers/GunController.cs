@@ -92,7 +92,8 @@ namespace Controllers
         private async UniTaskVoid ReturnToPool(GameObject bullet)
         {
             await UniTask.Delay(3500);
-            bullet.SetActive(false);
+            if(bullet.activeSelf)
+                bullet.SetActive(false);
             _bullets.Enqueue(bullet);
         }
     }

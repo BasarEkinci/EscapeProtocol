@@ -1,4 +1,5 @@
 ﻿using AnimationStateMachine;
+using AnimationStateMachine.PlayerAnimationStates;
 using UnityEngine;
 using Utilities;
 

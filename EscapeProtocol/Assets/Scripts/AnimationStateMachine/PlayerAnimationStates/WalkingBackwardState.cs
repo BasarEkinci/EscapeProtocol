@@ -1,6 +1,6 @@
 ﻿using Controllers;
 
-namespace AnimationStateMachine
+namespace AnimationStateMachine.PlayerAnimationStates
 {
     public class WalkingBackwardState : IState
     {

@@ -1,6 +1,4 @@
-using Controllers;
-
-namespace AnimationStateMachine
+namespace AnimationStateMachine.BotAnimationStates
 {
     public class PlayerDetectedState : IState
     {
@@ -10,7 +8,7 @@ namespace AnimationStateMachine
 
         public void UpdateState()
         {
-            // Change State : FireIdleState
+            // Change State : BotIdleState / BotWalkingState
         }
 
         public void ExitState()

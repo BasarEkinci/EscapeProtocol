@@ -13,7 +13,6 @@ namespace Movements
         private Vector3 _screenCenter;
         private Vector3 _aimPosition;
         
-        private float _previousDistance; 
         private float _mouseX;
         private float _mouseY;
 
@@ -21,12 +20,6 @@ namespace Movements
         {
             _mainCamera = Camera.main;
         }
-
-        private void Start()
-        {
-            _previousDistance = Mathf.Abs(_aimPosition.x - transform.position.x);
-        }
-
         internal void GetMousePosition()
         {
             _mousePosition = Input.mousePosition;
