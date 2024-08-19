@@ -1,4 +1,3 @@
-using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -17,7 +16,9 @@ namespace Controllers
         [SerializeField] private float moveSpeed;
         
         private CharacterController _characterController;
-        
+        private Rigidbody _rb;
+        private Vector3 _velocity;
+        private float _speedMultiplier;
         private float _moveSpeedMultiplier;
         private bool _isWaiting;
         private bool _isEnemyDetected;
@@ -25,8 +26,7 @@ namespace Controllers
         protected override void Awake()
         {
             base.Awake();
-            _characterController = GetComponent<CharacterController>();
-            _moveSpeedMultiplier = moveSpeed;
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void Start()
@@ -38,24 +38,33 @@ namespace Controllers
         private void Update()
         {
             DetectGround().Forget();
-            _characterController.Move(Vector3.right * (moveSpeed * Time.deltaTime));
+            Move();
         }
 
+        private void Move()
+        {
+            _speedMultiplier = _isWaiting ? 0 : 1;
+            
+            Vector3 move = new Vector3(moveSpeed * _speedMultiplier, _rb.velocity.y, _rb.velocity.z);
+            _rb.velocity = move;
+        }
 
         private async UniTaskVoid DetectGround()
         {
             if (!CheckGround())
             {
+                Debug.Log("Gap Detected");
                 _isWaiting = true;
-                moveSpeed = 0;
-                await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
-                transform.DORotate(Vector3.up * -90, 0.1f);
-                _isWaiting = false;
-                moveSpeed += _moveSpeedMultiplier;
                 moveSpeed *= -1;
+                await UniTask.Delay(1000);
+                _isWaiting = false;
+                if(moveSpeed > 0)
+                    transform.DORotate(Vector3.up * 90, 0.1f);
+                else
+                    transform.DORotate(Vector3.down * 90, 0.1f);
             }
         }
-
+        
         private bool CheckGround()
         {
             return Physics.CheckSphere(groundDetector.transform.position, 0.1f, groundLayer);

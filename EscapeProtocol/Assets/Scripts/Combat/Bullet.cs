@@ -8,24 +8,20 @@ namespace Combat
         [SerializeField] private ParticleSystem impactEffect;
         private void OnCollisionEnter(Collision other)
         {
+            IDamageable enemy = other.collider.GetComponent<IDamageable>();
             DamageEffect(other.GetContact(0).point).Forget();
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.GetComponent<IDamageable>() != null)
+            if (enemy != null)
             {
                 DamageEffect(transform.position).Forget();
-                other.GetComponent<IDamageable>().TakeDamage(10);
+                enemy.TakeDamage(10);
             }
         }
-        
         private async UniTaskVoid DamageEffect(Vector3 hitPoints)
         {
             impactEffect.transform.position = hitPoints;
             if (impactEffect.isStopped)
                 impactEffect.Play();
-            await UniTask.Delay(500);
+            await UniTask.Delay(300);
             gameObject.SetActive(false);
         }
     }

@@ -4760,11 +4760,10 @@ GameObject:
   m_Component:
   - component: {fileID: 123363223}
   - component: {fileID: 123363222}
-  - component: {fileID: 123363221}
   - component: {fileID: 123363220}
   - component: {fileID: 123363219}
   - component: {fileID: 123363224}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: EnemyBot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4787,32 +4786,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  moveSpeed: 1
+  moveSpeed: 3
 --- !u!136 &123363220
 CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123363218}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: -0, y: 1, z: 0}
---- !u!143 &123363221
-CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4829,14 +4805,11 @@ CharacterController:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
+  serializedVersion: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: -0, y: 1, z: 0}
 --- !u!54 &123363222
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4845,7 +4818,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123363218}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 450
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -4859,7 +4832,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 88
@@ -4873,7 +4846,7 @@ Transform:
   m_GameObject: {fileID: 123363218}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.46, y: -0, z: 0}
+  m_LocalPosition: {x: 2.46, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4881,7 +4854,7 @@ Transform:
   - {fileID: 1519945564}
   - {fileID: 1332045509}
   - {fileID: 764165583}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1429061229}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &123363224
 MonoBehaviour:
@@ -4895,7 +4868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b193a0e300b40a0922aadcbe209cc58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botMovementController: {fileID: 123363219}
   animator: {fileID: 1342693492}
 --- !u!1 &173608297
 GameObject:
@@ -25341,7 +25313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 764165583}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GroundDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31946,7 +31918,7 @@ Animator:
   m_GameObject: {fileID: 1342693490}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 860793eb3324391468f1c120a75ec049, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6defa2fea7e9a934a8d2cafa30dc567a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4abf64b1168e6b64bb13b92047573019, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -32221,6 +32193,7 @@ Transform:
   m_Children:
   - {fileID: 1889908880}
   - {fileID: 1191046519}
+  - {fileID: 123363223}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430314791
@@ -42362,7 +42335,7 @@ Transform:
   m_GameObject: {fileID: 1889908879}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -74026,4 +73999,3 @@ SceneRoots:
   - {fileID: 992628570}
   - {fileID: 1429061229}
   - {fileID: 804039719}
-  - {fileID: 123363223}
