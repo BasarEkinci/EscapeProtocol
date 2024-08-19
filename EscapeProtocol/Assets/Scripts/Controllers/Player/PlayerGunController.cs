@@ -16,6 +16,7 @@ namespace Controllers.Player
         [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
+        [SerializeField] private Transform bulletsParent;
         
         private Queue<GameObject> _bullets;
         private CancellationTokenSource _cancellationTokenSource;
@@ -30,7 +31,7 @@ namespace Controllers.Player
 
             for (int i = 0; i < 20; i++)
             {
-                GameObject bullet = Instantiate(bulletPrefab);
+                GameObject bullet = Instantiate(bulletPrefab, bulletsParent);
                 bullet.SetActive(false); 
                 _bullets.Enqueue(bullet);
             }
