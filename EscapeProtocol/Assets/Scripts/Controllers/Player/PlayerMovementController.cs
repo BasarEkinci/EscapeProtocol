@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Combat;
 using Data.UnityObjects;
 using Inputs;
 using Managers;
@@ -7,16 +8,16 @@ using Movements;
 using UnityEngine;
 using Utilities;
 
-namespace Controllers
+namespace Controllers.Player
 {
-    public class PlayerMovementController : MonoSingleton<PlayerMovementController>
+    public class PlayerMovementController : MonoSingleton<PlayerMovementController>, IDamageable
     {
         public bool IsMovingForward => _isMovingForward;
         public bool IsMoving => _inputHandler.GetMovementDirection().x != 0;
         public bool IsGrounded => _isGrounded;
         private InputHandler _inputHandler;
         
-        
+        [SerializeField] private int maxHealth;
         [SerializeField] private PlayerRotator playerRotator;
         [SerializeField] private SoundDataScriptable soundData;
         [Header("Jump Settings")]
@@ -40,6 +41,7 @@ namespace Controllers
         private Vector3 _moveDirection;
         private bool _isGrounded;
         private bool _isMovingForward;
+        private int _currentHealth;
 
         protected override void Awake()
         {
@@ -48,6 +50,12 @@ namespace Controllers
             _characterController = GetComponent<CharacterController>();
             _rb = GetComponent<Rigidbody>();
         }
+
+        private void Start()
+        {
+            _currentHealth = maxHealth;
+        }
+
         private void Update()
         {
             _isMovingForward = playerRotator.IsMovingForward(_characterController.velocity);
@@ -105,6 +113,12 @@ namespace Controllers
                     particle.Play();
                 }
             }
+        }
+
+        public void TakeDamage(int damage)
+        {
+            _currentHealth -= damage;
+            _currentHealth = Mathf.Min(_currentHealth, 0);
         }
     }
 }

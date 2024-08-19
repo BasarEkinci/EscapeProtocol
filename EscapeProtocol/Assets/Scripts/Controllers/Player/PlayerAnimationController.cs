@@ -3,7 +3,7 @@ using AnimationStateMachine.PlayerAnimationStates;
 using UnityEngine;
 using Utilities;
 
-namespace Controllers
+namespace Controllers.Player
 {
     public class PlayerAnimationController : MonoSingleton<PlayerAnimationController>
     {

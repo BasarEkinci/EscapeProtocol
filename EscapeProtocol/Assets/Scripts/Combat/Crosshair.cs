@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace CombatObjects
+namespace Combat
 {
     public class Crosshair : MonoBehaviour
     {

@@ -1,6 +1,4 @@
-﻿using Controllers;
-
-namespace AnimationStateMachine
+﻿namespace AnimationStateMachine
 {
     public interface IState
     {

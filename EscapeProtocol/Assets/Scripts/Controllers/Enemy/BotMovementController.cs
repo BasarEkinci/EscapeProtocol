@@ -14,7 +14,6 @@ namespace Controllers.Enemy
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float moveSpeed;
         
-        public bool IsGroundDetected => CheckGround();
         public bool IsWaiting => _isWaiting;
         public bool IsEnemyDetected => enemyArea.IsEnemyDetected;
         
