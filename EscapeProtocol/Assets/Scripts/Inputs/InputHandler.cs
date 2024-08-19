@@ -5,7 +5,7 @@ namespace Inputs
 {
     public class InputHandler
     {
-        private PlayerInputs _playerInputs;
+        private readonly PlayerInputs _playerInputs;
         
         private bool _isAttacking;
         public InputHandler()

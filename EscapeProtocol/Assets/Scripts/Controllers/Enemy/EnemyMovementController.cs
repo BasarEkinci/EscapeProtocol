@@ -6,7 +6,7 @@ using Utilities;
 
 namespace Controllers.Enemy
 {
-    public class BotMovementController : MonoSingleton<BotMovementController>
+    public class EnemyMovementController : MonoSingleton<EnemyMovementController>
     {
         [SerializeField] private EnemyArea enemyArea;
         [SerializeField] private Transform bodyTransform;

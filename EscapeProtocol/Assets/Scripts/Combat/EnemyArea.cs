@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using Managers;
 using UnityEngine;
@@ -9,28 +11,39 @@ namespace Combat
         [SerializeField] private SoundDataScriptable soundData;
         public bool IsEnemyDetected => _isEnemyDetected;
         public GameObject Enemy => _enemy;
-        
+    
         private bool _isEnemyDetected;
         private GameObject _enemy;
-        
+        private CancellationTokenSource _cancellationTokenSource;
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
-                SoundManager.PLaySound(soundData,"Target",null,1);
-                _isEnemyDetected = true;
+                _cancellationTokenSource?.Cancel();
+                _cancellationTokenSource = new CancellationTokenSource();
+                HandleDetectionAfterDelay(_cancellationTokenSource.Token).Forget();
                 _enemy = other.gameObject;
-                Debug.Log("Enemy Detected");
             }            
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
+                _cancellationTokenSource?.Cancel();
                 _isEnemyDetected = false;
                 _enemy = null;
-                Debug.Log("Enemy Lost");
+            }
+        }
+
+        private async UniTaskVoid HandleDetectionAfterDelay(CancellationToken token)
+        {
+            SoundManager.PLaySound(soundData, "Target", null, 1);
+            await UniTask.Delay(1000, cancellationToken: token);
+            if (!token.IsCancellationRequested)
+            {
+                _isEnemyDetected = true;
             }
         }
     }

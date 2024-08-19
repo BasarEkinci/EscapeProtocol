@@ -11,13 +11,13 @@ namespace Controllers.Enemy
     public class EnemyGunController : MonoBehaviour,IGunController
     {
         [Header("Data")]
-        [SerializeField] private GunDataScriptable gunData;
         [SerializeField] private SoundDataScriptable soundData;
         
         [Header("Firing Settings")]
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform bulletsParent;
+        [SerializeField] private int fireRate;
         
         
         private Queue<GameObject> _bullets;
@@ -44,7 +44,7 @@ namespace Controllers.Enemy
 
         private void Update()
         {
-            if (BotMovementController.Instance.IsEnemyDetected && _canBaseShoot && !_isFiring)
+            if (EnemyMovementController.Instance.IsEnemyDetected && _canBaseShoot && !_isFiring)
             {
                 FireRepeatedly(_cancellationTokenSource.Token).Forget();
             }
@@ -59,13 +59,13 @@ namespace Controllers.Enemy
         // ReSharper disable Unity.PerformanceAnalysis
         public async UniTaskVoid FireRepeatedly(CancellationToken token)
         {
-            while (BotMovementController.Instance.IsEnemyDetected && !token.IsCancellationRequested) 
+            while (EnemyMovementController.Instance.IsEnemyDetected && !token.IsCancellationRequested) 
             { 
                 if (_canBaseShoot) 
                 { 
                     Fire(); 
                     _canBaseShoot = false; 
-                    await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate), cancellationToken: token); 
+                    await UniTask.Delay(TimeSpan.FromSeconds(fireRate), cancellationToken: token); 
                     _canBaseShoot = true; 
                 } 
                 await UniTask.Yield();
