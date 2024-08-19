@@ -12,7 +12,7 @@ namespace AnimationStateMachine.BotAnimationStates
         {
             if (BotMovementController.Instance.IsWaiting)
             {
-                BotAnimationController.Instance.ChangeState(new BotIdleState());
+                EnemyAnimationController.Instance.ChangeState(new BotIdleState());
             }
             
         }

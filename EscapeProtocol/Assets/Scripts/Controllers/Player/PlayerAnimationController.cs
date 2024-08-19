@@ -1,4 +1,5 @@
-﻿using AnimationStateMachine;
+﻿using System.Collections.Generic;
+using AnimationStateMachine;
 using AnimationStateMachine.PlayerAnimationStates;
 using UnityEngine;
 using Utilities;
@@ -11,9 +12,11 @@ namespace Controllers.Player
         
         private IState _currentState;
         
-        private readonly int _isMoving = Animator.StringToHash("IsMoving");
-        private readonly int _isMovingForward = Animator.StringToHash("IsMovingForward");
-        private readonly int _isGrounded = Animator.StringToHash("IsGrounded");
+        private readonly Dictionary<string,int> _animatorParameters = new Dictionary<string, int>{
+            { "IsMoving", Animator.StringToHash("IsMoving") },
+            { "IsMovingForward", Animator.StringToHash("IsMovingForward") },
+            { "IsGrounded", Animator.StringToHash("IsGrounded") }
+        };
 
         private void Start()
         {
@@ -23,9 +26,9 @@ namespace Controllers.Player
 
         private void Update()
         {
-            animator.SetBool(_isMoving, PlayerMovementController.Instance.IsMoving);
-            animator.SetBool(_isMovingForward, PlayerMovementController.Instance.IsMovingForward);
-            animator.SetBool(_isGrounded, PlayerMovementController.Instance.IsGrounded);
+            animator.SetBool(_animatorParameters["IsMoving"], PlayerMovementController.Instance.IsMoving);
+            animator.SetBool(_animatorParameters["IsMovingForward"], PlayerMovementController.Instance.IsMovingForward);
+            animator.SetBool(_animatorParameters["IsGrounded"], PlayerMovementController.Instance.IsGrounded);
         }
 
         public void ChangeState(IState newState)
