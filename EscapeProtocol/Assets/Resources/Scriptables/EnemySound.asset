@@ -23,5 +23,4 @@ MonoBehaviour:
     Volume: 1
     MixerGroup: {fileID: 0}
     Sounds:
-    - {fileID: 8300000, guid: 551ad1f874876844c916e43dea869015, type: 3}
-    - {fileID: 8300000, guid: b26319ae1a5207647a66f44df6b4a52d, type: 3}
+    - {fileID: 8300000, guid: 16c1b7e02047a23408f0e2b53b595fad, type: 3}
