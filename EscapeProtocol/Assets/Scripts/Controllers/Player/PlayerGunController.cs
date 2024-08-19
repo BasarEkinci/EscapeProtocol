@@ -7,10 +7,11 @@ using Inputs;
 using Managers;
 using UnityEngine;
 
-namespace Controllers
+namespace Controllers.Player
 {
-    public class GunController : MonoBehaviour
+    public class PlayerGunController : MonoBehaviour
     {
+        
         [SerializeField] private GunDataScriptable gunData;
         [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private Transform firePoint;
@@ -58,19 +59,18 @@ namespace Controllers
             _cancellationTokenSource.Cancel();
         }
 
+
         private async UniTaskVoid FireRepeatedly(CancellationToken token)
-        {
-            while (_inputHandler.GetAttackInput() && !token.IsCancellationRequested)
-            {
-                if(_canBaseShoot)
-                {
-                    Fire();
-                    _canBaseShoot = false;
-                    await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate),
-                        cancellationToken: token);
+        { 
+            while (_inputHandler.GetAttackInput() && !token.IsCancellationRequested) 
+            { 
+                if (_canBaseShoot) 
+                { 
+                    Fire(); 
+                    _canBaseShoot = false; 
+                    await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate), cancellationToken: token);
                     _canBaseShoot = true;
                 }
-
                 await UniTask.Yield();
             }
         }
@@ -86,7 +86,7 @@ namespace Controllers
                 bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * -50;                
                 ReturnToPool(bullet).Forget();
             }
-            SoundManager.PLaySound(soundData,"Attack",null,1);
+            SoundManager.PLaySound(soundData,"LaserGun",null,1);
         }
 
         private async UniTaskVoid ReturnToPool(GameObject bullet)

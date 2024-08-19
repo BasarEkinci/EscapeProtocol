@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 29214831}
   - component: {fileID: 29214833}
   - component: {fileID: 29214832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4762,6 +4762,7 @@ GameObject:
   - component: {fileID: 123363222}
   - component: {fileID: 123363220}
   - component: {fileID: 123363219}
+  - component: {fileID: 123363225}
   - component: {fileID: 123363224}
   m_Layer: 0
   m_Name: EnemyBot
@@ -4782,6 +4783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be10d71e484ee045b4dc52203e00a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyArea: {fileID: 967203799}
+  bodyTransform: {fileID: 1519945564}
   groundDetector: {fileID: 764165582}
   groundLayer:
     serializedVersion: 2
@@ -4845,8 +4848,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123363218}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 21.88, y: -0.04, z: -0}
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 21.250008, y: -0.03999996, z: -0.0000021649453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4856,7 +4859,103 @@ Transform:
   - {fileID: 764165583}
   m_Father: {fileID: 1429061229}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &123363224
+--- !u!82 &123363224
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123363218}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 3
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &123363225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4880,7 +4979,7 @@ GameObject:
   - component: {fileID: 173608298}
   - component: {fileID: 173608300}
   - component: {fileID: 173608299}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9679,6 +9778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 197138511}
+  - component: {fileID: 197138512}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -9704,6 +9804,23 @@ Transform:
   - {fileID: 1202898811}
   m_Father: {fileID: 1519945564}
   m_LocalEulerAnglesHint: {x: 0, y: 80.359, z: -47.268}
+--- !u!114 &197138512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197138510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b8f313995048caaf5b14e02f9736fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: e9b2dacacf8afe249b5757cf94df8710, type: 2}
+  soundData: {fileID: 11400000, guid: 9a1ff812590952648a2ddf2c5dabb6c2, type: 2}
+  firePoint: {fileID: 1202898811}
+  bulletPrefab: {fileID: 8814351148132767945, guid: a80bdf2677e7f0042a29e8216467527b,
+    type: 3}
 --- !u!1 &203491499
 GameObject:
   m_ObjectHideFlags: 0
@@ -9716,7 +9833,7 @@ GameObject:
   - component: {fileID: 203491503}
   - component: {fileID: 203491502}
   - component: {fileID: 203491501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CFXR Fire Breath (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14668,7 +14785,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 278560127}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AimParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15426,7 +15543,7 @@ GameObject:
   - component: {fileID: 488725678}
   - component: {fileID: 488725680}
   - component: {fileID: 488725679}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20476,7 +20593,7 @@ GameObject:
   - component: {fileID: 701653268}
   - component: {fileID: 701653270}
   - component: {fileID: 701653269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25642,7 +25759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 894332659}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25901,6 +26018,73 @@ SkinnedMeshRenderer:
     m_Center: {x: -28.89946, y: 44.769905, z: -1.5718498}
     m_Extent: {x: 47.82257, y: 32.29384, z: 42.822285}
   m_DirtyAABB: 0
+--- !u!1 &967203798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 967203801}
+  - component: {fileID: 967203800}
+  - component: {fileID: 967203799}
+  m_Layer: 0
+  m_Name: EnemyArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &967203799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967203798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0545de14d3ddc488d37006c816ff50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundData: {fileID: 11400000, guid: 10906ca8a64938842ad0745004ee7a31, type: 2}
+--- !u!65 &967203800
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967203798}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 7.9419394, z: 1}
+  m_Center: {x: 0, y: 3.4709697, z: 0}
+--- !u!4 &967203801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967203798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23, y: 1.22, z: 0}
+  m_LocalScale: {x: 20, y: 1, z: 11}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &992628569
 GameObject:
   m_ObjectHideFlags: 0
@@ -26231,7 +26415,7 @@ GameObject:
   - component: {fileID: 1040286900}
   - component: {fileID: 1040286899}
   - component: {fileID: 1040286898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CFXR Fire Breath (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31751,7 +31935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251334052}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32478,7 +32662,7 @@ GameObject:
   - component: {fileID: 1529939749}
   - component: {fileID: 1529939751}
   - component: {fileID: 1529939750}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37137,7 +37321,7 @@ GameObject:
   - component: {fileID: 1607542825}
   - component: {fileID: 1607542824}
   - component: {fileID: 1607542823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CFXR Fire Breath (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42321,7 +42505,7 @@ GameObject:
   - component: {fileID: 1889908886}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42335,7 +42519,7 @@ Transform:
   m_GameObject: {fileID: 1889908879}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.04, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42380,7 +42564,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 88
   m_CollisionDetection: 0
@@ -42467,7 +42651,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -42660,7 +42844,7 @@ GameObject:
   - component: {fileID: 1924142126}
   - component: {fileID: 1924142128}
   - component: {fileID: 1924142127}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47393,7 +47577,7 @@ GameObject:
   - component: {fileID: 2053308503}
   - component: {fileID: 2053308502}
   - component: {fileID: 2053308501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CFXR Smoke Source 3D (1)
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
@@ -53566,7 +53750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toe_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53582,7 +53766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toetip_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53598,7 +53782,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852837}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toetip_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53614,7 +53798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852839}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53630,7 +53814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852841}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpperArm_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53646,7 +53830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852843}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpperArm_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53662,7 +53846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852845}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpperLeg_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53678,7 +53862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852847}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpperLeg_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53694,7 +53878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53710,7 +53894,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thumb_Distal_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53726,7 +53910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852853}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thumb_Distal_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53742,7 +53926,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852855}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thumb_Intermediate_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53758,7 +53942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852857}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thumb_Intermediate_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53774,7 +53958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852859}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thumb_Proximal_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53790,7 +53974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852861}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thumb_Proximal_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53806,7 +53990,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852863}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toe_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53823,7 +54007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198795332930852737}
   - component: {fileID: 2198795332944807605}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Backpack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53840,7 +54024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198795332930852739}
   - component: {fileID: 2198795332944807607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53856,7 +54040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852741}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53872,7 +54056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53888,7 +54072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852745}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53904,7 +54088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852747}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53920,7 +54104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852749}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53936,7 +54120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852751}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53953,7 +54137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198795332930852753}
   - component: {fileID: 2198795332944807601}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53969,7 +54153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmPlacement_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53985,7 +54169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852757}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmPlacement_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54001,7 +54185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852759}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmPlacement_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54017,7 +54201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852761}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmPosition_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54034,7 +54218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198795332930852763}
   - component: {fileID: 2198795332931210172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54054,7 +54238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: e9b2dacacf8afe249b5757cf94df8710, type: 2}
-  soundData: {fileID: 11400000, guid: 3a00699698a37b54486cb4969d01caf9, type: 2}
+  soundData: {fileID: 11400000, guid: 9a1ff812590952648a2ddf2c5dabb6c2, type: 2}
   firePoint: {fileID: 1251334052}
   bulletPrefab: {fileID: 8814351148132767945, guid: a80bdf2677e7f0042a29e8216467527b,
     type: 3}
@@ -54068,7 +54252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198795332930852765}
   - component: {fileID: 2198795332944807603}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AssaultRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54084,7 +54268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852767}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54100,7 +54284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852769}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Index_Proximal_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54116,7 +54300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852771}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Index_Proximal_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54133,7 +54317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198795332930852773}
   - component: {fileID: 2198795332944807611}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54149,7 +54333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852775}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerArm_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54165,7 +54349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852777}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerArm_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54181,7 +54365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852779}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerLeg_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54197,7 +54381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852781}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerLeg_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54213,7 +54397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: magazine_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54230,7 +54414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198795332930852785}
   - component: {fileID: 2198795332944807609}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54246,7 +54430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852787}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Headgear_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54262,7 +54446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852789}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Headgear_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54278,7 +54462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54294,7 +54478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852793}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Index_Distal_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54310,7 +54494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852795}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Index_Distal_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54326,7 +54510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852797}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Index_Intermediate_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54342,7 +54526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852799}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Index_Intermediate_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54358,7 +54542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852801}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shoulder_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54374,7 +54558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shoulder_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54390,7 +54574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852805}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShoulderPadBlade_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54406,7 +54590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852807}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShoulderPadBlade_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54422,7 +54606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShoulderPadBody_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54438,7 +54622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShoulderPadBody_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54454,7 +54638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852813}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShoulderPadCTRL_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54470,7 +54654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShoulderPadCTRL_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54486,7 +54670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852817}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54503,7 +54687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198795332930852819}
   - component: {fileID: 2198795332940707953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54519,7 +54703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RestOfFingers_Distal_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54535,7 +54719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RestOfFingers_Distal_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54551,7 +54735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RestOfFingers_Intermediate_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54567,7 +54751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852827}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RestOfFingers_Intermediate_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54583,7 +54767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852829}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RestOfFingers_Proximal_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54599,7 +54783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198795332930852831}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RestOfFingers_Proximal_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69245,7 +69429,7 @@ GameObject:
   - component: {fileID: 7072272125197342502}
   - component: {fileID: 6987202832403708390}
   - component: {fileID: 6985118950576216462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69263,7 +69447,7 @@ GameObject:
   - component: {fileID: 7078263101721833710}
   - component: {fileID: 6986489520893939250}
   - component: {fileID: 6985396548389348050}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69282,7 +69466,7 @@ GameObject:
   - component: {fileID: 6986700648789632068}
   - component: {fileID: 6987017152999516064}
   - component: {fileID: 1226649649437750812}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CFXR Fire Breath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73962,7 +74146,7 @@ GameObject:
   - component: {fileID: 8980370045120472795}
   - component: {fileID: 8980370045120503675}
   - component: {fileID: 367877812302484099}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CFXR Smoke Source 3D
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
@@ -73998,3 +74182,4 @@ SceneRoots:
   - {fileID: 992628570}
   - {fileID: 1429061229}
   - {fileID: 804039719}
+  - {fileID: 967203801}

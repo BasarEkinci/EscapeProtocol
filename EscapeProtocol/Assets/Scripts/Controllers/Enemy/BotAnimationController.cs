@@ -15,7 +15,6 @@ namespace Controllers.Enemy
         {
             animator.SetBool(_isWaiting, BotMovementController.Instance.IsWaiting);
         }
-        
         public void ChangeState(IState newState)
         {
             _currentState.ExitState();

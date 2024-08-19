@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2697350357374589597}
   - component: {fileID: 1511629773278374202}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7456421008787954643}
   - component: {fileID: 7183091765210715195}
   - component: {fileID: 3285904965050431748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CFXR2 Sparks Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5039,7 +5039,7 @@ GameObject:
   - component: {fileID: 6798982573582431779}
   - component: {fileID: 3088327263335106508}
   - component: {fileID: -8024236805174896045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

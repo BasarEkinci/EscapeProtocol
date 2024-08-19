@@ -1,3 +1,4 @@
+using Combat;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -7,22 +8,20 @@ namespace Controllers.Enemy
 {
     public class BotMovementController : MonoSingleton<BotMovementController>
     {
+        [SerializeField] private EnemyArea enemyArea;
+        [SerializeField] private Transform bodyTransform;
         [SerializeField] private GameObject groundDetector;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float moveSpeed;
         
         public bool IsGroundDetected => CheckGround();
         public bool IsWaiting => _isWaiting;
-        public bool IsEnemyDetected => _isEnemyDetected;
+        public bool IsEnemyDetected => enemyArea.IsEnemyDetected;
         
-        
-        private CharacterController _characterController;
         private Rigidbody _rb;
         private Vector3 _velocity;
-        private float _speedMultiplier;
-        private float _moveSpeedMultiplier;
+        private float _speedMultiplier; 
         private bool _isWaiting;
-        private bool _isEnemyDetected;
 
         protected override void Awake()
         {
@@ -33,12 +32,12 @@ namespace Controllers.Enemy
         private void Start()
         {
             _isWaiting = false;
-            _isEnemyDetected = false;
         }
 
         private void Update()
         {
             DetectGround().Forget();
+            LookAtEnemy();
             Move();
         }
 
@@ -54,7 +53,6 @@ namespace Controllers.Enemy
         {
             if (!CheckGround())
             {
-                Debug.Log("Gap Detected");
                 _isWaiting = true;
                 moveSpeed *= -1;
                 await UniTask.Delay(1000);
@@ -69,6 +67,33 @@ namespace Controllers.Enemy
         private bool CheckGround()
         {
             return Physics.CheckSphere(groundDetector.transform.position, 0.1f, groundLayer);
+        }
+        
+        private void LookAtEnemy()
+        {
+            if (enemyArea.IsEnemyDetected)
+            {
+                _isWaiting = true;
+                if(transform.position.x < enemyArea.Enemy.transform.position.x)
+                    transform.DORotate(Vector3.up * 90, 0.1f);
+                else
+                    transform.DORotate(Vector3.up * -90, 0.1f);
+                bodyTransform.LookAt(enemyArea.Enemy.transform.position + new Vector3(0,1.5f,0));
+            }
+            else
+            {
+                if(moveSpeed > 0)
+                {
+                    transform.DORotate(Vector3.up * 90, 0.1f);
+                    bodyTransform.DORotate(new Vector3(5,90,0), 0.1f);
+                }
+                else
+                {
+                    transform.DORotate(Vector3.up * -90, 0.1f);
+                    bodyTransform.DORotate(new Vector3(5,-90,0), 0.1f);
+                }
+                _isWaiting = false;
+            }
         }
         
         private void OnDrawGizmos()

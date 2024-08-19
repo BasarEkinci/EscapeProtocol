@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: PlayerSoundData
   m_EditorClassIdentifier: 
   sounds:
-  - Name: Attack
-    Volume: 1
-    MixerGroup: {fileID: 0}
-    Sounds:
-    - {fileID: 8300000, guid: 151cba11e7bb460468f6687f314fb12d, type: 3}
   - Name: Jump
     Volume: 1
     MixerGroup: {fileID: 0}
