@@ -7,7 +7,6 @@ namespace Controllers
 {
     public class PlayerAnimationController : MonoSingleton<PlayerAnimationController>
     {
-        [SerializeField] private PlayerMovementController playerMovementController;
         [SerializeField] private Animator animator;
         
         private IState _currentState;
@@ -24,9 +23,9 @@ namespace Controllers
 
         private void Update()
         {
-            animator.SetBool(_isMoving, playerMovementController.IsMoving);
-            animator.SetBool(_isMovingForward, playerMovementController.IsMovingForward);
-            animator.SetBool(_isGrounded, playerMovementController.IsGrounded);
+            animator.SetBool(_isMoving, PlayerMovementController.Instance.IsMoving);
+            animator.SetBool(_isMovingForward, PlayerMovementController.Instance.IsMovingForward);
+            animator.SetBool(_isGrounded, PlayerMovementController.Instance.IsGrounded);
         }
 
         public void ChangeState(IState newState)

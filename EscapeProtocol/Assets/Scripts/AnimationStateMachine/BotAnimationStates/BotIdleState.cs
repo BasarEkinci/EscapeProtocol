@@ -1,4 +1,4 @@
-﻿using Controllers;
+﻿using Controllers.Enemy;
 
 namespace AnimationStateMachine.BotAnimationStates
 {

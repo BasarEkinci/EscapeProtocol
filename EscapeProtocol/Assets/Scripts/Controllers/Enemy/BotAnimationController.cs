@@ -1,8 +1,8 @@
-﻿using Controllers;
+﻿using AnimationStateMachine;
 using UnityEngine;
 using Utilities;
 
-namespace AnimationStateMachine.BotAnimationStates
+namespace Controllers.Enemy
 {
     public class BotAnimationController : MonoSingleton<BotAnimationController>
     {

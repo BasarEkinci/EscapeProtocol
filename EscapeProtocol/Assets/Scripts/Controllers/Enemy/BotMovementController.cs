@@ -3,17 +3,18 @@ using DG.Tweening;
 using UnityEngine;
 using Utilities;
 
-namespace Controllers
+namespace Controllers.Enemy
 {
     public class BotMovementController : MonoSingleton<BotMovementController>
     {
+        [SerializeField] private GameObject groundDetector;
+        [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private float moveSpeed;
+        
         public bool IsGroundDetected => CheckGround();
         public bool IsWaiting => _isWaiting;
         public bool IsEnemyDetected => _isEnemyDetected;
         
-        [SerializeField] private GameObject groundDetector;
-        [SerializeField] private LayerMask groundLayer;
-        [SerializeField] private float moveSpeed;
         
         private CharacterController _characterController;
         private Rigidbody _rb;
@@ -61,7 +62,7 @@ namespace Controllers
                 if(moveSpeed > 0)
                     transform.DORotate(Vector3.up * 90, 0.1f);
                 else
-                    transform.DORotate(Vector3.down * 90, 0.1f);
+                    transform.DORotate(Vector3.up * -90, 0.1f);
             }
         }
         
