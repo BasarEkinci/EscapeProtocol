@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Controllers.Player
 {
-    public class PlayerGunController : MonoBehaviour
+    public class PlayerGunController : MonoBehaviour, IGunController
     {
         
         [SerializeField] private GunDataScriptable gunData;
@@ -65,7 +65,7 @@ namespace Controllers.Player
         }
 
 
-        private async UniTaskVoid FireRepeatedly(CancellationToken token)
+        public async UniTaskVoid FireRepeatedly(CancellationToken token)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace Controllers.Player
             }
         }
 
-        private void Fire()
+        public void Fire()
         {        
             if (_bullets.Count > 0)
             {

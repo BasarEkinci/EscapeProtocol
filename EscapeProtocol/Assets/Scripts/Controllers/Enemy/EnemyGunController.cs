@@ -8,10 +8,13 @@ using UnityEngine;
 
 namespace Controllers.Enemy
 {
-    public class EnemyGunController : MonoBehaviour
+    public class EnemyGunController : MonoBehaviour,IGunController
     {
+        [Header("Data")]
         [SerializeField] private GunDataScriptable gunData;
         [SerializeField] private SoundDataScriptable soundData;
+        
+        [Header("Firing Settings")]
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform bulletsParent;
@@ -43,12 +46,7 @@ namespace Controllers.Enemy
         {
             if (BotMovementController.Instance.IsEnemyDetected && _canBaseShoot && !_isFiring)
             {
-                _isFiring = true;
                 FireRepeatedly(_cancellationTokenSource.Token).Forget();
-            }
-            else if(!BotMovementController.Instance.IsEnemyDetected)
-            {
-                _isFiring = false;
             }
         }
 
@@ -58,22 +56,24 @@ namespace Controllers.Enemy
         }
 
 
-        private async UniTaskVoid FireRepeatedly(CancellationToken token)
-        { 
+        // ReSharper disable Unity.PerformanceAnalysis
+        public async UniTaskVoid FireRepeatedly(CancellationToken token)
+        {
             while (BotMovementController.Instance.IsEnemyDetected && !token.IsCancellationRequested) 
             { 
                 if (_canBaseShoot) 
                 { 
                     Fire(); 
                     _canBaseShoot = false; 
-                    await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate), cancellationToken: token);
-                    _canBaseShoot = true;
-                }
+                    await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate), cancellationToken: token); 
+                    _canBaseShoot = true; 
+                } 
                 await UniTask.Yield();
             }
         }
 
-        private void Fire()
+        // ReSharper disable Unity.PerformanceAnalysis
+        public void Fire()
         {        
             if (_bullets.Count > 0)
             {
@@ -84,7 +84,10 @@ namespace Controllers.Enemy
                 bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * -50;                
                 ReturnToPool(bullet).Forget();
             }
-            SoundManager.PLaySound(soundData,"LaserGun",null,1);
+            if(soundData != null)
+            {
+                SoundManager.PLaySound(soundData, "LaserGun", null, 1);
+            }
         }
 
         private async UniTaskVoid ReturnToPool(GameObject bullet)
