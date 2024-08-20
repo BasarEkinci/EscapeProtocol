@@ -44,7 +44,7 @@ namespace Controllers.Enemy
 
         private void Update()
         {
-            if (EnemyController.Instance.IsEnemyDetected && _canBaseShoot && !_isFiring)
+            if (EnemyMovementController.Instance.IsEnemyDetected && _canBaseShoot && !_isFiring)
             {
                 FireRepeatedly(_cancellationTokenSource.Token).Forget();
             }
@@ -61,7 +61,7 @@ namespace Controllers.Enemy
         {
             try
             {
-                while (EnemyController.Instance.IsEnemyDetected && !token.IsCancellationRequested) 
+                while (EnemyMovementController.Instance.IsEnemyDetected && !token.IsCancellationRequested) 
                 { 
                     token.ThrowIfCancellationRequested();
                     if (_canBaseShoot) 

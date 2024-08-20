@@ -1,25 +1,33 @@
+using System;
 using Combat;
 using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 
 namespace Controllers.Enemy
 {
-    public class EnemyController : MonoSingleton<EnemyController>
+    public class EnemyMovementController : MonoSingleton<EnemyMovementController>
     {
+        [Header("Detector")]
         [SerializeField] private EnemyArea enemyArea;
+        
+        [Header("Aiming")]
         [SerializeField] private Transform bodyTransform;
+        
+        [Header("Movement Settings")]
         [SerializeField] private GameObject groundDetector;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float moveSpeed;
+        
+        [Header("Script References")]
         [SerializeField] private SoundDataScriptable soundData;
-        [SerializeField] private HealthController healthController;
+        [FormerlySerializedAs("enemyHealthController")] [SerializeField] private HealthController healthController;
         [SerializeField] private EnemyGunController gunController;
         public bool IsWaiting => _isWaiting;
         public bool IsEnemyDetected => enemyArea.IsEnemyDetected;
-        public bool IsDead => healthController.IsDead;
         
         private Rigidbody _rb;
         private Vector3 _velocity;
@@ -59,15 +67,13 @@ namespace Controllers.Enemy
                 _rb.velocity = move;
             }
         }
-
-        // ReSharper disable Unity.PerformanceAnalysis
         private async UniTaskVoid DetectGround()
         {
             if (!CheckGround())
             {
                 _isWaiting = true;
                 moveSpeed *= -1;
-                await UniTask.Delay(1000);
+                await UniTask.Delay(TimeSpan.FromSeconds(2));
                 _isWaiting = false;
                 if(moveSpeed > 0)
                     transform.DORotate(Vector3.up * 90, 0.1f);

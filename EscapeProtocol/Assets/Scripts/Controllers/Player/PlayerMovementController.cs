@@ -9,7 +9,7 @@ using Utilities;
 
 namespace Controllers.Player
 {
-    public class PlayerMovementController : MonoSingleton<PlayerMovementController>, IDamageable
+    public class PlayerMovementController : MonoSingleton<PlayerMovementController>
     {
         public bool IsMovingForward => _isMovingForward;
         public bool IsMoving => _movementDirectionX != 0;

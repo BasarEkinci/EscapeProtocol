@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -32,6 +33,13 @@ namespace Combat
                 _enemy = other.gameObject;
             }            
         }
+
+        private void Update()
+        {
+            if(!_enemy) return;
+            if(!_enemy.activeSelf) _isEnemyDetected = false;
+        }
+
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Player"))

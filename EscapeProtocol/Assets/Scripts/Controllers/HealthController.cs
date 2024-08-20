@@ -7,22 +7,24 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class HealthController : MonoBehaviour,IDamageable
+    public class HealthController : MonoBehaviour, IDamageable
     {
         [SerializeField] private ParticleSystem explosionParticle;
-        [SerializeField] private float maxHealth = 100;
+        [SerializeField] private int maxHealth = 100;
         [SerializeField] private SoundDataScriptable soundData;
-        public float CurrentHealth => _currentHealth;
-        public float MaxHealth => maxHealth;
+        
+        public int Health
+        {
+            get => _currentHealth;
+            set => throw new NotImplementedException();
+        }
+        public int MaxHealth => maxHealth;
         public bool IsDead => _currentHealth <= 0;
         
-        private float _currentHealth;
-        
-        
+        private int _currentHealth;
         private void Start()
         {
             _currentHealth = maxHealth;
-            Debug.Log(gameObject.name + " : " + _currentHealth);
         }
         public void TakeDamage(int damage)
         {

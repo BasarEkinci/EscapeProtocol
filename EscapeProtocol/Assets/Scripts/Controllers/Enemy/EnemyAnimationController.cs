@@ -17,7 +17,7 @@ namespace Controllers.Enemy
         
         private void Update()
         {
-            animator.SetBool(_animatorParameters["isWaiting"], EnemyController.Instance.IsWaiting);
+            animator.SetBool(_animatorParameters["isWaiting"], EnemyMovementController.Instance.IsWaiting);
         }
         public void ChangeState(IState newState)
         {

@@ -4947,7 +4947,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 795700843}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
@@ -26156,7 +26156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10332859, g: 0.25294638, b: 0.509434, a: 1}
+  m_Color: {r: 0.5471698, g: 0.04909689, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -26351,21 +26351,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.7399998
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.7399998
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -26413,11 +26398,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50,
         type: 3}
@@ -43243,7 +43223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 2.75}
+  m_AnchoredPosition: {x: 0, y: 2.554}
   m_SizeDelta: {x: 152.2901, y: 8.6799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759484064
@@ -43885,7 +43865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 196616683}
-  maxHealth: 100
+  maxHealth: 10
   soundData: {fileID: 11400000, guid: b45a827654700a942b35b34e210b1b75, type: 2}
 --- !u!1 &1897043848
 GameObject:
@@ -53944,7 +53924,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1175858238}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0

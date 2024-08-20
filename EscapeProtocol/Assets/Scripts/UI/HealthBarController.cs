@@ -1,4 +1,5 @@
 using Controllers;
+using Controllers.Enemy;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +22,8 @@ namespace UI
         
         private void Update()
         {
-            healthBar.value = healthController.CurrentHealth;
-            easeHealthBar.value = Mathf.Lerp(easeHealthBar.value, healthController.CurrentHealth, _lerpSpeed);
+            healthBar.value = healthController.Health;
+            easeHealthBar.value = Mathf.Lerp(easeHealthBar.value, healthController.Health, _lerpSpeed);
         }
     }
 }
