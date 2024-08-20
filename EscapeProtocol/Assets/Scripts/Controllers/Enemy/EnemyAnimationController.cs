@@ -12,12 +12,12 @@ namespace Controllers.Enemy
         private IState _currentState;
         
         private readonly Dictionary<string,int> _animatorParameters = new Dictionary<string, int>{
-            { "isWaiting", Animator.StringToHash("isWaiting") }
+            { "isWaiting", Animator.StringToHash("isWaiting") },
         };
         
         private void Update()
         {
-            animator.SetBool(_animatorParameters["isWaiting"], EnemyMovementController.Instance.IsWaiting);
+            animator.SetBool(_animatorParameters["isWaiting"], EnemyController.Instance.IsWaiting);
         }
         public void ChangeState(IState newState)
         {

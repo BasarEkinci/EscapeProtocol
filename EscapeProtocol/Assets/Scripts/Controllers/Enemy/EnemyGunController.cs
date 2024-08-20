@@ -44,7 +44,7 @@ namespace Controllers.Enemy
 
         private void Update()
         {
-            if (EnemyMovementController.Instance.IsEnemyDetected && _canBaseShoot && !_isFiring)
+            if (EnemyController.Instance.IsEnemyDetected && _canBaseShoot && !_isFiring)
             {
                 FireRepeatedly(_cancellationTokenSource.Token).Forget();
             }
@@ -59,16 +59,24 @@ namespace Controllers.Enemy
         // ReSharper disable Unity.PerformanceAnalysis
         public async UniTaskVoid FireRepeatedly(CancellationToken token)
         {
-            while (EnemyMovementController.Instance.IsEnemyDetected && !token.IsCancellationRequested) 
-            { 
-                if (_canBaseShoot) 
+            try
+            {
+                while (EnemyController.Instance.IsEnemyDetected && !token.IsCancellationRequested) 
                 { 
-                    Fire(); 
-                    _canBaseShoot = false; 
-                    await UniTask.Delay(TimeSpan.FromSeconds(fireRate), cancellationToken: token); 
-                    _canBaseShoot = true; 
-                } 
-                await UniTask.Yield();
+                    token.ThrowIfCancellationRequested();
+                    if (_canBaseShoot) 
+                    { 
+                        Fire(); 
+                        _canBaseShoot = false; 
+                        await UniTask.Delay(TimeSpan.FromSeconds(fireRate), cancellationToken: token); 
+                        _canBaseShoot = true; 
+                    } 
+                    await UniTask.Yield();
+                }
+            }
+            finally
+            {
+                _isFiring = false;
             }
         }
 

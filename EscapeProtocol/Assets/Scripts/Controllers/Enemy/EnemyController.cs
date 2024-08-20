@@ -1,21 +1,25 @@
 using Combat;
 using Cysharp.Threading.Tasks;
+using Data.UnityObjects;
 using DG.Tweening;
 using UnityEngine;
 using Utilities;
 
 namespace Controllers.Enemy
 {
-    public class EnemyMovementController : MonoSingleton<EnemyMovementController>
+    public class EnemyController : MonoSingleton<EnemyController>
     {
         [SerializeField] private EnemyArea enemyArea;
         [SerializeField] private Transform bodyTransform;
         [SerializeField] private GameObject groundDetector;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float moveSpeed;
-        
+        [SerializeField] private SoundDataScriptable soundData;
+        [SerializeField] private HealthController healthController;
+        [SerializeField] private EnemyGunController gunController;
         public bool IsWaiting => _isWaiting;
         public bool IsEnemyDetected => enemyArea.IsEnemyDetected;
+        public bool IsDead => healthController.IsDead;
         
         private Rigidbody _rb;
         private Vector3 _velocity;
@@ -31,23 +35,32 @@ namespace Controllers.Enemy
         private void Start()
         {
             _isWaiting = false;
-        }
 
+        }
         private void Update()
         {
+            if (healthController.IsDead) return;
             DetectGround().Forget();
             LookAtEnemy();
+        }
+
+        private void FixedUpdate()
+        {
+            if (healthController.IsDead) return;
             Move();
         }
 
         private void Move()
         {
             _speedMultiplier = _isWaiting ? 0 : 1;
-            
-            Vector3 move = new Vector3(moveSpeed * _speedMultiplier, _rb.velocity.y, _rb.velocity.z);
-            _rb.velocity = move;
+            if(_rb)
+            {
+                Vector3 move = new Vector3(moveSpeed * _speedMultiplier, _rb.velocity.y, _rb.velocity.z);
+                _rb.velocity = move;
+            }
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private async UniTaskVoid DetectGround()
         {
             if (!CheckGround())

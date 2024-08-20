@@ -71,7 +71,6 @@ namespace Controllers.Player
             {
                 while (_inputHandler.GetAttackInput() && !token.IsCancellationRequested) 
                 { 
-                    token.ThrowIfCancellationRequested();
                     if (_canBaseShoot) 
                     { 
                         Fire(); 

@@ -7,16 +7,14 @@ namespace AnimationStateMachine.BotAnimationStates
         public void EnterState()
         {
         }
-
         public void UpdateState()
         {
-            if (EnemyMovementController.Instance.IsWaiting)
+            if (EnemyController.Instance.IsWaiting)
             {
                 EnemyAnimationController.Instance.ChangeState(new BotIdleState());
             }
             
         }
-
         public void ExitState()
         {
         }

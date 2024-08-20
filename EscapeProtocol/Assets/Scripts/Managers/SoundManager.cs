@@ -16,7 +16,7 @@ namespace Managers
             {
                 Instance = this;
                 _audioSource = GetComponent<AudioSource>();
-                DontDestroyOnLoad(gameObject);
+//                DontDestroyOnLoad(gameObject);
             }
             else
             {
