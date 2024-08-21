@@ -17,6 +17,7 @@ namespace Controllers.Player
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform bulletsParent;
+        [SerializeField] private ParticleSystem laserGunParticles;
         
         private Queue<GameObject> _bullets;
         private CancellationTokenSource _cancellationTokenSource;
@@ -35,7 +36,7 @@ namespace Controllers.Player
 
             for (int i = 0; i < BulletPoolSize; i++)
             {
-                GameObject bullet = Instantiate(bulletPrefab, bulletsParent);
+                GameObject bullet = Instantiate(bulletPrefab);
                 bullet.SetActive(false); 
                 _bullets.Enqueue(bullet);
             }
@@ -105,7 +106,10 @@ namespace Controllers.Player
         {
             await UniTask.Delay(BulletReturnTime);
             if(bullet.activeSelf)
+            {
                 bullet.SetActive(false);
+                bullet.transform.position = firePoint.position;
+            }
             _bullets.Enqueue(bullet);
         }
     }

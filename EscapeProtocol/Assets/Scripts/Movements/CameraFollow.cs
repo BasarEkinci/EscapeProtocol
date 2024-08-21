@@ -10,7 +10,7 @@ namespace Movements
         
         private void LateUpdate()
         {
-            transform.position = Vector3.Lerp(transform.position, targetTransform.position + offset, Time.deltaTime * smoothSpeed);
+            transform.position = Vector3.Lerp(transform.position, targetTransform.position + offset, smoothSpeed);
         }
     }
 }

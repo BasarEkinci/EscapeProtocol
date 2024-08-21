@@ -62,7 +62,6 @@ namespace Controllers.Player
             _movementDirectionX = _inputHandler.GetMovementDirection().x;
             _isGrounded = Physics.CheckSphere(playerFoot.position, groundDistance, groundLayer);
             _isMovingForward = playerRotator.IsMovingForward(_characterController.velocity);
-            playerRotator.GetMousePosition();
             playerRotator.RotatePlayer();
             playerRotator.GetAim();
             SetEffects();
@@ -71,10 +70,6 @@ namespace Controllers.Player
         }
         private void Move()
         {
-            if (_isGrounded && _velocity.y < 0)
-            {
-                _velocity.y = -2f;
-            }
             Vector3 move = new Vector3(_inputHandler.GetMovementDirection().x, 0, 0);
             _characterController.Move(move * (speed * Time.deltaTime));
         }
