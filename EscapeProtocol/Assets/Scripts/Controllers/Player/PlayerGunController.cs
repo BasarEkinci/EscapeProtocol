@@ -27,7 +27,7 @@ namespace Controllers.Player
         
         private const int BulletPoolSize = 20;
         private const int BulletSpeed = 50;
-        private const int BulletReturnTime = 3500;
+        private const int BulletReturnTime = 350;
 
         private void Awake()
         {
