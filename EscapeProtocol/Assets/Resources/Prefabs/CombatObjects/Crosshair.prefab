@@ -97,9 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7d8507c0d2c27498acca633680f2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserGunParticle: {fileID: 9167978560318552013}
   player: {fileID: 7246670177361933503, guid: e81a8c04803392d439e0f2bc1d8be294, type: 3}
-  offset: 0
+  zPos: -4.523
 --- !u!1 &6276658684822801555
 GameObject:
   m_ObjectHideFlags: 0
