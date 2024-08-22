@@ -8,9 +8,10 @@ namespace Movements
         [SerializeField] private Vector3 offset;
         [SerializeField] private float smoothSpeed = 0.125f;
         
-        private void Update()
+        private void LateUpdate()
         {
-            transform.position = Vector3.Lerp(transform.position, targetTransform.position + offset, smoothSpeed);
+            Vector3 desiredPosition = targetTransform.position + offset;
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         }
     }
 }
