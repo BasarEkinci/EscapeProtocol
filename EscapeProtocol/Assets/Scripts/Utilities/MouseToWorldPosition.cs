@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Utilities
 {
@@ -26,12 +27,10 @@ namespace Utilities
         {
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hit, Mathf.Infinity))
-            {
-                if(hit.collider.CompareTag("Pointer"))
-                {
-                    _lookPoint = hit.point;
-                    _lookPoint.z = zPosition;
-                }
+            { 
+                _lookPoint = hit.point; 
+                _lookPoint.z = zPosition;
+                
             }
             return _lookPoint;
         }

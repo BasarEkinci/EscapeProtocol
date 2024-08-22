@@ -92,10 +92,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 805054131055348690, guid: aa7c6660e790e7348b45a0081655fc6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2381662996128075089, guid: aa7c6660e790e7348b45a0081655fc6d,
         type: 3}
       propertyPath: m_Name
       value: Floor1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381662996128075089, guid: aa7c6660e790e7348b45a0081655fc6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510252832966843560, guid: aa7c6660e790e7348b45a0081655fc6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -174,7 +189,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8734104357016471099, guid: 2e35f713b24a0e244bcd29ced6cad2be,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7933314984866373709}
   m_SourcePrefab: {fileID: 100100000, guid: 2e35f713b24a0e244bcd29ced6cad2be, type: 3}
 --- !u!4 &2301965328165986192 stripped
 Transform:
@@ -182,6 +201,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1979166405133263468}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7080411776175727703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8734104357016471099, guid: 2e35f713b24a0e244bcd29ced6cad2be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1979166405133263468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7933314984866373709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080411776175727703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 4, z: 0.24856159}
+  m_Center: {x: 0, y: 2, z: 0.024280783}
 --- !u!1001 &4199107588070872422
 PrefabInstance:
   m_ObjectHideFlags: 0
