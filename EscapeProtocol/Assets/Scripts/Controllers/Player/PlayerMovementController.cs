@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Combat;
 using Data.UnityObjects;
 using Inputs;
 using Managers;
@@ -18,9 +17,6 @@ namespace Controllers.Player
         
         [Header("Sound Settings")]
         [SerializeField] private SoundDataScriptable soundData;
-        
-        [Header("Health Settings")]
-        [SerializeField] private int maxHealth;
         
         [Header("Jump Settings")]
         [SerializeField] private Transform playerFoot;
@@ -52,11 +48,6 @@ namespace Controllers.Player
             _characterController = GetComponent<CharacterController>();
         }
 
-        private void Start()
-        {
-            _currentHealth = maxHealth;
-        }
-
         private void Update()
         {
             _movementDirectionX = _inputHandler.GetMovementDirection().x;
@@ -80,7 +71,18 @@ namespace Controllers.Player
                 SoundManager.PLaySound(soundData,"Jump",null,1);
                 _velocity.y = Mathf.Sqrt(-jumpForce * gravity);
             }
-            _velocity.y += gravity * Time.deltaTime;
+            if(!_isGrounded)
+            {
+                if(_velocity.y > 0)
+                {
+                    _velocity.y += gravity * Time.deltaTime;
+                }
+                else
+                {
+                    const float gravityMultiplier = 1.5f;
+                    _velocity.y += gravity * gravityMultiplier * Time.deltaTime;
+                }
+            }
             _characterController.Move(_velocity * Time.deltaTime);
         }
 
@@ -111,11 +113,6 @@ namespace Controllers.Player
                         particle.Play();
                 }
             }
-        }
-        public void TakeDamage(int damage)
-        {
-            _currentHealth -= damage;
-            _currentHealth = Mathf.Max(_currentHealth, 0);
         }
     }
 }

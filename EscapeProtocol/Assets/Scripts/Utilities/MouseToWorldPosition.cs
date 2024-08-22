@@ -27,8 +27,11 @@ namespace Utilities
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hit, Mathf.Infinity))
             {
-                _lookPoint = hit.point;
-                _lookPoint.z = zPosition;
+                if(hit.collider.CompareTag("Pointer"))
+                {
+                    _lookPoint = hit.point;
+                    _lookPoint.z = zPosition;
+                }
             }
             return _lookPoint;
         }

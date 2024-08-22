@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Events;
 using Utilities;
 
 namespace Controllers.Enemy
@@ -24,7 +24,7 @@ namespace Controllers.Enemy
         
         [Header("Script References")]
         [SerializeField] private SoundDataScriptable soundData;
-        [FormerlySerializedAs("enemyHealthController")] [SerializeField] private HealthController healthController;
+        [SerializeField] private HealthController healthController;
         [SerializeField] private EnemyGunController gunController;
         public bool IsWaiting => _isWaiting;
         public bool IsEnemyDetected => enemyArea.IsEnemyDetected;
@@ -96,7 +96,7 @@ namespace Controllers.Enemy
                     transform.DORotate(Vector3.up * 90, 0.1f);
                 else
                     transform.DORotate(Vector3.up * -90, 0.1f);
-                bodyTransform.LookAt(enemyArea.Enemy.transform.position + new Vector3(0,1.5f,0));
+                bodyTransform.LookAt(enemyArea.Enemy.transform.position + new Vector3(0, 0.8f,0));
             }
             else
             {

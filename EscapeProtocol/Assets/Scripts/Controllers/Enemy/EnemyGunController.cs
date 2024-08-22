@@ -16,7 +16,6 @@ namespace Controllers.Enemy
         [Header("Firing Settings")]
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
-        [SerializeField] private Transform bulletsParent;
         [SerializeField] private int fireRate;
         
         
@@ -31,7 +30,7 @@ namespace Controllers.Enemy
 
             for (int i = 0; i < 20; i++)
             {
-                GameObject bullet = Instantiate(bulletPrefab, bulletsParent);
+                GameObject bullet = Instantiate(bulletPrefab);
                 bullet.SetActive(false); 
                 _bullets.Enqueue(bullet);
             }
