@@ -1,10 +1,9 @@
-using System;
 using Combat;
 using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using DG.Tweening;
+using Movements;
 using UnityEngine;
-using UnityEngine.Events;
 using Utilities;
 
 namespace Controllers.Enemy
@@ -14,23 +13,19 @@ namespace Controllers.Enemy
         [Header("Detector")]
         [SerializeField] private EnemyArea enemyArea;
         
-        [Header("Aiming")]
-        [SerializeField] private Transform bodyTransform;
-        
         [Header("Movement Settings")]
-        [SerializeField] private GameObject groundDetector;
-        [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private LayerDetector layerDetector;
         [SerializeField] private float moveSpeed;
         
         [Header("Script References")]
         [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private HealthController healthController;
         [SerializeField] private EnemyGunController gunController;
+        [SerializeField] private EnemyRotator enemyRotator;
         public bool IsWaiting => _isWaiting;
         public bool IsEnemyDetected => enemyArea.IsEnemyDetected;
         
         private Rigidbody _rb;
-        private Vector3 _velocity;
         private float _speedMultiplier; 
         private bool _isWaiting;
 
@@ -48,8 +43,19 @@ namespace Controllers.Enemy
         private void Update()
         {
             if (healthController.IsDead) return;
-            DetectGround().Forget();
-            LookAtEnemy();
+            DetectGround();
+            if (enemyArea.IsEnemyDetected)
+            {
+                _isWaiting = true;
+                _speedMultiplier = 0;
+                enemyRotator.GetAimToPlayer(transform.position, enemyArea.Enemy.transform.position);
+            }
+            else
+            {
+                _isWaiting = false;
+                _speedMultiplier = 1;
+                enemyRotator.SetRotationToMoveDirection(moveSpeed);
+            }
         }
 
         private void FixedUpdate()
@@ -60,64 +66,26 @@ namespace Controllers.Enemy
 
         private void Move()
         {
-            _speedMultiplier = _isWaiting ? 0 : 1;
             if(_rb)
             {
                 Vector3 move = new Vector3(moveSpeed * _speedMultiplier, _rb.velocity.y, _rb.velocity.z);
                 _rb.velocity = move;
             }
         }
-        private async UniTaskVoid DetectGround()
+        // ReSharper disable Unity.PerformanceAnalysis
+        private async void DetectGround()
         {
-            if (!CheckGround())
+            if (!layerDetector.IsLayerDetected())
             {
                 _isWaiting = true;
                 moveSpeed *= -1;
-                await UniTask.Delay(TimeSpan.FromSeconds(2));
+                await UniTask.Delay(2000);
                 _isWaiting = false;
                 if(moveSpeed > 0)
                     transform.DORotate(Vector3.up * 90, 0.1f);
                 else
                     transform.DORotate(Vector3.up * -90, 0.1f);
             }
-        }
-        
-        private bool CheckGround()
-        {
-            return Physics.CheckSphere(groundDetector.transform.position, 0.1f, groundLayer);
-        }
-        
-        private void LookAtEnemy()
-        {
-            if (enemyArea.IsEnemyDetected)
-            {
-                _isWaiting = true;
-                if(transform.position.x < enemyArea.Enemy.transform.position.x)
-                    transform.DORotate(Vector3.up * 90, 0.1f);
-                else
-                    transform.DORotate(Vector3.up * -90, 0.1f);
-                bodyTransform.LookAt(enemyArea.Enemy.transform.position + new Vector3(0, 0.8f,0));
-            }
-            else
-            {
-                if(moveSpeed > 0)
-                {
-                    transform.DORotate(Vector3.up * 90, 0.1f);
-                    bodyTransform.DORotate(new Vector3(5,90,0), 0.1f);
-                }
-                else
-                {
-                    transform.DORotate(Vector3.up * -90, 0.1f);
-                    bodyTransform.DORotate(new Vector3(5,-90,0), 0.1f);
-                }
-                _isWaiting = false;
-            }
-        }
-        
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(groundDetector.transform.position, 0.1f);
         }
     }
 }
