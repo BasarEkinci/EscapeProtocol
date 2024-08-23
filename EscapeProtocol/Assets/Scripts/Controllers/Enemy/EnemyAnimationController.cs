@@ -13,11 +13,13 @@ namespace Controllers.Enemy
         
         private readonly Dictionary<string,int> _animatorParameters = new Dictionary<string, int>{
             { "isWaiting", Animator.StringToHash("isWaiting") },
+            {"isEnemyDetected", Animator.StringToHash("isEnemyDetected")}
         };
         
         private void Update()
         {
             animator.SetBool(_animatorParameters["isWaiting"], EnemyMovementController.Instance.IsWaiting);
+            animator.SetBool(_animatorParameters["isEnemyDetected"], EnemyMovementController.Instance.IsEnemyDetected);
         }
         public void ChangeState(IState newState)
         {

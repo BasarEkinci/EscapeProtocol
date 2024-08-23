@@ -37,7 +37,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsEnemyDetected
+    m_ConditionEvent: isEnemyDetected
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWaiting
@@ -68,7 +68,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isWaiting
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: IsEnemyDetected
+    m_ConditionEvent: isEnemyDetected
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4106569599529797435}
@@ -96,7 +96,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isWaiting
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: IsEnemyDetected
+    m_ConditionEvent: isEnemyDetected
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4106569599529797435}
@@ -121,9 +121,9 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsEnemyDetected
+    m_ConditionEvent: isEnemyDetected
     m_EventTreshold: 0
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: isWaiting
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -149,7 +149,7 @@ AnimatorController:
   m_Name: EnemyAnimator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: IsEnemyDetected
+  - m_Name: isEnemyDetected
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -217,7 +217,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsEnemyDetected
+    m_ConditionEvent: isEnemyDetected
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWaiting
@@ -245,7 +245,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsEnemyDetected
+    m_ConditionEvent: isEnemyDetected
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: isWaiting

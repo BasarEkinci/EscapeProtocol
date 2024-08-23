@@ -18,7 +18,7 @@ namespace Controllers.Enemy
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private int fireRate;
         
-        
+        private AudioSource _audioSource;
         private Queue<GameObject> _bullets;
         private CancellationTokenSource _cancellationTokenSource;
         private bool _canBaseShoot = true;
@@ -26,6 +26,7 @@ namespace Controllers.Enemy
 
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
             _bullets = new Queue<GameObject>();
 
             for (int i = 0; i < 20; i++)
@@ -93,7 +94,7 @@ namespace Controllers.Enemy
             }
             if(soundData != null)
             {
-                SoundManager.PLaySound(soundData, "LaserGun", null, 1);
+                SoundManager.PLaySound(soundData, "LaserGun", _audioSource, 0.25f);
             }
         }
 

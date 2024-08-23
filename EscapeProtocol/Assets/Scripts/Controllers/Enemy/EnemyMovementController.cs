@@ -1,9 +1,8 @@
 using Combat;
-using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
-using DG.Tweening;
 using Movements;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 
 namespace Controllers.Enemy
@@ -13,8 +12,9 @@ namespace Controllers.Enemy
         [Header("Detector")]
         [SerializeField] private EnemyArea enemyArea;
         
+        [FormerlySerializedAs("layerDetector")]
         [Header("Movement Settings")]
-        [SerializeField] private LayerDetector layerDetector;
+        [SerializeField] private ObjectDetector objectDetector;
         [SerializeField] private float moveSpeed;
         
         [Header("Script References")]
@@ -26,7 +26,7 @@ namespace Controllers.Enemy
         public bool IsEnemyDetected => enemyArea.IsEnemyDetected;
         
         private Rigidbody _rb;
-        private float _speedMultiplier; 
+        private float _direction;
         private bool _isWaiting;
 
         protected override void Awake()
@@ -38,53 +38,45 @@ namespace Controllers.Enemy
         private void Start()
         {
             _isWaiting = false;
-
+            enemyRotator.SetRotationToMoveDirection(moveSpeed);
         }
         private void Update()
         {
-            if (healthController.IsDead) return;
-            DetectGround();
+            Reverse();
+
             if (enemyArea.IsEnemyDetected)
             {
                 _isWaiting = true;
-                _speedMultiplier = 0;
-                enemyRotator.GetAimToPlayer(transform.position, enemyArea.Enemy.transform.position);
+                enemyRotator.GetAimToPlayer(transform.position,enemyArea.Enemy.transform.position);
             }
             else
             {
                 _isWaiting = false;
-                _speedMultiplier = 1;
+            }
+            if (!_isWaiting)
+            {
                 enemyRotator.SetRotationToMoveDirection(moveSpeed);
             }
         }
 
         private void FixedUpdate()
         {
-            if (healthController.IsDead) return;
+            if (healthController.IsDead || _isWaiting) return;
             Move();
         }
 
         private void Move()
         {
-            if(_rb)
-            {
-                Vector3 move = new Vector3(moveSpeed * _speedMultiplier, _rb.velocity.y, _rb.velocity.z);
-                _rb.velocity = move;
-            }
+            Vector3 move = new Vector3(moveSpeed, _rb.velocity.y, _rb.velocity.z);
+            _rb.velocity = move;
         }
         // ReSharper disable Unity.PerformanceAnalysis
-        private async void DetectGround()
+
+        private void Reverse()
         {
-            if (!layerDetector.IsLayerDetected())
+            if ((!objectDetector.IsLayerDetected() || objectDetector.IsObjectDetected("Door")) && !_isWaiting)
             {
-                _isWaiting = true;
-                moveSpeed *= -1;
-                await UniTask.Delay(2000);
-                _isWaiting = false;
-                if(moveSpeed > 0)
-                    transform.DORotate(Vector3.up * 90, 0.1f);
-                else
-                    transform.DORotate(Vector3.up * -90, 0.1f);
+                moveSpeed = -moveSpeed;
             }
         }
     }
