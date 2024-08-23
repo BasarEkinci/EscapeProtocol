@@ -26,7 +26,7 @@ namespace Controllers.Enemy
 
         private void Awake()
         {
-            _audioSource = GetComponent<AudioSource>();
+            _audioSource = GetComponentInParent<AudioSource>();
             _bullets = new Queue<GameObject>();
 
             for (int i = 0; i < 20; i++)
@@ -94,7 +94,7 @@ namespace Controllers.Enemy
             }
             if(soundData != null)
             {
-                SoundManager.PLaySound(soundData, "LaserGun", _audioSource, 0.25f);
+                SoundManager.PLaySound(soundData, "LaserGun",null, 1f);
             }
         }
 

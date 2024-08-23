@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - Name: Jump
-    Volume: 1
+    Volume: 0.1
     MixerGroup: {fileID: 0}
     Sounds:
     - {fileID: 8300000, guid: 974d06249b9e4f240b8eccacaebe4176, type: 3}

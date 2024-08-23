@@ -52,9 +52,6 @@ MonoBehaviour:
   firePoint: {fileID: 9103815711845848089}
   bulletPrefab: {fileID: 5991398425042534007, guid: a767fbb288b49964989f893142c29789,
     type: 3}
-  bulletsParent: {fileID: 2369212831383260437, guid: de862513fbfc4b448a718fa783d5d2ce,
-    type: 3}
-  laserGunParticles: {fileID: 0}
 --- !u!1 &343332933923478159
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,7 +4978,6 @@ GameObject:
   - component: {fileID: 206591841786903059}
   - component: {fileID: 7128792299603986048}
   - component: {fileID: 757960680849255356}
-  - component: {fileID: 7388398470082433059}
   m_Layer: 7
   m_Name: PlayerMesh
   m_TagString: Untagged
@@ -5047,7 +5043,7 @@ MonoBehaviour:
   backStepSound: {fileID: 8300000, guid: 3babd660daae22f41afb84690cd4622d, type: 3}
   fallSound: {fileID: 8300000, guid: 9ad2f9df8cdc1d244a9c3d5dde32c7d4, type: 3}
   footStepSound1: {fileID: 8300000, guid: 9c52240fa00ef494d96d8b3a46bcb674, type: 3}
-  footStepSound2: {fileID: 8300000, guid: 91ceb1b7de5626c4fa37d4cfb4bed900, type: 3}
+  footStepSound2: {fileID: 8300000, guid: 9c52240fa00ef494d96d8b3a46bcb674, type: 3}
 --- !u!82 &757960680849255356
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5060,7 +5056,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5134,7 +5130,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5144,30 +5140,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!167 &7388398470082433059
-AudioReverbZone:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849652025815605176}
-  m_Enabled: 1
-  m_MinDistance: 1
-  m_MaxDistance: 100
-  m_ReverbPreset: 12
-  m_Room: -1000
-  m_RoomHF: -4000
-  m_DecayTime: 0.3
-  m_DecayHFRatio: 0.1
-  m_Reflections: -1831
-  m_ReflectionsDelay: 0.002
-  m_Reverb: -1630
-  m_ReverbDelay: 0.03
-  m_HFReference: 5000
-  m_Diffusion: 100
-  m_Density: 100
-  m_LFReference: 250
-  m_RoomLF: 0
 --- !u!1 &865853448903284951
 GameObject:
   m_ObjectHideFlags: 0
@@ -36166,7 +36138,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   groundDistance: 0.1
-  jumpForce: 20
+  jumpForce: 6
   jumpParticles:
   - {fileID: 2173761317378165072}
   - {fileID: 1551687232928236431}
@@ -36203,7 +36175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 7127609640794452655}
-  maxHealth: 200
+  maxHealth: 30
   soundData: {fileID: 11400000, guid: b45a827654700a942b35b34e210b1b75, type: 2}
 --- !u!54 &2208510980755550059
 Rigidbody:

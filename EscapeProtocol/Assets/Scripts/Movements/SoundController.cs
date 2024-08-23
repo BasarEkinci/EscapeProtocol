@@ -13,7 +13,7 @@ namespace Movements
 
         private void Awake()
         {
-            _audioSource = GetComponent<AudioSource>();
+            _audioSource = GetComponentInParent<AudioSource>();
         }
         
         public void BackStepSound()

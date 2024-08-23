@@ -16,9 +16,6 @@ namespace Controllers.Player
         [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
-        [SerializeField] private Transform bulletsParent;
-        [SerializeField] private ParticleSystem laserGunParticles;
-        
         
         private Queue<GameObject> _bullets;
         private CancellationTokenSource _cancellationTokenSource;
@@ -35,7 +32,7 @@ namespace Controllers.Player
         {
             _inputHandler = new InputHandler();
             _bullets = new Queue<GameObject>();
-            _audioSource = GetComponent<AudioSource>();
+            _audioSource = GetComponentInParent<AudioSource>();
             for (int i = 0; i < BulletPoolSize; i++)
             {
                 GameObject bullet = Instantiate(bulletPrefab);
@@ -101,7 +98,7 @@ namespace Controllers.Player
                 bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * -BulletSpeed;                
                 ReturnToPool(bullet).Forget();
             }
-            SoundManager.PLaySound(soundData,"LaserGun",_audioSource);
+            SoundManager.PLaySound(soundData,"LaserGun");
         }
 
         private async UniTaskVoid ReturnToPool(GameObject bullet)

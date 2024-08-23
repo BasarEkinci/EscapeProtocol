@@ -35,7 +35,6 @@ namespace Managers
             {
                 source.outputAudioMixerGroup = soundList.MixerGroup;
                 source.clip = randomClip;
-                source.volume = volume * soundList.Volume;
                 source.Play();
             }
             else

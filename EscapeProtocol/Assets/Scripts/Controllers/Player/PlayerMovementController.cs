@@ -16,26 +16,25 @@ namespace Controllers.Player
         public bool IsGrounded => _isGrounded;
         private InputHandler _inputHandler;
 
-        [Header("Sound Settings")] [SerializeField]
-        private SoundDataScriptable soundData;
+        [Header("Sound Settings")] 
+        [SerializeField] private SoundDataScriptable soundData;
 
-        [Header("Jump Settings")] [SerializeField]
-        private Transform playerFoot;
-
+        [Header("Jump Settings")]
+        [SerializeField] private Transform playerFoot;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float groundDistance;
         [SerializeField] private float jumpForce;
 
-        [Header("Particle Effects")] [SerializeField]
-        private List<ParticleSystem> jumpParticles;
-
+        [Header("Particle Effects")] 
+        [SerializeField] private List<ParticleSystem> jumpParticles;
         [SerializeField] private List<ParticleSystem> landParticles;
 
-        [Header("Movement Settings")] [SerializeField]
-        private float speed;
+        [Header("Movement Settings")] 
+        [SerializeField] private float speed;
 
         [SerializeField] private PlayerRotator playerRotator;
-
+        
+        private AudioSource _audioSource;
         private Vector3 _velocity;
         private Rigidbody _rigidbody;
         private bool _isGrounded;
@@ -48,6 +47,7 @@ namespace Controllers.Player
             base.Awake();
             _inputHandler = new InputHandler();
             _rigidbody = GetComponent<Rigidbody>();
+            _audioSource = GetComponentInChildren<AudioSource>();
         }
 
         private void Update()
@@ -71,7 +71,7 @@ namespace Controllers.Player
         {
             if (_inputHandler.GetJumpInput() && _isGrounded)
             {
-                SoundManager.PLaySound(soundData, "Jump", null, 1);
+                SoundManager.PLaySound(soundData, "Jump",null,1);
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
             }
             if (!_isGrounded)
