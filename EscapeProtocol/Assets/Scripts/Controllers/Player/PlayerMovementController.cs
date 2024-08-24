@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Data.UnityObjects;
 using Inputs;
 using Managers;
@@ -33,8 +32,6 @@ namespace Controllers.Player
         [SerializeField] private float speed;
 
         [SerializeField] private PlayerRotator playerRotator;
-        
-        private AudioSource _audioSource;
         private Vector3 _velocity;
         private Rigidbody _rigidbody;
         private bool _isGrounded;
@@ -47,7 +44,6 @@ namespace Controllers.Player
             base.Awake();
             _inputHandler = new InputHandler();
             _rigidbody = GetComponent<Rigidbody>();
-            _audioSource = GetComponentInChildren<AudioSource>();
         }
 
         private void Update()
