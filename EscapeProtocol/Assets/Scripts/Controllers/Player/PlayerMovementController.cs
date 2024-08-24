@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Data.UnityObjects;
 using Inputs;
 using Managers;
@@ -55,15 +56,15 @@ namespace Controllers.Player
             playerRotator.GetAim();
             SetEffects();
             _movementDirectionX = _inputHandler.GetMovementDirection().x;
-            HandleJump();
         }
+        
 
-        private void FixedUpdate()
+        internal void Move()
         {
             _rigidbody.velocity = new Vector3(speed * _movementDirectionX, _rigidbody.velocity.y, 0);
         }
 
-        private void HandleJump()
+        internal void HandleJump()
         {
             if (_inputHandler.GetJumpInput() && _isGrounded)
             {

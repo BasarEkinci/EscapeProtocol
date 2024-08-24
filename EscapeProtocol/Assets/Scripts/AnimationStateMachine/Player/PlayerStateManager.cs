@@ -1,4 +1,5 @@
 ﻿using AnimationStateMachine.Player.PlayerStates;
+using Controllers.Player;
 using UnityEngine;
 using Utilities;
 
@@ -8,10 +9,10 @@ namespace AnimationStateMachine.Player
     {
         private BaseState _currentState;
 
-        public IdleState IdleState;
-        public WalkForwardState WalkForwardState;
-        public PlayerWalkBackwardState PlayerWalkBackwardState;
-        public PlayerJumpState PlayerJumpState;
+        private IdleState IdleState;
+        private WalkForwardState WalkForwardState;
+        private PlayerWalkBackwardState PlayerWalkBackwardState;
+        private PlayerJumpState PlayerJumpState;
         
         
         public Animator animator;
