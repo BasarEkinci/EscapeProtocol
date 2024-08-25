@@ -20,8 +20,6 @@ namespace Controllers.Enemy
         [SerializeField] private HealthController healthController;
         [SerializeField] private EnemyGunController gunController;
         [SerializeField] private EnemyRotator enemyRotator;
-        public bool IsWaiting => _isWaiting;
-        public bool IsEnemyDetected => enemyArea.IsEnemyDetected;
         
         private Rigidbody _rb;
         private float _direction;
