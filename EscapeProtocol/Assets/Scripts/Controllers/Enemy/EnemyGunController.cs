@@ -10,6 +10,8 @@ namespace Controllers.Enemy
 {
     public class EnemyGunController : MonoBehaviour,IGunController
     {
+        public float FireRate { get; set; }
+        
         [Header("Data")]
         [SerializeField] private SoundDataScriptable soundData;
         
@@ -18,7 +20,6 @@ namespace Controllers.Enemy
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private int fireRate;
         
-        private AudioSource _audioSource;
         private Queue<GameObject> _bullets;
         private CancellationTokenSource _cancellationTokenSource;
         private bool _canBaseShoot = true;
@@ -26,7 +27,6 @@ namespace Controllers.Enemy
 
         private void Awake()
         {
-            _audioSource = GetComponentInParent<AudioSource>();
             _bullets = new Queue<GameObject>();
 
             for (int i = 0; i < 20; i++)
@@ -44,7 +44,7 @@ namespace Controllers.Enemy
 
         private void Update()
         {
-            if (EnemyMovementController.Instance.IsEnemyDetected && _canBaseShoot && !_isFiring)
+            if (_canBaseShoot && !_isFiring)
             {
                 FireRepeatedly(_cancellationTokenSource.Token).Forget();
             }
@@ -61,7 +61,7 @@ namespace Controllers.Enemy
         {
             try
             {
-                while (EnemyMovementController.Instance.IsEnemyDetected && !token.IsCancellationRequested) 
+                while (!token.IsCancellationRequested) 
                 { 
                     token.ThrowIfCancellationRequested();
                     if (_canBaseShoot) 
@@ -81,6 +81,8 @@ namespace Controllers.Enemy
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
+
+
         public void Fire()
         {        
             if (_bullets.Count > 0)

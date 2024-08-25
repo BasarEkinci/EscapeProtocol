@@ -11,6 +11,7 @@ namespace Controllers.Player
 {
     public class PlayerGunController : MonoBehaviour, IGunController
     {
+        public float FireRate { get; set; }
         
         [SerializeField] private GunDataScriptable gunData;
         [SerializeField] private SoundDataScriptable soundData;
@@ -20,7 +21,6 @@ namespace Controllers.Player
         private Queue<GameObject> _bullets;
         private CancellationTokenSource _cancellationTokenSource;
         private InputHandler _inputHandler;
-        private AudioSource _audioSource;
         private bool _canBaseShoot = true;
         private bool _isFiring;
         
@@ -32,7 +32,6 @@ namespace Controllers.Player
         {
             _inputHandler = new InputHandler();
             _bullets = new Queue<GameObject>();
-            _audioSource = GetComponentInParent<AudioSource>();
             for (int i = 0; i < BulletPoolSize; i++)
             {
                 GameObject bullet = Instantiate(bulletPrefab);
@@ -48,6 +47,7 @@ namespace Controllers.Player
 
         private void Update()
         {
+            Debug.Log(Time.time);
             if (_inputHandler.GetAttackInput() && _canBaseShoot && !_isFiring)
             {
                 _isFiring = true;
@@ -86,6 +86,8 @@ namespace Controllers.Player
                 _isFiring = false;
             }
         }
+
+
 
         public void Fire()
         {        

@@ -2,17 +2,15 @@ using Combat;
 using Data.UnityObjects;
 using Movements;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utilities;
 
 namespace Controllers.Enemy
 {
-    public class EnemyMovementController : MonoSingleton<EnemyMovementController>
+    public class EnemyMovementController : MonoBehaviour
     {
         [Header("Detector")]
         [SerializeField] private EnemyArea enemyArea;
         
-        [FormerlySerializedAs("layerDetector")]
         [Header("Movement Settings")]
         [SerializeField] private ObjectDetector objectDetector;
         [SerializeField] private float moveSpeed;
@@ -29,9 +27,8 @@ namespace Controllers.Enemy
         private float _direction;
         private bool _isWaiting;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             _rb = GetComponent<Rigidbody>();
         }
 

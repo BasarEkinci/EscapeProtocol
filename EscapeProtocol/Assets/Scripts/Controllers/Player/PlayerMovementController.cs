@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Data.UnityObjects;
 using Inputs;
 using Managers;
 using Movements;
 using UnityEngine;
-using Utilities;
 
 namespace Controllers.Player
 {
-    public class PlayerMovementController : MonoSingleton<PlayerMovementController>
+    public class PlayerMovementController : MonoBehaviour
     {
         public bool IsMovingForward => _isMovingForward;
+        public bool IsMovingBackward => !_isMovingForward;
         public bool IsMoving => _movementDirectionX != 0;
         public bool IsGrounded => _isGrounded;
-        private InputHandler _inputHandler;
 
         [Header("Sound Settings")] 
         [SerializeField] private SoundDataScriptable soundData;
@@ -31,20 +29,23 @@ namespace Controllers.Player
 
         [Header("Movement Settings")] 
         [SerializeField] private float speed;
-
         [SerializeField] private PlayerRotator playerRotator;
+        
         private Vector3 _velocity;
         private Rigidbody _rigidbody;
+        private Animator _animator;
         private bool _isGrounded;
         private bool _isMovingForward;
         private int _currentHealth;
         private float _movementDirectionX;
+        
+        private InputHandler _inputHandler;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             _inputHandler = new InputHandler();
             _rigidbody = GetComponent<Rigidbody>();
+            _animator = GetComponentInChildren<Animator>();
         }
 
         private void Update()
@@ -54,17 +55,21 @@ namespace Controllers.Player
             _isMovingForward = playerRotator.IsMovingForward(_rigidbody.velocity);
             playerRotator.RotatePlayer();
             playerRotator.GetAim();
+            HandleJump();
             SetEffects();
             _movementDirectionX = _inputHandler.GetMovementDirection().x;
         }
         
-
-        internal void Move()
+        private void FixedUpdate()
+        {
+            Move();
+        }
+        private void Move()
         {
             _rigidbody.velocity = new Vector3(speed * _movementDirectionX, _rigidbody.velocity.y, 0);
         }
 
-        internal void HandleJump()
+        private void HandleJump()
         {
             if (_inputHandler.GetJumpInput() && _isGrounded)
             {
