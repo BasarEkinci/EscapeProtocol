@@ -22,11 +22,9 @@ namespace Objects
                 if (hit.collider.CompareTag("Player"))
                 {
                     _isPlayerDetected = true; 
-                    Debug.Log("Enemy Detected");
                 }
                 else
                 {
-                    Debug.Log(hit.collider.name);
                     _isPlayerDetected = false;
                 }
             }
