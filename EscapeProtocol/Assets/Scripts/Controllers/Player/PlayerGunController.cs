@@ -47,7 +47,6 @@ namespace Controllers.Player
 
         private void Update()
         {
-            Debug.Log(Time.time);
             if (_inputHandler.GetAttackInput() && _canBaseShoot && !_isFiring)
             {
                 _isFiring = true;

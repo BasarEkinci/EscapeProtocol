@@ -1,120 +1,95 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Data.UnityObjects;
 using Inputs;
-using Managers;
 using Movements;
 using UnityEngine;
+using Utilities;
 
 namespace Controllers.Player
 {
     public class PlayerMovementController : MonoBehaviour
     {
-        public bool IsMovingForward => _isMovingForward;
-        public bool IsMovingBackward => !_isMovingForward;
-        public bool IsMoving => _movementDirectionX != 0;
-        public bool IsGrounded => _isGrounded;
+        #region Serialized Fields
 
         [Header("Sound Settings")] 
         [SerializeField] private SoundDataScriptable soundData;
 
-        [Header("Jump Settings")]
-        [SerializeField] private Transform playerFoot;
-        [SerializeField] private LayerMask groundLayer;
-        [SerializeField] private float groundDistance;
-        [SerializeField] private float jumpForce;
-
+        [Header("Jump Settings")] 
+        [SerializeField] private ObjectDetector detector;
+        
         [Header("Particle Effects")] 
         [SerializeField] private List<ParticleSystem> jumpParticles;
         [SerializeField] private List<ParticleSystem> landParticles;
 
         [Header("Movement Settings")] 
-        [SerializeField] private float speed;
-        [SerializeField] private PlayerRotator playerRotator;
+        [SerializeField] private float moveSpeed = 5;
+        [SerializeField] private float jumpForce = 6;
         
-        private Vector3 _velocity;
-        private Rigidbody _rigidbody;
-        private Animator _animator;
-        private bool _isGrounded;
-        private bool _isMovingForward;
-        private int _currentHealth;
-        private float _movementDirectionX;
+        #endregion
+        #region Classes
         
+        private Mover _mover;
+        private Jumper _jumper;
+        private PlayerRotator _rotator;
         private InputHandler _inputHandler;
 
+        #endregion
+        #region UnityComponents
+
+        private Rigidbody _rigidbody;
+        
+        #endregion
+
+        private bool _isGrounded;
+        
         private void Awake()
         {
-            _inputHandler = new InputHandler();
             _rigidbody = GetComponent<Rigidbody>();
-            _animator = GetComponentInChildren<Animator>();
+            _rotator = GetComponent<PlayerRotator>();
+            _inputHandler = new InputHandler();
+            _mover = new Mover(_rigidbody, moveSpeed);
+            _jumper = new Jumper(_rigidbody, jumpForce);
         }
 
         private void Update()
         {
-            _isGrounded = Physics.Raycast(playerFoot.position, Vector3.down, groundDistance, groundLayer);
-            _movementDirectionX = _inputHandler.GetMovementDirection().x;
-            _isMovingForward = playerRotator.IsMovingForward(_rigidbody.velocity);
-            playerRotator.RotatePlayer();
-            playerRotator.GetAim();
-            HandleJump();
-            SetEffects();
-            _movementDirectionX = _inputHandler.GetMovementDirection().x;
+            _isGrounded = detector.IsLayerDetected();
+            _rotator.SetRotationToTarget(transform.position, MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
+            _rotator.GetAim(MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
+            SetParticles();
+            if(_isGrounded && _inputHandler.GetJumpInput())
+            {
+                _jumper.Jump();
+            }
         }
-        
+
         private void FixedUpdate()
         {
-            Move();
-        }
-        private void Move()
-        {
-            _rigidbody.velocity = new Vector3(speed * _movementDirectionX, _rigidbody.velocity.y, 0);
+            _mover.Move(_inputHandler.GetMovementDirection().x);
         }
 
-        private void HandleJump()
+        private void SetParticles()
         {
-            if (_inputHandler.GetJumpInput() && _isGrounded)
-            {
-                SoundManager.PLaySound(soundData, "Jump",null,1);
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
-            }
             if (!_isGrounded)
             {
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y - 0.01f, 0);
-            }
-        }
-
-        private void SetEffects()
-        {
-            if (_movementDirectionX != 0 && !_isGrounded)
-            {
-                foreach (var particle in landParticles)
+                foreach (var particle in jumpParticles.Where(particle => particle.isStopped))
                 {
-                    if (!particle.isPlaying)
-                        particle.Play();
+                    particle.Play();
+                }
+
+                foreach (var particle in landParticles.Where(particle => !particle.isPlaying))
+                {
+                    particle.Play();
                 }
             }
             else
             {
-                foreach (var particle in landParticles)
+                foreach (var particle in landParticles.Where(particle => particle.isPlaying))
                 {
-                    if (particle.isPlaying)
-                        particle.Stop();
+                    particle.Stop();
                 }
             }
-
-            if (_isGrounded && _inputHandler.GetJumpInput())
-            {
-                foreach (var particle in jumpParticles)
-                {
-                    if (!particle.isPlaying)
-                        particle.Play();
-                }
-            }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(playerFoot.position, Vector3.down * groundDistance);
         }
     }
 }

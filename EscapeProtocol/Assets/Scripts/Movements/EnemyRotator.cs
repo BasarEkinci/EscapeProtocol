@@ -1,12 +1,12 @@
 ﻿using DG.Tweening;
+using Movements.Interfaces;
 using UnityEngine;
 
 namespace Movements
 {
-    public class EnemyRotator : MonoBehaviour
+    public class EnemyRotator : MonoBehaviour, IRotator
     {
         [SerializeField] private Transform bodyTransform;
-        [SerializeField] private Transform ownTransform;
 
         private float _turnDuration;
         private float _turdDirectionAngle;
@@ -18,31 +18,32 @@ namespace Movements
             _aimOffset = new Vector3(0, 0.8f, 0);
             _turnDuration = 0.1f;
         }
-
-        internal void GetAimToPlayer(Vector3 ownPos, Vector3 targetPos)
+        public void SetRotationToTarget(Vector3 ownPos, Vector3 targetPos)
         {
             if (ownPos.x < targetPos.x)
             {
-                ownTransform.DORotate(Vector3.up * _turdDirectionAngle, _turnDuration);
+                transform.DORotate(Vector3.up * _turdDirectionAngle, _turnDuration);
             }
             else
             {
-                ownTransform.DORotate(Vector3.up * -_turdDirectionAngle, _turnDuration);
+                transform.DORotate(Vector3.up * -_turdDirectionAngle, _turnDuration);
             }
-            bodyTransform.LookAt(targetPos + _aimOffset);
         }
 
-        internal void SetRotationToMoveDirection(float moveSpeed)
+        public void GetAim(Vector3 worldPosition)
         {
-            if (moveSpeed > 0)
+            bodyTransform.LookAt(worldPosition + _aimOffset);
+        }
+
+        public void SetRotationToMoveDirection(float direction)
+        {
+            if (direction > 0)
             {
-                ownTransform.DORotate(Vector3.up * _turdDirectionAngle, _turnDuration);
-                bodyTransform.DORotate(new Vector3(5, _turdDirectionAngle, 0), _turnDuration);
+                transform.DORotate(Vector3.up * _turdDirectionAngle, _turnDuration);
             }
             else
             {
-                ownTransform.DORotate(Vector3.up * -_turdDirectionAngle, _turnDuration);
-                bodyTransform.DORotate(new Vector3(5, -_turdDirectionAngle, 0), _turnDuration);
+                transform.DORotate(Vector3.up * -_turdDirectionAngle, _turnDuration);
             }
         }
     }

@@ -44,7 +44,8 @@ namespace Controllers.Enemy
             if (enemyArea.IsEnemyDetected)
             {
                 _isWaiting = true;
-                enemyRotator.GetAimToPlayer(transform.position,enemyArea.Enemy.transform.position);
+                enemyRotator.SetRotationToTarget(transform.position,enemyArea.Enemy.transform.position);
+                enemyRotator.GetAim(enemyArea.Enemy.transform.position);
             }
             else
             {
@@ -71,7 +72,7 @@ namespace Controllers.Enemy
 
         private void Reverse()
         {
-            if ((!objectDetector.IsLayerDetected() || objectDetector.IsObjectDetected("Door")) && !_isWaiting)
+            if (objectDetector.IsLayerDetected())
             {
                 moveSpeed = -moveSpeed;
             }

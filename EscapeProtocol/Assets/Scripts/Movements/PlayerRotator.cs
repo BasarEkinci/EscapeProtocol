@@ -1,10 +1,11 @@
 ﻿using DG.Tweening;
+using Movements.Interfaces;
 using UnityEngine;
 using Utilities;
 
 namespace Movements
 {
-    public class PlayerRotator : MonoBehaviour
+    public class PlayerRotator : MonoBehaviour, IRotator
     {
         [SerializeField] private Transform playerBody;
         internal bool IsMovingForward(Vector3 direction)
@@ -20,20 +21,33 @@ namespace Movements
             }
             return isMovingForward;     
         }
-        internal void RotatePlayer()
+        public void GetAim(Vector3 worldPosition)
         {
-            if(MouseToWorldPosition.Instance.GetCursorWorldPoint().x > transform.position.x)
+            playerBody.LookAt(worldPosition);
+        }
+
+        public void SetRotationToMoveDirection(float direction)
+        {
+            if (direction > 0)
             {
                 transform.DORotate(Vector3.up * 90, 0.1f);
             }
             else
             {
-                transform.DORotate(Vector3.up*-90, 0.1f);
+                transform.DORotate(Vector3.up * -90, 0.1f);
             }
         }
-        internal void GetAim()
+
+        public void SetRotationToTarget(Vector3 currentRotation, Vector3 targetRotation)
         {
-            playerBody.LookAt(MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
+            if (currentRotation.x > targetRotation.x)
+            {
+                transform.DORotate(Vector3.up * -90, 0.1f);
+            }
+            else
+            {
+                transform.DORotate(Vector3.up * 90, 0.1f);
+            }   
         }
     }
 }
