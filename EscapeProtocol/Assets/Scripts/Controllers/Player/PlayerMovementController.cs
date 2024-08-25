@@ -17,10 +17,6 @@ namespace Controllers.Player
 
         [Header("Jump Settings")] 
         [SerializeField] private ObjectDetector detector;
-        
-        [Header("Particle Effects")] 
-        [SerializeField] private List<ParticleSystem> jumpParticles;
-        [SerializeField] private List<ParticleSystem> landParticles;
 
         [Header("Movement Settings")] 
         [SerializeField] private float moveSpeed = 5;
@@ -33,6 +29,7 @@ namespace Controllers.Player
         private Jumper _jumper;
         private PlayerRotator _rotator;
         private InputHandler _inputHandler;
+        private PlayerEffectController _effectController;
 
         #endregion
         #region UnityComponents
@@ -47,6 +44,7 @@ namespace Controllers.Player
         {
             _rigidbody = GetComponent<Rigidbody>();
             _rotator = GetComponent<PlayerRotator>();
+            _effectController = GetComponent<PlayerEffectController>();
             _inputHandler = new InputHandler();
             _mover = new Mover(_rigidbody, moveSpeed);
             _jumper = new Jumper(_rigidbody, jumpForce);
@@ -57,7 +55,7 @@ namespace Controllers.Player
             _isGrounded = detector.IsLayerDetected();
             _rotator.SetRotationToTarget(transform.position, MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
             _rotator.GetAim(MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
-            SetParticles();
+            _effectController.SetParticles(_isGrounded);
             if(_isGrounded && _inputHandler.GetJumpInput())
             {
                 _jumper.Jump();
@@ -67,28 +65,9 @@ namespace Controllers.Player
         private void FixedUpdate()
         {
             _mover.Move(_inputHandler.GetMovementDirection().x);
-        }
-
-        private void SetParticles()
-        {
-            if (!_isGrounded)
+            if (!_isGrounded && _rigidbody.velocity.y <0)
             {
-                foreach (var particle in jumpParticles.Where(particle => particle.isStopped))
-                {
-                    particle.Play();
-                }
-
-                foreach (var particle in landParticles.Where(particle => !particle.isPlaying))
-                {
-                    particle.Play();
-                }
-            }
-            else
-            {
-                foreach (var particle in landParticles.Where(particle => particle.isPlaying))
-                {
-                    particle.Stop();
-                }
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x,_rigidbody.velocity.y - 0.1f,_rigidbody.velocity.z);
             }
         }
     }
