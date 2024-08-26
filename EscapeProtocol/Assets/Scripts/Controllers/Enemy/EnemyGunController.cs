@@ -4,6 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using Managers;
+using Objects;
 using UnityEngine;
 
 namespace Controllers.Enemy
@@ -19,6 +20,8 @@ namespace Controllers.Enemy
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private int fireRate;
+        [SerializeField] private EnemyDetector detector;
+        
         
         private Queue<GameObject> _bullets;
         private CancellationTokenSource _cancellationTokenSource;
@@ -44,7 +47,7 @@ namespace Controllers.Enemy
 
         private void Update()
         {
-            if (_canBaseShoot && !_isFiring)
+            if (detector.IsPlayerDetected && _canBaseShoot && !_isFiring)
             {
                 FireRepeatedly(_cancellationTokenSource.Token).Forget();
             }

@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using AnimationStateMachine;
 using AnimationStateMachine.Player;
 using Data.UnityObjects;
 using Inputs;
@@ -16,10 +17,10 @@ namespace Controllers.Player
         public bool IsMovingForward => _isMovingForward;
         public bool IsMovingBackward => _isMovingBackward;
         public bool IsGrounded => _isGrounded;
+        public Animator Animator => _animator;
 
         #endregion
-
-
+        
         #region Serialized Fields
 
         [Header("Sound Settings")] [SerializeField]
@@ -53,7 +54,7 @@ namespace Controllers.Player
 
         #region Private Variables
 
-        private IState _currentState;
+        private IState<PlayerMovementController> _currentState;
         private Animator _animator;
 
         private bool _isGrounded;
@@ -62,17 +63,7 @@ namespace Controllers.Player
         private bool _isMovingBackward;
 
         #endregion
-
-        #region Animation Variables
-
-        private static readonly int Moving = Animator.StringToHash("IsMoving");
-        private static readonly int MovingForward = Animator.StringToHash("IsMovingForward");
-        private static readonly int MovingBackward = Animator.StringToHash("IsMovingBackward");
-        private static readonly int Grounded = Animator.StringToHash("IsGrounded");
-
-        #endregion
-
-
+        
         private void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
@@ -96,8 +87,8 @@ namespace Controllers.Player
             {
                 _jumper.Jump();
             }
-            SetValuesToAnimator();
             _currentState.UpdateState(this);
+            HandleMovementDirection();
         }
 
         private void FixedUpdate()
@@ -105,66 +96,36 @@ namespace Controllers.Player
             _mover.Move(_inputHandler.GetMovementDirection().x);
             if (!_isGrounded && _rigidbody.velocity.y < 0)
             {
+                
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y - 0.1f,
                     _rigidbody.velocity.z);
             }
         }
 
-        internal void HandleMovement()
+        private void HandleMovementDirection()
         {
-            _isMoving = Mathf.RoundToInt(_inputHandler.GetMovementDirection().x) != 0;
-        }
+            Vector2 movementDirection = _inputHandler.GetMovementDirection();
+            float cursorWorldX = MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z).x;
+            float playerPositionX = transform.position.x;
+            float playerVelocityX = _rigidbody.velocity.x;
 
-        internal void HandleMovementDirection()
-        {
-            if (_inputHandler.GetMovementDirection().x == 0) return;
-                
-            if (transform.position.x > MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z).x)
+            if (movementDirection.x != 0)
             {
-                if (_rigidbody.velocity.x > 0)
-                {
-                    _isMovingForward = false;
-                    _isMovingBackward = true;
-                }
-                else
-                {
-                    _isMovingForward = true;
-                    _isMovingBackward = false;
-                }
+                _isMoving = true;
+                _isMovingForward = (playerPositionX < cursorWorldX && playerVelocityX > 0) || (playerPositionX > cursorWorldX && playerVelocityX < 0);
+                _isMovingBackward = !_isMovingForward;
             }
             else
             {
-                if (_rigidbody.velocity.x > 0)
-                {
-                    _isMovingForward = true;
-                    _isMovingBackward = false;
-                }
-                else
-                {
-                    _isMovingForward = false;
-                    _isMovingBackward = true;
-                }
+                _isMoving = false;
             }
         }
-
-        internal void HandleJumping()
+        
+        internal void ChangeState(IState<PlayerMovementController> state)
         {
-            _isGrounded = detector.IsLayerDetected() && _inputHandler.GetJumpInput();
-        }
-
-        internal void ChangeState(IState state)
-        {
-            _currentState.ExitState(this);
+            _currentState?.ExitState(this);
             _currentState = state;
             _currentState.EnterState(this);
-        }
-
-        private void SetValuesToAnimator()
-        {
-            _animator.SetBool(Moving, _inputHandler.GetMovementDirection().x != 0);
-            _animator.SetBool(MovingForward, _isMovingForward);
-            _animator.SetBool(MovingBackward, _isMovingBackward);
-            _animator.SetBool(Grounded, _isGrounded);
         }
     }
 }

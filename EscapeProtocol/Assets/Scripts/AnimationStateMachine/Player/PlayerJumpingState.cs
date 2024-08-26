@@ -3,17 +3,18 @@ using UnityEngine;
 
 namespace AnimationStateMachine.Player
 {
-    public class PlayerJumpingState : IState
+    public class PlayerJumpingState : IState<PlayerMovementController>
     {
+        private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
+
         public void EnterState(PlayerMovementController player)
         {
-            
+            player.Animator.SetBool(IsGrounded, false);
         }
 
         public void UpdateState(PlayerMovementController player)
         {
-            player.HandleJumping();
-            player.HandleMovementDirection();
+            player.Animator.SetBool(IsGrounded,player.IsGrounded);
             if (player.IsMoving)
             {
                 if (player.IsMovingForward)
@@ -29,6 +30,7 @@ namespace AnimationStateMachine.Player
 
         public void ExitState(PlayerMovementController player)
         {
+            player.Animator.SetBool(IsGrounded, true);
         }
     }
 }

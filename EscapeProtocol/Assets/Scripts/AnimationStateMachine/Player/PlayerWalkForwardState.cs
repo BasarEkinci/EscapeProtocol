@@ -3,17 +3,19 @@ using UnityEngine;
 
 namespace AnimationStateMachine.Player
 {
-    public class PlayerWalkForwardState : IState
+    public class PlayerWalkForwardState : IState<PlayerMovementController>
     {
+        private static readonly int IsMovingForward = Animator.StringToHash("IsMovingForward");
+
         public void EnterState(PlayerMovementController player)
         {
-            Debug.Log("Player Walk Forward");
+            player.Animator.SetBool(IsMovingForward, true);
         }
 
         public void UpdateState(PlayerMovementController player)
         {
-            player.HandleMovement();
-            player.HandleMovementDirection();
+            player.Animator.SetBool(IsMovingForward,player.IsMovingForward);
+            Debug.Log("Player is walking forward");
             if (!player.IsMoving)
             {
                 player.ChangeState(new PlayerIdleState());
@@ -30,6 +32,7 @@ namespace AnimationStateMachine.Player
 
         public void ExitState(PlayerMovementController player)
         {
+            player.Animator.SetBool(IsMovingForward, false);
         }
     }
 }

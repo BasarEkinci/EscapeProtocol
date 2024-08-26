@@ -1,6 +1,6 @@
-using Combat;
 using Data.UnityObjects;
 using Movements;
+using Objects;
 using UnityEngine;
 using Utilities;
 
@@ -9,7 +9,7 @@ namespace Controllers.Enemy
     public class EnemyMovementController : MonoBehaviour
     {
         [Header("Detector")]
-        [SerializeField] private EnemyArea enemyArea;
+        [SerializeField] private EnemyDetector enemyDetector;
         
         [Header("Movement Settings")]
         [SerializeField] private ObjectDetector objectDetector;
@@ -39,11 +39,11 @@ namespace Controllers.Enemy
         {
             Reverse();
 
-            if (enemyArea.IsEnemyDetected)
+            if (enemyDetector.IsPlayerDetected)
             {
                 _isWaiting = true;
-                enemyRotator.SetRotationToTarget(transform.position,enemyArea.Enemy.transform.position);
-                enemyRotator.GetAim(enemyArea.Enemy.transform.position);
+                enemyRotator.SetRotationToTarget(transform.position,enemyDetector.Target.transform.position);
+                enemyRotator.GetAim(enemyDetector.Target.transform.position);
             }
             else
             {

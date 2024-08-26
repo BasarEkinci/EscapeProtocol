@@ -1,17 +1,20 @@
 ﻿using Controllers.Player;
+using UnityEngine;
 
 namespace AnimationStateMachine.Player
 {
-    public class PlayerIdleState : IState
+    public class PlayerIdleState : IState<PlayerMovementController>
     {
+        private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+
         public void EnterState(PlayerMovementController player)
         {
-            
+            player.Animator.SetBool(IsMoving, false);
         }
 
         public void UpdateState(PlayerMovementController player)
         {
-            player.HandleMovementDirection();
+            player.Animator.SetBool(IsMoving, player.IsMoving);
             if (player.IsGrounded && player.IsMoving)
             {
                 if (player.IsMovingForward)
@@ -31,7 +34,7 @@ namespace AnimationStateMachine.Player
 
         public void ExitState(PlayerMovementController player)
         {
-            
+            player.Animator.SetBool(IsMoving, true);
         }
     }
 }

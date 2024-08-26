@@ -72,8 +72,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8903721782708036752}
+  - component: {fileID: 5560066731457792432}
   m_Layer: 9
-  m_Name: Foot
+  m_Name: EnemyDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,12 +89,24 @@ Transform:
   m_GameObject: {fileID: 678333583513358353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.018, y: 0.247, z: 0}
+  m_LocalPosition: {x: 0, y: 1.785, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3225232577904773263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5560066731457792432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678333583513358353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b60522045f94920901451f1e7dd464c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &955463203806361876
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +118,7 @@ GameObject:
   - component: {fileID: 2953115905612771833}
   - component: {fileID: 586567661277277479}
   m_Layer: 9
-  m_Name: Detector
+  m_Name: ObjectDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectionRadius: 0.1
 --- !u!1 &964781074584392142
 GameObject:
@@ -1833,6 +1846,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8438757343893255961, guid: 90024ea2b9dfec940a55d1f847a2e0c3,
     type: 3}
   fireRate: 2
+  detector: {fileID: 5560066731457792432}
 --- !u!1 &4129958400282939730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,7 +1997,6 @@ GameObject:
   - component: {fileID: 7834682885356908883}
   - component: {fileID: 4279677255231495258}
   - component: {fileID: 5221104491956435947}
-  - component: {fileID: 7638263663829419971}
   - component: {fileID: 5827839899661655490}
   - component: {fileID: 1277823059982017760}
   - component: {fileID: 737206259861239857}
@@ -2010,7 +2023,6 @@ Transform:
   - {fileID: 2514805063674226738}
   - {fileID: 3600985414698741451}
   - {fileID: 8903721782708036752}
-  - {fileID: 3959244281213415704}
   - {fileID: 9109252592646327836}
   - {fileID: 6185154135817548048}
   - {fileID: 2953115905612771833}
@@ -2078,26 +2090,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be10d71e484ee045b4dc52203e00a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyArea: {fileID: 0}
+  enemyDetector: {fileID: 5560066731457792432}
   objectDetector: {fileID: 586567661277277479}
   moveSpeed: 1
   soundData: {fileID: 11400000, guid: 10906ca8a64938842ad0745004ee7a31, type: 2}
   healthController: {fileID: 5827839899661655490}
   gunController: {fileID: 2088359929026405146}
   enemyRotator: {fileID: 1277823059982017760}
---- !u!114 &7638263663829419971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4331223848293769885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b193a0e300b40a0922aadcbe209cc58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7761250488920874403}
 --- !u!114 &5827839899661655490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2126,7 +2125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTransform: {fileID: 3600985414698741451}
-  ownTransform: {fileID: 3225232577904773263}
 --- !u!82 &737206259861239857
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2759,37 +2757,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6102506161739242872}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6012856870306676624
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3959244281213415704}
-  m_Layer: 9
-  m_Name: GroundDetector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3959244281213415704
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6012856870306676624}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.014, z: 1.032}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3225232577904773263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6205803300035829890
 GameObject:

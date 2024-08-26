@@ -1,17 +1,20 @@
 ﻿using Controllers.Player;
+using UnityEngine;
 
 namespace AnimationStateMachine.Player
 {
-    public class PlayerWalkBackwardState : IState
+    public class PlayerWalkBackwardState : IState<PlayerMovementController>
     {
+        private static readonly int IsMovingBackward = Animator.StringToHash("IsMovingBackward");
+
         public void EnterState(PlayerMovementController player)
         {
+            player.Animator.SetBool(IsMovingBackward, true);
         }
 
         public void UpdateState(PlayerMovementController player)
         {
-            player.HandleMovement();
-            player.HandleMovementDirection();
+            player.Animator.SetBool(IsMovingBackward,player.IsMovingBackward);
             if (!player.IsMoving)
             {
                 player.ChangeState(new PlayerIdleState());
@@ -28,6 +31,7 @@ namespace AnimationStateMachine.Player
 
         public void ExitState(PlayerMovementController player)
         {
+            player.Animator.SetBool(IsMovingBackward, false);
         }
     }
 }

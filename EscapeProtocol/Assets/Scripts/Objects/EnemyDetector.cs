@@ -4,9 +4,10 @@ namespace Objects
 {
     public class EnemyDetector : MonoBehaviour
     {
-        
+        public GameObject Target => _target;
         public bool IsPlayerDetected => _isPlayerDetected;
 
+        private GameObject _target;
         private bool _isPlayerDetected;
         private void Update()
         {
@@ -21,13 +22,21 @@ namespace Objects
             {
                 if (hit.collider.CompareTag("Player"))
                 {
-                    _isPlayerDetected = true; 
+                    _isPlayerDetected = true;
+                    _target = hit.collider.gameObject;
                 }
                 else
                 {
                     _isPlayerDetected = false;
+                    _target = null;
                 }
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, transform.forward);
         }
     }
 }
