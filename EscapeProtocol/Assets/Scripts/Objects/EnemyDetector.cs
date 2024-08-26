@@ -4,9 +4,8 @@ namespace Objects
 {
     public class EnemyDetector : MonoBehaviour
     {
-        public GameObject Target => _target;
         public bool IsPlayerDetected => _isPlayerDetected;
-
+        public GameObject Target => _target;
         private GameObject _target;
         private bool _isPlayerDetected;
         private void Update()

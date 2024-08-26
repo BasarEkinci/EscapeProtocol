@@ -1,3 +1,6 @@
+using AnimationStateMachine;
+using AnimationStateMachine.Enemy;
+using Combat;
 using Data.UnityObjects;
 using Movements;
 using Objects;
@@ -8,8 +11,11 @@ namespace Controllers.Enemy
 {
     public class EnemyMovementController : MonoBehaviour
     {
+        public bool IsPlayerDetected => enemyArea.IsPlayerDetected;
+        public Animator Animator => _animator;
+        
         [Header("Detector")]
-        [SerializeField] private EnemyDetector enemyDetector;
+        [SerializeField] private EnemyArea enemyArea;
         
         [Header("Movement Settings")]
         [SerializeField] private ObjectDetector objectDetector;
@@ -20,44 +26,49 @@ namespace Controllers.Enemy
         [SerializeField] private HealthController healthController;
         [SerializeField] private EnemyGunController gunController;
         [SerializeField] private EnemyRotator enemyRotator;
-        
+
+        private Animator _animator;
         private Rigidbody _rb;
+        private IState<EnemyMovementController> _currentState;
         private float _direction;
-        private bool _isWaiting;
+        private bool _isPlayerDetected;
 
         private void Awake()
         {
+            _animator = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();
         }
 
         private void Start()
         {
-            _isWaiting = false;
+            _isPlayerDetected = false;
+            _currentState = new EnemyWalkingState();
             enemyRotator.SetRotationToMoveDirection(moveSpeed);
         }
         private void Update()
         {
             Reverse();
 
-            if (enemyDetector.IsPlayerDetected)
+            if (enemyArea.IsPlayerDetected)
             {
-                _isWaiting = true;
-                enemyRotator.SetRotationToTarget(transform.position,enemyDetector.Target.transform.position);
-                enemyRotator.GetAim(enemyDetector.Target.transform.position);
+                _isPlayerDetected = true;
+                enemyRotator.SetRotationToTarget(transform.position,enemyArea.Target.transform.position);
+                enemyRotator.GetAim(enemyArea.Target.transform.position);
             }
             else
             {
-                _isWaiting = false;
+                _isPlayerDetected = false;
             }
-            if (!_isWaiting)
+            if (!_isPlayerDetected)
             {
                 enemyRotator.SetRotationToMoveDirection(moveSpeed);
             }
+            _currentState.UpdateState(this);
         }
 
         private void FixedUpdate()
         {
-            if (healthController.IsDead || _isWaiting) return;
+            if (healthController.IsDead || _isPlayerDetected) return;
             Move();
         }
 
@@ -74,6 +85,13 @@ namespace Controllers.Enemy
             {
                 moveSpeed = -moveSpeed;
             }
+        }
+
+        internal void ChangeState(IState<EnemyMovementController> state)
+        {
+            _currentState?.ExitState(this);
+            _currentState = state;
+            _currentState.EnterState(this);
         }
     }
 }

@@ -11,12 +11,11 @@ namespace Combat
     {
         [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private GameObject currentGuard;
-        public bool IsEnemyDetected => _isEnemyDetected;
-        public bool IsEnemyKilled => _isEnemyKilled;
-        public GameObject Enemy => _enemy;
-        private bool _isEnemyKilled;
-        private bool _isEnemyDetected;
-        private GameObject _enemy;
+        public bool IsPlayerDetected => _isPlayerDetected;
+        public GameObject Target => _target;
+        
+        private bool _isPlayerDetected;
+        private GameObject _target;
         private CancellationTokenSource _cancellationTokenSource;
         private bool _isGuarded = true;
         
@@ -27,46 +26,39 @@ namespace Combat
             CheckGuards();
             if (other.CompareTag(_enemyTag) && _isGuarded)
             {
-                _enemy = other.gameObject;
+                _target = other.gameObject;
                 _cancellationTokenSource?.Cancel();
-                _isEnemyKilled = false;
                 _cancellationTokenSource = new CancellationTokenSource();
                 HandleDetectionAfterDelay(_cancellationTokenSource.Token).Forget();
             }            
         }
-
         private void OnTriggerStay(Collider other)
         {
-            if(_enemy != null)
+            if(_target != null)
             {
-                if (_enemy.GetComponent<HealthController>().Health <= 0)
+                if (_target.GetComponent<HealthController>().Health <= 0)
                 {
-                    _isEnemyDetected = false;
-                    _enemy = null;
-                    _isEnemyKilled = true;
-                    Debug.Log(_isEnemyKilled);
+                    _isPlayerDetected = false;
+                    _target = null;
                 }
             }
         }
-
         private void OnTriggerExit(Collider other)
         {
             if (other.gameObject.CompareTag(_enemyTag))
             {
-                _isEnemyDetected = false;
+                _isPlayerDetected = false;
             }
         }
-
         private async UniTaskVoid HandleDetectionAfterDelay(CancellationToken token)
         {
             SoundManager.PLaySound(soundData, "Target", null, 1);
             await UniTask.Delay(1000, cancellationToken: token);
             if (!token.IsCancellationRequested)
             {
-                _isEnemyDetected = true;
+                _isPlayerDetected = true;
             }
         }
-
         private void CheckGuards()
         {
             if(!currentGuard.activeSelf)

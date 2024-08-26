@@ -4,8 +4,8 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using Managers;
-using Objects;
 using UnityEngine;
+using Utilities;
 
 namespace Controllers.Enemy
 {
@@ -20,16 +20,16 @@ namespace Controllers.Enemy
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private int fireRate;
-        [SerializeField] private EnemyDetector detector;
-        
         
         private Queue<GameObject> _bullets;
+        private EnemyMovementController _movementController;
         private CancellationTokenSource _cancellationTokenSource;
         private bool _canBaseShoot = true;
         private bool _isFiring;
 
         private void Awake()
         {
+            _movementController = GetComponentInParent<EnemyMovementController>();
             _bullets = new Queue<GameObject>();
 
             for (int i = 0; i < 20; i++)
@@ -47,10 +47,10 @@ namespace Controllers.Enemy
 
         private void Update()
         {
-            if (detector.IsPlayerDetected && _canBaseShoot && !_isFiring)
-            {
+            if (_canBaseShoot && !_isFiring) 
+            { 
                 FireRepeatedly(_cancellationTokenSource.Token).Forget();
-            }
+            }    
         }
 
         private void OnDisable()
@@ -64,7 +64,7 @@ namespace Controllers.Enemy
         {
             try
             {
-                while (!token.IsCancellationRequested) 
+                while (_movementController.IsPlayerDetected && !token.IsCancellationRequested) 
                 { 
                     token.ThrowIfCancellationRequested();
                     if (_canBaseShoot) 
