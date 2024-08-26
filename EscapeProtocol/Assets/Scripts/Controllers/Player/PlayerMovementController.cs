@@ -76,7 +76,6 @@ namespace Controllers.Player
         private void Update()
         {
             _isGrounded = detector.IsLayerDetected();
-            Debug.Log(_isGrounded);
             _rotator.SetRotationToTarget(transform.position,
                 MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
             _rotator.GetAim(MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
@@ -87,7 +86,6 @@ namespace Controllers.Player
             }
             _currentState.UpdateState(this);
             HandleMovementDirection();
-            
         }
 
         private void FixedUpdate()
