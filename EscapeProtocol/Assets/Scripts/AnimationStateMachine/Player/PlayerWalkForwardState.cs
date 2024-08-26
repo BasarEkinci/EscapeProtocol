@@ -15,12 +15,11 @@ namespace AnimationStateMachine.Player
         public void UpdateState(PlayerMovementController player)
         {
             player.Animator.SetBool(IsMovingForward,player.IsMovingForward);
-            Debug.Log("Player is walking forward");
             if (!player.IsMoving)
             {
                 player.ChangeState(new PlayerIdleState());
             }
-            else if (player.IsMovingBackward)
+            else if (!player.IsMovingForward)
             {
                 player.ChangeState(new PlayerWalkBackwardState());    
             }

@@ -15,7 +15,6 @@ namespace Controllers.Player
 
         public bool IsMoving => _isMoving;
         public bool IsMovingForward => _isMovingForward;
-        public bool IsMovingBackward => _isMovingBackward;
         public bool IsGrounded => _isGrounded;
         public Animator Animator => _animator;
 
@@ -60,8 +59,6 @@ namespace Controllers.Player
         private bool _isGrounded;
         private bool _isMoving;
         private bool _isMovingForward;
-        private bool _isMovingBackward;
-
         #endregion
         
         private void Awake()
@@ -79,6 +76,7 @@ namespace Controllers.Player
         private void Update()
         {
             _isGrounded = detector.IsLayerDetected();
+            Debug.Log(_isGrounded);
             _rotator.SetRotationToTarget(transform.position,
                 MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
             _rotator.GetAim(MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
@@ -89,6 +87,7 @@ namespace Controllers.Player
             }
             _currentState.UpdateState(this);
             HandleMovementDirection();
+            
         }
 
         private void FixedUpdate()
@@ -113,7 +112,6 @@ namespace Controllers.Player
             {
                 _isMoving = true;
                 _isMovingForward = (playerPositionX < cursorWorldX && playerVelocityX > 0) || (playerPositionX > cursorWorldX && playerVelocityX < 0);
-                _isMovingBackward = !_isMovingForward;
             }
             else
             {

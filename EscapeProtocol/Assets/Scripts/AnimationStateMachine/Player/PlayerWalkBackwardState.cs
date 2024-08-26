@@ -5,16 +5,16 @@ namespace AnimationStateMachine.Player
 {
     public class PlayerWalkBackwardState : IState<PlayerMovementController>
     {
-        private static readonly int IsMovingBackward = Animator.StringToHash("IsMovingBackward");
+        private static readonly int IsMovingForward = Animator.StringToHash("IsMovingForward");
 
         public void EnterState(PlayerMovementController player)
         {
-            player.Animator.SetBool(IsMovingBackward, true);
+            player.Animator.SetBool(IsMovingForward, true);
         }
 
         public void UpdateState(PlayerMovementController player)
         {
-            player.Animator.SetBool(IsMovingBackward,player.IsMovingBackward);
+            player.Animator.SetBool(IsMovingForward,player.IsMovingForward);
             if (!player.IsMoving)
             {
                 player.ChangeState(new PlayerIdleState());
@@ -31,7 +31,7 @@ namespace AnimationStateMachine.Player
 
         public void ExitState(PlayerMovementController player)
         {
-            player.Animator.SetBool(IsMovingBackward, false);
+            player.Animator.SetBool(IsMovingForward, false);
         }
     }
 }

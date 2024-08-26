@@ -15,16 +15,21 @@ namespace AnimationStateMachine.Player
         public void UpdateState(PlayerMovementController player)
         {
             player.Animator.SetBool(IsGrounded,player.IsGrounded);
-            if (player.IsMoving)
+            if(player.IsGrounded)
             {
-                if (player.IsMovingForward)
+                if (player.IsMoving)
                 {
-                    player.ChangeState(new PlayerWalkForwardState());
+                    if (player.IsMovingForward)
+                    {
+                        player.ChangeState(new PlayerWalkForwardState());
+                    }
+                    else if (!player.IsMovingForward)
+                    {
+                        player.ChangeState(new PlayerWalkBackwardState());
+                    }
                 }
-                else if (player.IsMovingBackward)
-                {
-                    player.ChangeState(new PlayerWalkBackwardState());
-                }
+                else
+                    player.ChangeState(new PlayerIdleState());
             }
         }
 
