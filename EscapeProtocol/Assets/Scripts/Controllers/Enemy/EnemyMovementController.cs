@@ -1,8 +1,8 @@
 using AnimationStateMachine;
 using AnimationStateMachine.Enemy;
-using Combat;
 using Data.UnityObjects;
 using Movements;
+using Objects;
 using UnityEngine;
 using Utilities;
 
@@ -11,16 +11,17 @@ namespace Controllers.Enemy
     public class EnemyMovementController : MonoBehaviour
     {
         #region Public Fields
-        public bool IsPlayerDetected => enemyArea.IsPlayerDetected;
+
+        public bool IsPlayerDetected => _isPlayerDetected;
         public Animator Animator => _animator;
         
         #endregion
 
         #region Serilaized Fields
-        
-        [Header("Detector")]
+        [Header("Enemy Detection")]
+        [SerializeField] private EnemyFieldOfView enemyFieldOfView;
         [SerializeField] private EnemyArea enemyArea;
-        
+
         [Header("Movement Settings")]
         [SerializeField] private ObjectDetector objectDetector;
         [SerializeField] private float moveSpeed;
@@ -84,18 +85,19 @@ namespace Controllers.Enemy
 
         private void HandlePlayerDetectedPhase()
         {
-            if (enemyArea.IsPlayerDetected)
+            if (enemyArea.IsPlayerInArea)
+            { 
+                enemyRotator.SetRotationToTarget(transform.position, enemyArea.Target.transform.position); 
+                _isPlayerDetected = true;
+            }
+            else if (enemyFieldOfView.IsPlayerInView)
             {
                 _isPlayerDetected = true;
-                enemyRotator.SetRotationToTarget(transform.position,enemyArea.Target.transform.position);
-                enemyRotator.GetAim(enemyArea.Target.transform.position);
+                enemyRotator.SetRotationToTarget(transform.position, enemyFieldOfView.Player.transform.position);
             }
             else
             {
                 _isPlayerDetected = false;
-            }
-            if (!_isPlayerDetected)
-            {
                 enemyRotator.SetRotationToMoveDirection(moveSpeed);
             }
         }
