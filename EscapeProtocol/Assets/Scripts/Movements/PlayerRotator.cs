@@ -21,9 +21,9 @@ namespace Movements
             }
             return isMovingForward;     
         }
-        public void GetAim(Vector3 worldPosition)
+        public void GetAim(Vector3 target)
         {
-            playerBody.LookAt(worldPosition);
+            playerBody.LookAt(target);
         }
 
         public void SetRotationToMoveDirection(float direction)

@@ -30,9 +30,9 @@ namespace Movements
             }
         }
 
-        public void GetAim(Vector3 worldPosition)
+        public void GetAim(Vector3 target)
         {
-            bodyTransform.LookAt(worldPosition + _aimOffset);
+            bodyTransform.LookAt(target + _aimOffset);
         }
 
         public void SetRotationToMoveDirection(float direction)

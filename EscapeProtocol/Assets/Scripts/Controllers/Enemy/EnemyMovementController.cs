@@ -87,7 +87,8 @@ namespace Controllers.Enemy
         {
             if (enemyArea.IsPlayerInArea)
             { 
-                enemyRotator.SetRotationToTarget(transform.position, enemyArea.Target.transform.position); 
+                enemyRotator.SetRotationToTarget(transform.position, enemyArea.Target.transform.position);
+                enemyRotator.GetAim(enemyArea.Target.transform.position);
                 _isPlayerDetected = true;
             }
             else if (enemyFieldOfView.IsPlayerInView)
