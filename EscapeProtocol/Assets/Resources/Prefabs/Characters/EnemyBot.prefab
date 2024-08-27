@@ -32,6 +32,52 @@ Transform:
   - {fileID: 8438086427730090501}
   m_Father: {fileID: 6174662944517797045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &400480143470663534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6598534986687023382}
+  - component: {fileID: 7808698780521888041}
+  m_Layer: 9
+  m_Name: FieldOfView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6598534986687023382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400480143470663534}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.65, z: 0.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3225232577904773263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7808698780521888041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400480143470663534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b60522045f94920901451f1e7dd464c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimTransform: {fileID: 6598534986687023382}
+  viewDistance: 25
 --- !u!1 &463417991182359060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +2003,7 @@ GameObject:
   - component: {fileID: 737206259861239857}
   m_Layer: 9
   m_Name: EnemyBot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1980,6 +2026,7 @@ Transform:
   - {fileID: 9109252592646327836}
   - {fileID: 6185154135817548048}
   - {fileID: 2953115905612771833}
+  - {fileID: 6598534986687023382}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &7834682885356908883
@@ -2044,6 +2091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be10d71e484ee045b4dc52203e00a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyFieldOfView: {fileID: 7808698780521888041}
   enemyArea: {fileID: 0}
   objectDetector: {fileID: 586567661277277479}
   moveSpeed: 1

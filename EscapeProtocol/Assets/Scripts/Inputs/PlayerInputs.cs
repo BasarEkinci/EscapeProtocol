@@ -62,6 +62,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThrowGrenade"",
+                    ""type"": ""Button"",
+                    ""id"": ""4cef69f8-6ebe-4b83-826c-a614511e7c2c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""PowerShoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab9964d1-6c85-4c87-88c6-898a0bc77bdd"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""ThrowGrenade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +196,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_DefaultFire = m_Player.FindAction("DefaultFire", throwIfNotFound: true);
         m_Player_PowerShoot = m_Player.FindAction("PowerShoot", throwIfNotFound: true);
+        m_Player_ThrowGrenade = m_Player.FindAction("ThrowGrenade", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -241,6 +262,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_DefaultFire;
     private readonly InputAction m_Player_PowerShoot;
+    private readonly InputAction m_Player_ThrowGrenade;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -249,6 +271,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @DefaultFire => m_Wrapper.m_Player_DefaultFire;
         public InputAction @PowerShoot => m_Wrapper.m_Player_PowerShoot;
+        public InputAction @ThrowGrenade => m_Wrapper.m_Player_ThrowGrenade;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -270,6 +293,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @PowerShoot.started += instance.OnPowerShoot;
             @PowerShoot.performed += instance.OnPowerShoot;
             @PowerShoot.canceled += instance.OnPowerShoot;
+            @ThrowGrenade.started += instance.OnThrowGrenade;
+            @ThrowGrenade.performed += instance.OnThrowGrenade;
+            @ThrowGrenade.canceled += instance.OnThrowGrenade;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -286,6 +312,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @PowerShoot.started -= instance.OnPowerShoot;
             @PowerShoot.performed -= instance.OnPowerShoot;
             @PowerShoot.canceled -= instance.OnPowerShoot;
+            @ThrowGrenade.started -= instance.OnThrowGrenade;
+            @ThrowGrenade.performed -= instance.OnThrowGrenade;
+            @ThrowGrenade.canceled -= instance.OnThrowGrenade;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -318,5 +347,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDefaultFire(InputAction.CallbackContext context);
         void OnPowerShoot(InputAction.CallbackContext context);
+        void OnThrowGrenade(InputAction.CallbackContext context);
     }
 }
