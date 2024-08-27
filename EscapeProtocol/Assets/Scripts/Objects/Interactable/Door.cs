@@ -15,7 +15,8 @@ namespace Objects.Interactable
         [SerializeField] private Transform lowerDoorEndPoint;
         [SerializeField] private float duration;
 
-        [SerializeField] private List<Light> doorLights;
+        [SerializeField] private List<GameObject> redLights;
+        [SerializeField] private List<GameObject> greenLights;
         
         [Header("References")]
         [SerializeField] private GameObject currentGuard;
@@ -96,16 +97,19 @@ namespace Objects.Interactable
             {
                 if (!currentGuard.gameObject.activeSelf)
                 {
-                    doorLights.ForEach(light => light.color = Color.Lerp(light.color, Color.green, Time.deltaTime));   
+                    redLights.ForEach(light => light.SetActive(false));
+                    greenLights.ForEach(light => light.SetActive(true));   
                 }
                 else
                 {
-                    doorLights.ForEach(light => light.color = Color.Lerp(light.color, Color.red, Time.deltaTime));
+                    greenLights.ForEach(light => light.SetActive(false));
+                    redLights.ForEach(light => light.SetActive(true));
                 }
             }
             else
             {
-                doorLights.ForEach(light => light.color = Color.Lerp(light.color, Color.green, Time.deltaTime));
+                redLights.ForEach(light => light.SetActive(false));
+                greenLights.ForEach(light => light.SetActive(true));
             }
         }
     }
