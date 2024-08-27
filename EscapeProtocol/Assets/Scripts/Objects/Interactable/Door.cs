@@ -1,8 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Data.UnityObjects;
 using DG.Tweening;
 using Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Objects.Interactable
 {
@@ -13,6 +14,8 @@ namespace Objects.Interactable
         [SerializeField] private Transform upperDoorEndPoint;
         [SerializeField] private Transform lowerDoorEndPoint;
         [SerializeField] private float duration;
+
+        [SerializeField] private List<Light> doorLights;
         
         [Header("References")]
         [SerializeField] private GameObject currentGuard;
@@ -23,7 +26,7 @@ namespace Objects.Interactable
         [SerializeField] private bool isRequiredGuard;
         private AudioSource _audioSource;
         
-        
+        private bool _canOpen;
         private string _requiredTag = "Player";
 
         private Vector3 _upperDoorFirstPosition;
@@ -38,6 +41,11 @@ namespace Objects.Interactable
         {
             _upperDoorFirstPosition = upperDoor.transform.position;
             _lowerDoorFirstPosition = lowerDoor.transform.position;
+        }
+
+        private void Update()
+        {
+            SetDoorLightColor();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -80,7 +88,25 @@ namespace Objects.Interactable
                     lowerDoor.transform.DOMove(_lowerDoorFirstPosition, duration).SetEase(easeType);
                 }
             }
-
+        }
+        
+        private void SetDoorLightColor()
+        {
+            if (isRequiredGuard)
+            {
+                if (!currentGuard.gameObject.activeSelf)
+                {
+                    doorLights.ForEach(light => light.color = Color.Lerp(light.color, Color.green, Time.deltaTime));   
+                }
+                else
+                {
+                    doorLights.ForEach(light => light.color = Color.Lerp(light.color, Color.red, Time.deltaTime));
+                }
+            }
+            else
+            {
+                doorLights.ForEach(light => light.color = Color.Lerp(light.color, Color.green, Time.deltaTime));
+            }
         }
     }
 }
