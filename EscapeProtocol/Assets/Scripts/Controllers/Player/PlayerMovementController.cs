@@ -22,14 +22,14 @@ namespace Controllers.Player
         
         #region Serialized Fields
 
-        [Header("Sound Settings")] [SerializeField]
-        private SoundDataScriptable soundData;
+        [Header("Sound Settings")] 
+        [SerializeField] private SoundDataScriptable soundData;
 
-        [Header("Jump Settings")] [SerializeField]
-        private ObjectDetector detector;
+        [Header("Jump Settings")]
+        [SerializeField] private ObjectDetector detector;
 
-        [Header("Movement Settings")] [SerializeField]
-        private float moveSpeed = 5;
+        [Header("PlayerData")]
+        [SerializeField] private PlayerDataScriptable playerData;
 
         [SerializeField] private float jumpForce = 6;
 
@@ -56,6 +56,8 @@ namespace Controllers.Player
         private IState<PlayerMovementController> _currentState;
         private Animator _animator;
 
+        private float _moveSpeed => playerData.MovementData.Speed;
+        
         private bool _isGrounded;
         private bool _isMoving;
         private bool _isMovingForward;
@@ -69,7 +71,7 @@ namespace Controllers.Player
             _effectController = GetComponent<PlayerEffectController>();
             _inputHandler = new InputHandler();
             _currentState = new PlayerIdleState();
-            _mover = new Mover(_rigidbody, moveSpeed);
+            _mover = new Mover(_rigidbody, _moveSpeed);
             _jumper = new Jumper(_rigidbody, jumpForce);
         }
 
