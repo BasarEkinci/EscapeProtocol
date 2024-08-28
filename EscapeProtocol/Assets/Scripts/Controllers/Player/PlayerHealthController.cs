@@ -14,7 +14,6 @@ namespace Controllers.Player
         [SerializeField] private PlayerDataScriptable playerData;
         public int Health => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
-       
         
         private int _currentHealth;
         private void Awake()
@@ -29,6 +28,11 @@ namespace Controllers.Player
             {
                 Death().Forget();
             }
+        }
+
+        public void IncreaseHealth(int health)
+        {
+            _currentHealth += health;
         }
         private async UniTaskVoid Death()
         {
