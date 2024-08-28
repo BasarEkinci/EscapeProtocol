@@ -13,12 +13,19 @@ namespace Objects
 {
     public class GrenadeLauncher : MonoBehaviour
     {
+        [Header("UI Settings")]
         [SerializeField] private TMP_Text grenadeAmountText;
         [SerializeField] private int maxGrenadeAmount;
+        
+        [Header("Grenade Settings")]
         [SerializeField] private GameObject grenadePrefab;
-        [SerializeField] private float throwForce;
         [SerializeField] private List<Transform> grenadeSpawnPoints;
+        [SerializeField] private float throwForce;
+        
+        [Header("Effects")]
         [SerializeField] private List<ParticleSystem> launchEffects;
+        
+        [Header("Data Settings")]
         [SerializeField] private SoundDataScriptable soundData;
         
         private InputHandler _inputHandler;
@@ -84,7 +91,6 @@ namespace Objects
         {
             SoundManager.PLaySound(soundData,"CollectGrenade");
             _currentGrenadeCount += count;
-            _currentGrenadeCount = Mathf.Min(_currentGrenadeCount, maxGrenadeAmount);
             grenadeAmountText.text = _currentGrenadeCount.ToString();
         }
     }

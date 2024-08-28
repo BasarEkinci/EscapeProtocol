@@ -9,11 +9,16 @@ namespace Controllers.Player
 {
     public class PlayerHealthController : MonoBehaviour, IDamageable
     {
+        #region Serialized Fields
         [SerializeField] private ParticleSystem explosionParticle;
         [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private PlayerDataScriptable playerData;
+        #endregion
+        
+        #region Public Fields
         public int Health => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
+        #endregion
         
         private int _currentHealth;
         private void Awake()

@@ -11,22 +11,33 @@ namespace Controllers.Player
 {
     public class PlayerGunController : MonoBehaviour, IGunController
     {
-        public float FireRate { get; set; }
-        
+        #region Serilized Fields
+
         [SerializeField] private GunDataScriptable gunData;
         [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject bulletPrefab;
         
-        private Queue<GameObject> _bullets;
+        #endregion
+        
+        public float FireRate { get; set; }
+
+        #region Private Variables
+        
         private CancellationTokenSource _cancellationTokenSource;
         private InputHandler _inputHandler;
         private bool _canBaseShoot = true;
         private bool _isFiring;
-        
+
+        #region Object Pooling Variables
+        private Queue<GameObject> _bullets;
         private const int BulletPoolSize = 20;
         private const int BulletSpeed = 50;
         private const int BulletReturnTime = 350;
+        #endregion
+
+        #endregion
+        
 
         private void Awake()
         {
@@ -66,24 +77,18 @@ namespace Controllers.Player
 
         public async UniTaskVoid FireRepeatedly(CancellationToken token)
         {
-            try
-            {
-                while (_inputHandler.GetAttackInput() && !token.IsCancellationRequested) 
+            while (_inputHandler.GetAttackInput() && !token.IsCancellationRequested) 
+            { 
+                if (_canBaseShoot) 
                 { 
-                    if (_canBaseShoot) 
-                    { 
-                        Fire(); 
-                        _canBaseShoot = false; 
-                        await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate), cancellationToken: token);
-                        _canBaseShoot = true;
-                    }
-                    await UniTask.Yield();    
+                    Fire(); 
+                    _canBaseShoot = false; 
+                    await UniTask.Delay(TimeSpan.FromSeconds(gunData.GunData.BaseAttackFireRate), cancellationToken: token);
+                    _canBaseShoot = true;
                 }
+                await UniTask.Yield(); 
             }
-            finally
-            {
-                _isFiring = false;
-            }
+            _isFiring = false;
         }
 
 

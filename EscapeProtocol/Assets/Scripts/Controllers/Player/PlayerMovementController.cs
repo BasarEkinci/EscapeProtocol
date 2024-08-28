@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using AnimationStateMachine;
+﻿using AnimationStateMachine;
 using AnimationStateMachine.Player;
 using Data.UnityObjects;
 using Inputs;
@@ -56,7 +55,7 @@ namespace Controllers.Player
         private IState<PlayerMovementController> _currentState;
         private Animator _animator;
 
-        private float _moveSpeed => playerData.MovementData.Speed;
+        private float _moveSpeed; 
         
         private bool _isGrounded;
         private bool _isMoving;
@@ -71,6 +70,7 @@ namespace Controllers.Player
             _effectController = GetComponent<PlayerEffectController>();
             _inputHandler = new InputHandler();
             _currentState = new PlayerIdleState();
+            _moveSpeed = playerData.MovementData.Speed;
             _mover = new Mover(_rigidbody, _moveSpeed);
             _jumper = new Jumper(_rigidbody, jumpForce);
         }
