@@ -22,7 +22,6 @@ namespace Objects
                 if (hitInfo.collider.CompareTag("Player"))
                 {
                     Player = hitInfo.collider.gameObject;
-                    Debug.Log("Player Detected");
                     return true;   
                 }
             }

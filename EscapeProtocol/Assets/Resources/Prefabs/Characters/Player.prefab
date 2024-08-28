@@ -35777,8 +35777,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 7127609640794452655}
-  maxHealth: 200
   soundData: {fileID: 11400000, guid: b45a827654700a942b35b34e210b1b75, type: 2}
+  playerData: {fileID: 11400000, guid: 6f01b0499d04aed419d506ec0f1f55a7, type: 2}
 --- !u!54 &2208510980755550059
 Rigidbody:
   m_ObjectHideFlags: 0

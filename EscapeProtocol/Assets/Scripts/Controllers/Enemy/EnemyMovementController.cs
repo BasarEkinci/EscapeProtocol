@@ -1,9 +1,11 @@
 using AnimationStateMachine;
 using AnimationStateMachine.Enemy;
+using Controllers.Player;
 using Data.UnityObjects;
 using Movements;
 using Objects;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 
 namespace Controllers.Enemy
@@ -28,7 +30,7 @@ namespace Controllers.Enemy
         
         [Header("Script References")]
         [SerializeField] private SoundDataScriptable soundData;
-        [SerializeField] private HealthController healthController;
+        [SerializeField] private EnemyHealthController enemyHealthController;
         [SerializeField] private EnemyGunController gunController;
         [SerializeField] private EnemyRotator enemyRotator;
 
@@ -66,7 +68,7 @@ namespace Controllers.Enemy
 
         private void FixedUpdate()
         {
-            if (healthController.IsDead || _isPlayerDetected) return;
+            if (enemyHealthController.IsDead || _isPlayerDetected) return;
             Move();
         }
 
@@ -85,8 +87,8 @@ namespace Controllers.Enemy
 
         private void HandlePlayerDetectedPhase()
         {
-            if (enemyArea.IsPlayerInArea)
-            { 
+            if (enemyArea.IsPlayerInArea && enemyArea.Target.activeSelf)
+            {
                 enemyRotator.SetRotationToTarget(transform.position, enemyArea.Target.transform.position);
                 enemyRotator.GetAim(enemyArea.Target.transform.position);
                 _isPlayerDetected = true;
