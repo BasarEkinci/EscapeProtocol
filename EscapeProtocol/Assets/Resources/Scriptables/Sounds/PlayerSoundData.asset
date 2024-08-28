@@ -28,3 +28,13 @@ MonoBehaviour:
     MixerGroup: {fileID: 0}
     Sounds:
     - {fileID: 8300000, guid: 9c52240fa00ef494d96d8b3a46bcb674, type: 3}
+  - Name: CollectGrenade
+    Volume: 0.15
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: 48c32355375552047a05ba5badd6a17d, type: 3}
+  - Name: Empty
+    Volume: 0.15
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: 82f7232c2f73a9940a259e04381ad505, type: 3}

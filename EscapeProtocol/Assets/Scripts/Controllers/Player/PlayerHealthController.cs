@@ -33,6 +33,7 @@ namespace Controllers.Player
         public void IncreaseHealth(int health)
         {
             _currentHealth += health;
+            _currentHealth = Mathf.Min(_currentHealth, playerData.HealthData.Health);
         }
         private async UniTaskVoid Death()
         {

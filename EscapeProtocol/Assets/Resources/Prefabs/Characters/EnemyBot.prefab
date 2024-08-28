@@ -1999,8 +1999,8 @@ GameObject:
   - component: {fileID: 4279677255231495258}
   - component: {fileID: 5221104491956435947}
   - component: {fileID: 1277823059982017760}
-  - component: {fileID: 287725727754246817}
   - component: {fileID: 737206259861239857}
+  - component: {fileID: 8177017295755375624}
   m_Layer: 9
   m_Name: EnemyBot
   m_TagString: Enemy
@@ -2096,7 +2096,7 @@ MonoBehaviour:
   objectDetector: {fileID: 586567661277277479}
   moveSpeed: 1
   soundData: {fileID: 11400000, guid: 10906ca8a64938842ad0745004ee7a31, type: 2}
-  healthController: {fileID: 0}
+  enemyHealthController: {fileID: 8177017295755375624}
   gunController: {fileID: 2088359929026405146}
   enemyRotator: {fileID: 1277823059982017760}
 --- !u!114 &1277823059982017760
@@ -2112,21 +2112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTransform: {fileID: 3600985414698741451}
---- !u!114 &287725727754246817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4331223848293769885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee67d7e9845c4994e9eefa9e6c2efe8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionParticle: {fileID: 6185154135817548049}
-  maxHealth: 100
-  soundData: {fileID: 11400000, guid: b45a827654700a942b35b34e210b1b75, type: 2}
 --- !u!82 &737206259861239857
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2223,6 +2208,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8177017295755375624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331223848293769885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4b0a42c381433e9b4cbb7ef9f8033a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionParticle: {fileID: 6185154135817548049}
+  soundData: {fileID: 11400000, guid: b45a827654700a942b35b34e210b1b75, type: 2}
+  enemyData: {fileID: 11400000, guid: 77f1630f68f371244b642ac7bc7e3e80, type: 2}
 --- !u!1 &4341023868178369501
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,9 +3016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ea3841c2827ee48a7d1b9d8db7a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthController: {fileID: 287725727754246817}
+  lerpSpeed: 0.05
   healthBar: {fileID: 8160172765197187227}
   easeHealthBar: {fileID: 548995694342358890}
+  healthController: {fileID: 8177017295755375624}
 --- !u!1 &6775832120125762855
 GameObject:
   m_ObjectHideFlags: 0
