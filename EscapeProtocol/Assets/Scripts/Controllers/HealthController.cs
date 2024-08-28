@@ -10,21 +10,16 @@ namespace Controllers
     public class HealthController : MonoBehaviour, IDamageable
     {
         [SerializeField] private ParticleSystem explosionParticle;
-        [SerializeField] private int maxHealth = 100;
         [SerializeField] private SoundDataScriptable soundData;
-        
-        public int Health
-        {
-            get => _currentHealth;
-            set => throw new NotImplementedException();
-        }
-        public int MaxHealth => maxHealth;
+        [SerializeField] private HealthDataScriptable healthData;
+        public int Health => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
+       
         
         private int _currentHealth;
         private void Start()
         {
-            _currentHealth = maxHealth;
+            _currentHealth = healthData.MaxHealth;
         }
         public void TakeDamage(int damage)
         {

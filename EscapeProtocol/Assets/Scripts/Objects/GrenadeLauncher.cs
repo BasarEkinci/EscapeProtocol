@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Data.UnityObjects;
 using Inputs;
 using Managers;
@@ -13,6 +14,7 @@ namespace Objects
         [SerializeField] private GameObject grenadePrefab;
         [SerializeField] private float throwForce;
         [SerializeField] private List<Transform> grenadeSpawnPoints;
+        [SerializeField] private List<ParticleSystem> launchEffects;
         [SerializeField] private SoundDataScriptable soundData;
         private InputHandler _inputHandler;
         private Transform _grenadeSpawnPoint;
@@ -27,6 +29,7 @@ namespace Objects
             if (_inputHandler.GetThrowGrenadeInput())
             {
                 SoundManager.PLaySound(soundData,"ThrowGrenade",null,1f);
+                PlayParticles();
                 ThrowGrenade();
             }
         }
@@ -45,6 +48,14 @@ namespace Objects
             float verticalDistance = targetPosition.y - grenadeSpawnPoint.y;
             Vector3 throwAngle = new Vector3(horizontalDistance, verticalDistance, 0);
             return throwAngle;
+        }
+        
+        private void PlayParticles()
+        {
+            foreach (var launchEffect in launchEffects.Where(launchEffect => !launchEffect.isPlaying))
+            {
+                launchEffect.Play();
+            }
         }
         
     }

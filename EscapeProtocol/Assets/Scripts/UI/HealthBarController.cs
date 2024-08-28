@@ -15,8 +15,8 @@ namespace UI
 
         private void Start()
         {
-            healthBar.maxValue = healthController.MaxHealth;
-            easeHealthBar.maxValue = healthController.MaxHealth;
+            healthBar.maxValue = healthController.Health;
+            easeHealthBar.maxValue = healthController.Health;
         }
         
         private void Update()

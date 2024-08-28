@@ -23,3 +23,8 @@ MonoBehaviour:
     MixerGroup: {fileID: 0}
     Sounds:
     - {fileID: 8300000, guid: ddb0f3486a61c0f459df6fb77031bb4c, type: 3}
+  - Name: Land
+    Volume: 0.1
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: 9c52240fa00ef494d96d8b3a46bcb674, type: 3}

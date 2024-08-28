@@ -1,4 +1,6 @@
 ﻿using Controllers.Player;
+using Data.UnityObjects;
+using Managers;
 using UnityEngine;
 
 namespace AnimationStateMachine.Player
@@ -6,10 +8,11 @@ namespace AnimationStateMachine.Player
     public class PlayerJumpingState : IState<PlayerMovementController>
     {
         private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
+        private readonly SoundDataScriptable _soundData = Resources.Load<SoundDataScriptable>("Scriptables/Sounds/PlayerSoundData");
 
         public void EnterState(PlayerMovementController player)
         {
-            player.Animator.SetBool(IsGrounded, false);
+            SoundManager.PLaySound(_soundData,"Jump");
         }
 
         public void UpdateState(PlayerMovementController player)
@@ -35,7 +38,7 @@ namespace AnimationStateMachine.Player
 
         public void ExitState(PlayerMovementController player)
         {
-            player.Animator.SetBool(IsGrounded, true);
+            SoundManager.PLaySound(_soundData,"Land");
         }
     }
 }
