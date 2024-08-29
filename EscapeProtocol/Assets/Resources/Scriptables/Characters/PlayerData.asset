@@ -15,4 +15,4 @@ MonoBehaviour:
   HealthData:
     Health: 200
   MovementData:
-    Speed: 5
+    Speed: 3

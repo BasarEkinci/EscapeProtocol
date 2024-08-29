@@ -35762,7 +35762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundData: {fileID: 11400000, guid: 3a00699698a37b54486cb4969d01caf9, type: 2}
   detector: {fileID: 40403128891611698}
-  moveSpeed: 3
+  playerData: {fileID: 11400000, guid: 6f01b0499d04aed419d506ec0f1f55a7, type: 2}
   jumpForce: 5
 --- !u!114 &985861113102293197
 MonoBehaviour:
@@ -35838,12 +35838,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e254018a46a92540b7c2f02d9731af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grenadeAmountText: {fileID: 0}
+  maxGrenadeAmount: 5
   grenadePrefab: {fileID: 4012857005273671884, guid: 95de6ccb65662ac4ea5487150507de1d,
     type: 3}
-  throwForce: 1.5
   grenadeSpawnPoints:
   - {fileID: 6374736335438375188}
   - {fileID: 8394918989744416026}
+  throwForce: 1.5
   launchEffects:
   - {fileID: 19204420091873412}
   - {fileID: 1935064875898649739}
@@ -69575,6 +69577,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8324626269435798536}
     m_Modifications:
+    - target: {fileID: 2095736692012533852, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551852128152849400, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340030292744235315, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455761676196182613, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560002606944192441, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161582751897776243, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8526757498734533569, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
       propertyPath: m_Name

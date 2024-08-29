@@ -1,29 +1,23 @@
-using Cysharp.Threading.Tasks;
+using Combat;
 using UnityEngine;
 
-namespace Combat
+namespace Objects.Combat
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem hitEffect;
+        [SerializeField] private GameObject hitEffect;
+
         private void OnCollisionEnter(Collision other)
         {
+            Vector3 hitPoint = other.GetContact(0).point;
+            Instantiate(hitEffect, hitPoint, Quaternion.identity);
+            Debug.Log(other.collider.name);
             IDamageable enemy = other.collider.GetComponent<IDamageable>();
             if(enemy != null)
             {
                 enemy.TakeDamage(10);
-                Delay(other.GetContact(0).point).Forget();
+                gameObject.SetActive(false);
             }
-        }
-        private async UniTaskVoid Delay(Vector3 collisionPoint)
-        {
-            if (!hitEffect.isPlaying)
-            {
-                hitEffect.transform.position = collisionPoint;
-                hitEffect.Play();
-            }
-            await UniTask.Delay(100);
-            gameObject.SetActive(false);
         }
     }
 }
