@@ -17,7 +17,7 @@ namespace Controllers.Enemy
        
         
         private int _currentHealth;
-        private void Start()
+        private void Awake()
         {
             _currentHealth = enemyData.HealthData.Health;
         }
@@ -32,7 +32,7 @@ namespace Controllers.Enemy
         }
         private async UniTaskVoid Death()
         {
-            SoundManager.PLaySound(soundData, "Explosion",null,1);
+            SoundManager.PLaySound(soundData, "Explosion");
             explosionParticle.Play();
             await UniTask.Delay(TimeSpan.FromSeconds(0.5), ignoreTimeScale: false);
             gameObject.SetActive(false);
