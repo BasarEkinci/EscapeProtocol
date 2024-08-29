@@ -59,6 +59,9 @@ namespace Objects
                 }
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         private void ThrowGrenade()
         {
             if (_currentGrenadeCount == 0) return;
