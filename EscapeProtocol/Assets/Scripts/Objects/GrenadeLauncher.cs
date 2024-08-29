@@ -66,7 +66,7 @@ namespace Objects
             _targetPosition = MouseToWorldPosition.Instance.GetCursorWorldPoint();
             Vector3 throwAngle = CalculateGrenadeThrowDirection(_grenadeSpawnPoint.position, _targetPosition);
             GameObject grenade = Instantiate(grenadePrefab, _grenadeSpawnPoint.position, Quaternion.identity);
-            grenade.GetComponent<Rigidbody>().AddForce(throwAngle * throwForce, ForceMode.Impulse);
+            grenade.GetComponent<Rigidbody>().AddForce(throwAngle * throwForce, ForceMode.VelocityChange);
             _currentGrenadeCount--;
             grenadeAmountText.text = _currentGrenadeCount.ToString();
         }
