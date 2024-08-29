@@ -1016,7 +1016,7 @@ MonoBehaviour:
   easeType: 11
   upperDoorEndPoint: {fileID: 2268498496937459815}
   lowerDoorEndPoint: {fileID: 2774672823883986543}
-  duration: 3
+  duration: 1.5
   redLights:
   - {fileID: 6079074091559374896}
   - {fileID: 5887799336368624923}

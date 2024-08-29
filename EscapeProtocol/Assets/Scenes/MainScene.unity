@@ -3333,17 +3333,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 757960680849255356, guid: e81a8c04803392d439e0f2bc1d8be294,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937492937335417037, guid: e81a8c04803392d439e0f2bc1d8be294,
-        type: 3}
-      propertyPath: playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 6f01b0499d04aed419d506ec0f1f55a7,
-        type: 2}
     - target: {fileID: 5735037008755967905, guid: e81a8c04803392d439e0f2bc1d8be294,
         type: 3}
       propertyPath: m_Name
@@ -3354,11 +3343,6 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 485433501}
-    - target: {fileID: 6771192880336476073, guid: e81a8c04803392d439e0f2bc1d8be294,
-        type: 3}
-      propertyPath: maxGrenadeAmount
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6771192880336476073, guid: e81a8c04803392d439e0f2bc1d8be294,
         type: 3}
       propertyPath: grenadeAmountText
@@ -7275,12 +7259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd95a6e64fed40579a6cc994c15815a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1218297961 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2602447295454993250, guid: bee6c7b224f4d7445bcb0c737b5d89a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 6443276217092350948}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1221967746
 GameObject:
   m_ObjectHideFlags: 0
@@ -8808,7 +8786,6 @@ Transform:
   - {fileID: 1811124618}
   - {fileID: 1581622809}
   - {fileID: 1304426649}
-  - {fileID: 1218297961}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1487153889
@@ -10153,7 +10130,7 @@ PrefabInstance:
     - target: {fileID: 3225232577904773263, guid: d3a132afa74f41e47b9e332ca4669035,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3225232577904773263, guid: d3a132afa74f41e47b9e332ca4669035,
         type: 3}
@@ -10210,11 +10187,6 @@ PrefabInstance:
       propertyPath: enemyArea
       value: 
       objectReference: {fileID: 1218297959}
-    - target: {fileID: 7990486001709896016, guid: d3a132afa74f41e47b9e332ca4669035,
-        type: 3}
-      propertyPath: cameraTransform
-      value: 
-      objectReference: {fileID: 485433501}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14972,7 +14944,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1484530145}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2602447295454993250, guid: bee6c7b224f4d7445bcb0c737b5d89a3,
         type: 3}
@@ -15232,10 +15204,11 @@ SceneRoots:
   - {fileID: 1462245841}
   - {fileID: 607521186}
   - {fileID: 598657081}
+  - {fileID: 1634097872}
   - {fileID: 71230911}
   - {fileID: 1484530145}
   - {fileID: 837838999}
-  - {fileID: 1634097872}
   - {fileID: 229774939}
   - {fileID: 8057447517771024404}
   - {fileID: 676214563109248524}
+  - {fileID: 6443276217092350948}

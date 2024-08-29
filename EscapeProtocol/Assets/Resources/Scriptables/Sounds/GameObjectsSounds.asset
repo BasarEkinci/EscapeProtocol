@@ -22,7 +22,7 @@ MonoBehaviour:
     Volume: 1
     MixerGroup: {fileID: 0}
     Sounds:
-    - {fileID: 8300000, guid: 3b445f1473320424984a201235082a85, type: 3}
+    - {fileID: 8300000, guid: b9be1aff262cb90448f5ef0b8b5ce997, type: 3}
   - Name: Grenade
     Volume: 1
     MixerGroup: {fileID: 0}

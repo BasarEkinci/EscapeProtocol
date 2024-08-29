@@ -55,18 +55,18 @@ namespace Objects.Interactable
             {
                 if (other.gameObject.CompareTag(_requiredTag) && !currentGuard.gameObject.activeSelf)
                 {
-                    SoundManager.PLaySound(soundData,"Door",_audioSource,1);
                     upperDoor.transform.DOMove(upperDoorEndPoint.position, duration).SetEase(easeType);
                     lowerDoor.transform.DOMove(lowerDoorEndPoint.position, duration).SetEase(easeType);
+                    SoundManager.PLaySound(soundData,"Door",_audioSource,1);
                 }    
             }
             else
             {
                 if (other.gameObject.CompareTag(_requiredTag))
                 {
-                    SoundManager.PLaySound(soundData,"Door",_audioSource,1);
                     upperDoor.transform.DOMove(upperDoorEndPoint.position, duration).SetEase(easeType);
                     lowerDoor.transform.DOMove(lowerDoorEndPoint.position, duration).SetEase(easeType);
+                    SoundManager.PLaySound(soundData,"Door",_audioSource,1);
                 }  
             }
         }
@@ -79,6 +79,7 @@ namespace Objects.Interactable
                 {
                     upperDoor.transform.DOMove(_upperDoorFirstPosition, duration).SetEase(easeType);
                     lowerDoor.transform.DOMove(_lowerDoorFirstPosition, duration).SetEase(easeType);
+                    SoundManager.PLaySound(soundData,"Door",_audioSource);
                 }
             }
             else
@@ -87,6 +88,7 @@ namespace Objects.Interactable
                 {
                     upperDoor.transform.DOMove(_upperDoorFirstPosition, duration).SetEase(easeType);
                     lowerDoor.transform.DOMove(_lowerDoorFirstPosition, duration).SetEase(easeType);
+                    SoundManager.PLaySound(soundData,"Door",_audioSource);
                 }
             }
         }
