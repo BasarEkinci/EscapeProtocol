@@ -11,7 +11,6 @@ namespace Objects.Combat
         {
             Vector3 hitPoint = other.GetContact(0).point;
             Instantiate(hitEffect, hitPoint, Quaternion.identity);
-            Debug.Log(other.collider.name);
             IDamageable enemy = other.collider.GetComponent<IDamageable>();
             if(enemy != null)
             {
