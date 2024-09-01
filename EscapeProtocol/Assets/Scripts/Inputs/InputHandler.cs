@@ -41,5 +41,10 @@ namespace Inputs
         {
             return _playerInputs.Player.ThrowGrenade.triggered;
         }
+        
+        public bool GetInteractInput()
+        {
+            return _playerInputs.Player.Interact.triggered;
+        }
     }
 }
