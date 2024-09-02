@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e398e3aa9cdfcdc4ebd01a06e4c544ae
+guid: 1cf7c6dfc891b3349b2497b3b6cec2fb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -505,14 +505,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.033757348
-        functionName: FootStepSound1
+        functionName: FootStep1
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.56443304
-        functionName: FootStepSound2
+        functionName: FootStep2
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
