@@ -1299,7 +1299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2514805063674226738}
   - component: {fileID: 7761250488920874403}
-  - component: {fileID: 4545633930869036475}
+  - component: {fileID: 59443645550444782}
   m_Layer: 9
   m_Name: EnemyMesh
   m_TagString: Untagged
@@ -1350,7 +1350,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4545633930869036475
+--- !u!114 &59443645550444782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1359,13 +1359,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2984820930615645753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfdb07a2218461c9cc170c9673e509f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d3ae0e165ba44bd9e8f7f9a8637d957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backStepSound: {fileID: 8300000, guid: 3babd660daae22f41afb84690cd4622d, type: 3}
-  fallSound: {fileID: 8300000, guid: 9ad2f9df8cdc1d244a9c3d5dde32c7d4, type: 3}
-  footStepSound1: {fileID: 8300000, guid: 7fb10c87b3907a445b5a1b2a4f5bc6ce, type: 3}
-  footStepSound2: {fileID: 8300000, guid: 206d525786e013e4ca89f472f8aa3e65, type: 3}
+  soundClips:
+  - {fileID: 8300000, guid: 7fb10c87b3907a445b5a1b2a4f5bc6ce, type: 3}
+  - {fileID: 8300000, guid: 206d525786e013e4ca89f472f8aa3e65, type: 3}
 --- !u!1 &3017863825401912291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2222,7 @@ MonoBehaviour:
   explosionParticle: {fileID: 6185154135817548049}
   soundData: {fileID: 11400000, guid: b45a827654700a942b35b34e210b1b75, type: 2}
   enemyData: {fileID: 11400000, guid: 77f1630f68f371244b642ac7bc7e3e80, type: 2}
+  material: {fileID: 2100000, guid: ddc55c855e67955438013097f940a182, type: 2}
 --- !u!1 &4341023868178369501
 GameObject:
   m_ObjectHideFlags: 0

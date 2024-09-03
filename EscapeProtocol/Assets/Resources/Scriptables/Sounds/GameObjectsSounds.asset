@@ -33,3 +33,8 @@ MonoBehaviour:
     MixerGroup: {fileID: 0}
     Sounds:
     - {fileID: 8300000, guid: 102ddabc8b4bce844bd1fc0340458c82, type: 3}
+  - Name: LaserWallHit
+    Volume: 1
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: e8d2495fa2d31c949883ea086d58c293, type: 3}

@@ -4900,8 +4900,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8351284166680642866}
   - component: {fileID: 206591841786903059}
-  - component: {fileID: 7128792299603986048}
-  - component: {fileID: 757960680849255356}
+  - component: {fileID: 7226176902049221333}
+  - component: {fileID: 8228752290441757649}
   m_Layer: 7
   m_Name: PlayerMesh
   m_TagString: Untagged
@@ -4952,23 +4952,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7128792299603986048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849652025815605176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfdb07a2218461c9cc170c9673e509f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backStepSound: {fileID: 8300000, guid: 3babd660daae22f41afb84690cd4622d, type: 3}
-  fallSound: {fileID: 8300000, guid: 9ad2f9df8cdc1d244a9c3d5dde32c7d4, type: 3}
-  footStepSound1: {fileID: 8300000, guid: 9c52240fa00ef494d96d8b3a46bcb674, type: 3}
-  footStepSound2: {fileID: 8300000, guid: 9c52240fa00ef494d96d8b3a46bcb674, type: 3}
---- !u!82 &757960680849255356
+--- !u!82 &7226176902049221333
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4979,8 +4963,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4989,7 +4973,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 100
+  MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -5024,7 +5008,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5054,7 +5038,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5064,6 +5048,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8228752290441757649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849652025815605176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc68a0e92a46c8bcdffc01732ac708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundClips:
+  - {fileID: 8300000, guid: 3babd660daae22f41afb84690cd4622d, type: 3}
+  - {fileID: 8300000, guid: 9c52240fa00ef494d96d8b3a46bcb674, type: 3}
 --- !u!1 &865853448903284951
 GameObject:
   m_ObjectHideFlags: 0
@@ -35731,10 +35730,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7466065
+  m_Radius: 0.2972294
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 2.4323758e-16, y: 1, z: 0.07961631}
+  m_Center: {x: -4.7349036e-17, y: 1, z: 0.0279181}
 --- !u!114 &312147477067224692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35779,6 +35778,7 @@ MonoBehaviour:
   explosionParticle: {fileID: 7127609640794452655}
   soundData: {fileID: 11400000, guid: b45a827654700a942b35b34e210b1b75, type: 2}
   playerData: {fileID: 11400000, guid: 6f01b0499d04aed419d506ec0f1f55a7, type: 2}
+  material: {fileID: 2100000, guid: 78660c09ff101ea4cb77de408a9527da, type: 2}
 --- !u!54 &2208510980755550059
 Rigidbody:
   m_ObjectHideFlags: 0
