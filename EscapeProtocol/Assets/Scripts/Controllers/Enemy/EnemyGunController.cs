@@ -84,8 +84,6 @@ namespace Controllers.Enemy
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-
-
         public void Fire()
         {        
             if (_bullets.Count > 0)

@@ -18,6 +18,12 @@ namespace Movements
             _aimOffset = new Vector3(0, 0.8f, 0);
             _turnDuration = 0.1f;
         }
+        
+        /// <summary>
+        /// To set the rotation of enemy on the X axis.
+        /// </summary>
+        /// <param name="ownPos"></param>
+        /// <param name="targetPos"></param>
         public void SetRotationToTarget(Vector3 ownPos, Vector3 targetPos)
         {
             if (ownPos.x < targetPos.x)

@@ -11,7 +11,6 @@ namespace Controllers.Player
     public class PlayerMovementController : MonoBehaviour
     {
         #region Public Fields
-
         public bool IsMoving => _isMoving;
         public bool IsMovingForward => _isMovingForward;
         public bool IsGrounded => _isGrounded;
@@ -99,6 +98,10 @@ namespace Controllers.Player
                     _rigidbody.velocity.z);
             }
         }
+        
+        /// <summary>
+        /// To handle the movement direction of the player. If the player is moving forward or backward.
+        /// </summary>
         private void HandleMovementDirection()
         {
             Vector2 movementDirection = _inputHandler.GetMovementDirection();

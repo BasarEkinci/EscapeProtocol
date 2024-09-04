@@ -4,8 +4,8 @@ namespace Movements
 {
     public class Jumper
     {
-        private Rigidbody _rigidbody;
-        private float _jumpForce;
+        private readonly Rigidbody _rigidbody;
+        private readonly float _jumpForce;
         
         public Jumper(Rigidbody rigidbody, float jumpForce)
         {

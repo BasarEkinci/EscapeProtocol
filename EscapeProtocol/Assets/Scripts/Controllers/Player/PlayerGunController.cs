@@ -74,7 +74,10 @@ namespace Controllers.Player
             _cancellationTokenSource.Cancel();
         }
 
-
+        /// <summary>
+        /// To fire the gun repeatedly. If the player is holding the attack button then the gun will fire repeatedly. Otherwise, it will be firing at once.
+        /// </summary>
+        /// <param name="token"></param>
         public async UniTaskVoid FireRepeatedly(CancellationToken token)
         {
             while (_inputHandler.GetAttackInput() && !token.IsCancellationRequested) 

@@ -5,8 +5,8 @@ namespace Movements
 {
     public class Mover : IMover
     {
-        private Rigidbody _rigidbody;
-        private float _speed;
+        private readonly Rigidbody _rigidbody;
+        private readonly float _speed;
         
         public Mover(Rigidbody rigidbody, float speed)
         {

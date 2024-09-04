@@ -35,6 +35,20 @@ namespace Objects.Interactable
 
         private void Update()
         {
+            HandleElevatorMovement();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag(_playerTag))
+            {
+                other.transform.parent = null;
+                _isPlayerInside = false;
+            }
+        }
+        
+        private void HandleElevatorMovement()
+        {
             if (_isPlayerInside && _inputHandler.GetInteractInput() && !_isMoving)
             {
                 _isMoving = true;
@@ -54,15 +68,6 @@ namespace Objects.Interactable
                         _isMoving = false;
                     });
                 }
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag(_playerTag))
-            {
-                other.transform.parent = null;
-                _isPlayerInside = false;
             }
         }
     }
