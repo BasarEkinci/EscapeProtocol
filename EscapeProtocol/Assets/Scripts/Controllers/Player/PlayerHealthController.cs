@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using DG.Tweening;
 using Managers;
+using Objects;
 using UnityEngine;
 
 namespace Controllers.Player
@@ -61,6 +62,7 @@ namespace Controllers.Player
         private async UniTaskVoid Death()
         {
             SoundManager.PLaySound(soundData, "Explosion");
+            CinemachineShake.Instance.ShakeCamera(3,0.22f);
             explosionParticle.Play();
             await UniTask.Delay(TimeSpan.FromSeconds(0.5), ignoreTimeScale: false);
             gameObject.SetActive(false);

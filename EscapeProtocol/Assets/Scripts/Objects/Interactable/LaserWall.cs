@@ -15,6 +15,7 @@ namespace Objects.Interactable
         {
             IDamageable player = other.gameObject.GetComponent<IDamageable>();
             player?.TakeDamage(30);
+            CinemachineShake.Instance.ShakeCamera(4,0.1f);
             HitEvents(other.GetContact(0).point);
         }
 
@@ -24,6 +25,7 @@ namespace Objects.Interactable
             IDamageable player = other.gameObject.GetComponent<IDamageable>();
             if (Time.time > _nextDamageTime)
             {
+                CinemachineShake.Instance.ShakeCamera(5,0.1f);
                 player?.TakeDamage(30);
                 HitEvents(other.GetContact(0).point);
                 _nextDamageTime = Time.time + _damageInterval;
@@ -33,7 +35,6 @@ namespace Objects.Interactable
         private void HitEvents(Vector3 position)
         {
             SoundManager.PLaySound(soundData, "LaserWallHit");
-            Debug.Log(position);
             Instantiate(hitParticle,position + Vector3.up,transform.rotation);
         }
     }

@@ -46,7 +46,8 @@ namespace Objects
                     damageable.TakeDamage(20);
                 }
             }
-            SoundManager.PLaySound(soundData,"Grenade",null,1);
+            SoundManager.PLaySound(soundData,"Grenade");
+            CinemachineShake.Instance.ShakeCamera(1,0.2f);
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
         }
 

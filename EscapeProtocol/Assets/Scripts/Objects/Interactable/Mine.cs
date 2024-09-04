@@ -41,6 +41,7 @@ namespace Objects.Interactable
             IDamageable player = GetDamageable(other);
             player?.TakeDamage(damage);
             SoundManager.PLaySound(soundData,"Explosion");
+            CinemachineShake.Instance.ShakeCamera(2,0.2f);
             Instantiate(explosionParticle, transform.position, Quaternion.identity);
             Destroy(gameObject,0.1f);
         }
