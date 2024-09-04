@@ -38,3 +38,8 @@ MonoBehaviour:
     MixerGroup: {fileID: 0}
     Sounds:
     - {fileID: 8300000, guid: e8d2495fa2d31c949883ea086d58c293, type: 3}
+  - Name: MineActivate
+    Volume: 1
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: a363bd8778ace1c4aa4663c7c0aff8cf, type: 3}
