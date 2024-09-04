@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 5120
   detectionRadius: 0.1
 --- !u!1 &964781074584392142
 GameObject:

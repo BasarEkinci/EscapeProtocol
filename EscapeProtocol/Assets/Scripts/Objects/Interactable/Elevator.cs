@@ -1,5 +1,5 @@
-using System;
 using DG.Tweening;
+using Inputs;
 using UnityEngine;
 
 namespace Objects.Interactable
@@ -10,7 +10,15 @@ namespace Objects.Interactable
         [SerializeField] private Transform floor2;
 
         private int _currentFloor;
-        
+        private bool _isPlayerInside;
+        private bool _isMoving;
+        private InputHandler _inputHandler;
+
+        private void Awake()
+        {
+            _inputHandler = new InputHandler();
+        }
+
         private void Start()
         {
           _currentFloor = 1;   
@@ -20,22 +28,30 @@ namespace Objects.Interactable
             if (other.CompareTag("Player"))
             {
                 other.transform.parent = transform;
-                if (Input.GetKeyDown(KeyCode.E))
+                _isPlayerInside = true;
+            }
+        }
+
+        private void Update()
+        {
+            if (_isPlayerInside && _inputHandler.GetInteractInput() && !_isMoving)
+            {
+                _isMoving = true;
+                if (_currentFloor == 1)
                 {
-                    if (_currentFloor == 1)
+                    transform.DOMove(floor2.position, 1f).OnComplete(() =>
                     {
-                        transform.DOMove(floor2.position, 1f).OnComplete(() =>
-                        {
-                            _currentFloor = 2; 
-                        });
-                    }
-                    else if (_currentFloor == 2)
+                        _currentFloor = 2;
+                        _isMoving = false;
+                    });
+                }
+                else if (_currentFloor == 2)
+                {
+                    transform.DOMove(floor1.position, 1f).OnComplete(() =>
                     {
-                        transform.DOMove(floor1.position, 1f).OnComplete(() =>
-                        {
-                            _currentFloor = 1; 
-                        });
-                    }
+                        _currentFloor = 1;
+                        _isMoving = false;
+                    });
                 }
             }
         }
@@ -45,6 +61,7 @@ namespace Objects.Interactable
             if (other.CompareTag("Player"))
             {
                 other.transform.parent = null;
+                _isPlayerInside = false;
             }
         }
     }

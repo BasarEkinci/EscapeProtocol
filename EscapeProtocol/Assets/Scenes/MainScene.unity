@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 24805430}
   - component: {fileID: 24805429}
   - component: {fileID: 24805428}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 26040830}
   - component: {fileID: 26040833}
   - component: {fileID: 26040832}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 27174918}
   - component: {fileID: 27174917}
   - component: {fileID: 27174916}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 32579181}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 104067660}
   - component: {fileID: 104067659}
   - component: {fileID: 104067658}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1315,7 +1315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 123790236}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2478,7 +2478,7 @@ GameObject:
   - component: {fileID: 261135466}
   - component: {fileID: 261135465}
   - component: {fileID: 261135464}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3021,7 +3021,7 @@ GameObject:
   - component: {fileID: 291381734}
   - component: {fileID: 291381735}
   - component: {fileID: 291381736}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LaserWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3037,7 +3037,7 @@ Transform:
   m_GameObject: {fileID: 291381733}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.693, y: 0.314, z: -0.115}
+  m_LocalPosition: {x: 19.86, y: 0.314, z: -0.115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5024,7 +5024,7 @@ GameObject:
   - component: {fileID: 469379969}
   - component: {fileID: 469379972}
   - component: {fileID: 469379971}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6802,7 +6802,7 @@ GameObject:
   - component: {fileID: 600155485}
   - component: {fileID: 600155484}
   - component: {fileID: 600155483}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7325,7 +7325,7 @@ GameObject:
   - component: {fileID: 641821600}
   - component: {fileID: 641821599}
   - component: {fileID: 641821598}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7616,7 +7616,7 @@ GameObject:
   - component: {fileID: 659919374}
   - component: {fileID: 659919373}
   - component: {fileID: 659919372}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7876,7 +7876,7 @@ GameObject:
   - component: {fileID: 677627564}
   - component: {fileID: 677627563}
   - component: {fileID: 677627562}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8145,7 +8145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707792315}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8793,7 +8793,7 @@ GameObject:
   - component: {fileID: 769965667}
   - component: {fileID: 769965666}
   - component: {fileID: 769965665}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8989,7 +8989,7 @@ GameObject:
   - component: {fileID: 789167464}
   - component: {fileID: 789167467}
   - component: {fileID: 789167466}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9488,7 +9488,7 @@ GameObject:
   - component: {fileID: 826170492}
   - component: {fileID: 826170495}
   - component: {fileID: 826170494}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10179,7 +10179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 909005830}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10854,7 +10854,7 @@ GameObject:
   - component: {fileID: 965383018}
   - component: {fileID: 965383017}
   - component: {fileID: 965383016}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11536,7 +11536,7 @@ GameObject:
   - component: {fileID: 1024374674}
   - component: {fileID: 1024374673}
   - component: {fileID: 1024374672}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11831,7 +11831,7 @@ GameObject:
   - component: {fileID: 1040274147}
   - component: {fileID: 1040274150}
   - component: {fileID: 1040274149}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12212,7 +12212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1048138533}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13009,7 +13009,7 @@ GameObject:
   - component: {fileID: 1105855065}
   - component: {fileID: 1105855064}
   - component: {fileID: 1105855063}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13114,7 +13114,7 @@ GameObject:
   - component: {fileID: 1107571838}
   - component: {fileID: 1107571837}
   - component: {fileID: 1107571836}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14752,7 +14752,7 @@ GameObject:
   - component: {fileID: 1231347068}
   - component: {fileID: 1231347067}
   - component: {fileID: 1231347066}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14857,7 +14857,7 @@ GameObject:
   - component: {fileID: 1232358246}
   - component: {fileID: 1232358245}
   - component: {fileID: 1232358244}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15361,7 +15361,7 @@ GameObject:
   - component: {fileID: 1278640774}
   - component: {fileID: 1278640777}
   - component: {fileID: 1278640776}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16163,7 +16163,7 @@ GameObject:
   - component: {fileID: 1328331148}
   - component: {fileID: 1328331147}
   - component: {fileID: 1328331146}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16820,7 +16820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1389292807}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16857,7 +16857,7 @@ GameObject:
   - component: {fileID: 1392895538}
   - component: {fileID: 1392895537}
   - component: {fileID: 1392895536}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18301,7 +18301,7 @@ GameObject:
   - component: {fileID: 1507904261}
   - component: {fileID: 1507904264}
   - component: {fileID: 1507904263}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18798,7 +18798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528642514}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19836,7 +19836,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1588600271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19978,7 +19978,7 @@ GameObject:
   - component: {fileID: 1592398291}
   - component: {fileID: 1592398290}
   - component: {fileID: 1592398289}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21191,7 +21191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675100682}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21644,7 +21644,7 @@ GameObject:
   - component: {fileID: 1701133412}
   - component: {fileID: 1701133411}
   - component: {fileID: 1701133410}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22109,7 +22109,7 @@ GameObject:
   - component: {fileID: 1755365820}
   - component: {fileID: 1755365819}
   - component: {fileID: 1755365818}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22496,7 +22496,7 @@ GameObject:
   - component: {fileID: 1783853906}
   - component: {fileID: 1783853909}
   - component: {fileID: 1783853908}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22638,7 +22638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1805593789}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22849,7 +22849,7 @@ GameObject:
   - component: {fileID: 1841435168}
   - component: {fileID: 1841435167}
   - component: {fileID: 1841435166}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23106,7 +23106,7 @@ GameObject:
   - component: {fileID: 1861939741}
   - component: {fileID: 1861939744}
   - component: {fileID: 1861939743}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23509,7 +23509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1876760897}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallPart (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24578,7 +24578,7 @@ GameObject:
   - component: {fileID: 1954156397}
   - component: {fileID: 1954156396}
   - component: {fileID: 1954156395}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25044,7 +25044,7 @@ GameObject:
   - component: {fileID: 2017030759}
   - component: {fileID: 2017030762}
   - component: {fileID: 2017030761}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29407,7 +29407,7 @@ GameObject:
   - component: {fileID: 7646856869244893344}
   - component: {fileID: 7646856869243799508}
   - component: {fileID: 7646856869248465334}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint_T_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
