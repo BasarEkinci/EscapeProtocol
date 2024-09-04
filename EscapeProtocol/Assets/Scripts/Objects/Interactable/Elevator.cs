@@ -12,6 +12,7 @@ namespace Objects.Interactable
         private int _currentFloor;
         private bool _isPlayerInside;
         private bool _isMoving;
+        private string _playerTag = "Player";
         private InputHandler _inputHandler;
 
         private void Awake()
@@ -25,7 +26,7 @@ namespace Objects.Interactable
         }
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(_playerTag))
             {
                 other.transform.parent = transform;
                 _isPlayerInside = true;
@@ -58,7 +59,7 @@ namespace Objects.Interactable
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(_playerTag))
             {
                 other.transform.parent = null;
                 _isPlayerInside = false;

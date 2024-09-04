@@ -95,12 +95,10 @@ namespace Controllers.Player
             _mover.Move(_inputHandler.GetMovementDirection().x);
             if (!_isGrounded && _rigidbody.velocity.y < 0)
             {
-                
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y - 0.1f,
                     _rigidbody.velocity.z);
             }
         }
-
         private void HandleMovementDirection()
         {
             Vector2 movementDirection = _inputHandler.GetMovementDirection();
@@ -119,7 +117,7 @@ namespace Controllers.Player
             }
         }
         
-        internal void ChangeState(IState<PlayerMovementController> state)
+        public void ChangeState(IState<PlayerMovementController> state)
         {
             _currentState?.ExitState(this);
             _currentState = state;
