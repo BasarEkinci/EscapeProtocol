@@ -2,13 +2,16 @@ using DG.Tweening;
 using Inputs;
 using UnityEngine;
 
-namespace Objects.Interactable
+namespace Objects.Interactable.Elevator
 {
-    public class Elevator : MonoBehaviour
+    public class ElevatorMovementController : MonoBehaviour
     {
         [SerializeField] private Transform floor1;
         [SerializeField] private Transform floor2;
-
+        [SerializeField] private float duration;
+        
+        public bool IsMoving => _isMoving;
+        
         private int _currentFloor;
         private bool _isPlayerInside;
         private bool _isMoving;
@@ -54,7 +57,7 @@ namespace Objects.Interactable
                 _isMoving = true;
                 if (_currentFloor == 1)
                 {
-                    transform.DOMove(floor2.position, 1f).OnComplete(() =>
+                    transform.DOMove(floor2.position, duration).OnComplete(() =>
                     {
                         _currentFloor = 2;
                         _isMoving = false;
@@ -62,7 +65,7 @@ namespace Objects.Interactable
                 }
                 else if (_currentFloor == 2)
                 {
-                    transform.DOMove(floor1.position, 1f).OnComplete(() =>
+                    transform.DOMove(floor1.position, duration).OnComplete(() =>
                     {
                         _currentFloor = 1;
                         _isMoving = false;
