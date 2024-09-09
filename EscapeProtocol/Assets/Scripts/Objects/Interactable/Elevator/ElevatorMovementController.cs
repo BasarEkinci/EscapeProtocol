@@ -1,3 +1,4 @@
+using Data.UnityObjects;
 using DG.Tweening;
 using Inputs;
 using UnityEngine;
@@ -6,18 +7,22 @@ namespace Objects.Interactable.Elevator
 {
     public class ElevatorMovementController : MonoBehaviour
     {
+        #region Serialized Fields
         [SerializeField] private Transform floor1;
         [SerializeField] private Transform floor2;
         [SerializeField] private float duration;
+        #endregion
         
         public bool IsMoving => _isMoving;
-        
+
+        #region Private Variables
         private int _currentFloor;
         private bool _isPlayerInside;
         private bool _isMoving;
         private string _playerTag = "Player";
+        #endregion
+        
         private InputHandler _inputHandler;
-
         private void Awake()
         {
             _inputHandler = new InputHandler();

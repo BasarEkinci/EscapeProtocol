@@ -1,9 +1,13 @@
+using Data.UnityObjects;
+using Managers;
 using UnityEngine;
 
 namespace Objects.Interactable.Elevator
 {
     public class ElevatorDoorController : MonoBehaviour
     {
+        [SerializeField] private SoundDataScriptable soundData;
+
         #region Referances
         private ElevatorMovementController _elevatorMovementController;
         private Animator _animator;
@@ -28,7 +32,15 @@ namespace Objects.Interactable.Elevator
 
         private void Update()
         {
-            _canOpen = !_elevatorMovementController.IsMoving;
+            if (_elevatorMovementController.IsMoving)
+            {
+                _canOpen = false;
+                SoundManager.PLaySound(soundData, "ElevatorMovement");
+            }
+            else
+            {
+                _canOpen = true;
+            }
             
             _animator.SetBool(CanOpen, _canOpen);
             _animator.SetBool(IsPlayerNearby, _isPlayerNearby);
@@ -39,6 +51,7 @@ namespace Objects.Interactable.Elevator
             if (other.CompareTag(_playerTag) && _canOpen)
             {
                 _isPlayerNearby = true;
+                SoundManager.PLaySound(soundData,"ElevatorDoorOpen");
             }
         }
 
@@ -47,6 +60,7 @@ namespace Objects.Interactable.Elevator
             if (other.CompareTag(_playerTag) && _canOpen)
             {
                 _isPlayerNearby = false;
+                SoundManager.PLaySound(soundData,"ElevatorDoorClose");
             }
         }
         

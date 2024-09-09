@@ -43,3 +43,18 @@ MonoBehaviour:
     MixerGroup: {fileID: 0}
     Sounds:
     - {fileID: 8300000, guid: a363bd8778ace1c4aa4663c7c0aff8cf, type: 3}
+  - Name: ElevatorDoorOpen
+    Volume: 1
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: 8ee457997d293c74ca9f56e857c1a420, type: 3}
+  - Name: ElevatorDoorClose
+    Volume: 1
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: 0ca1eac7418f49c4fa477481c910569c, type: 3}
+  - Name: ElevatorMovement
+    Volume: 1
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: 8d5588a5e2f8f604bae300df0bf8703c, type: 3}

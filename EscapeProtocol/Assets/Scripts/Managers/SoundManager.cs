@@ -43,7 +43,6 @@ namespace Managers
                 Instance._audioSource.PlayOneShot(randomClip, volume * soundList.Volume);
             }
         }
-
         private static SoundList FindSoundListByName(SoundDataScriptable soundData, string audioListName)
         {
             foreach (var soundList in soundData.sounds)
