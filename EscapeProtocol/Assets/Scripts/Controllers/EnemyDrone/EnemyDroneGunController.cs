@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Data.UnityObjects;
+using Managers;
 using UnityEngine;
 
 namespace Controllers.EnemyDrone
@@ -10,7 +12,8 @@ namespace Controllers.EnemyDrone
         [SerializeField] private List<Transform> firePoints;
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float fireRate;
-
+        
+        [SerializeField] private SoundDataScriptable soundData;
         private float _timer;
         
         private Queue<GameObject> _bullets;
@@ -34,19 +37,13 @@ namespace Controllers.EnemyDrone
             {
                 if (_bullets.Count > 0)
                 {
-                    /*GameObject bullet = _bullets.Dequeue();
-                    bullet.SetActive(true);
-                    bullet.transform.position = firePoints[0].position;
-                    bullet.transform.rotation = firePoints[0].rotation;
-                    bullet.GetComponent<Rigidbody>().velocity = firePoints.transform.forward * -50;
-                    ReturnToPool(bullet).Forget();*/
-
                     foreach (var firePoint in firePoints)
                     {
                         GameObject bullet = _bullets.Dequeue();
                         bullet.SetActive(true);
                         bullet.transform.position = firePoint.position;
                         bullet.transform.rotation = firePoint.rotation;
+                        SoundManager.PLaySound(soundData,"LaserGun");
                         bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.up * 50;
                         ReturnToPool(bullet).Forget();
                     }

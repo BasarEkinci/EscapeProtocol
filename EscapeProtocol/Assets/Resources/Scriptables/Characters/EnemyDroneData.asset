@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemyDroneData
   m_EditorClassIdentifier: 
   HealthData:
-    Health: 0
+    Health: 85
   MovementData:
-    Speed: 0
+    Speed: 2

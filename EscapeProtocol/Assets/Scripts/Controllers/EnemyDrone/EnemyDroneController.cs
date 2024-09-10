@@ -22,6 +22,7 @@ namespace Controllers.EnemyDrone
         
         [Header("Data")]
         [SerializeField] private EnemyDataScriptable enemyData;
+        [SerializeField] private SoundDataScriptable soundData;
         
         private float _direction;
         private bool _isPlayerDetected;
