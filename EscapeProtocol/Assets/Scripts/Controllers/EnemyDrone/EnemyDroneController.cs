@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using Data.UnityObjects;
+using DG.Tweening;
 using Movements;
 using Objects;
 using UnityEngine;
@@ -14,13 +15,22 @@ namespace Controllers.EnemyDrone
         
         [Header("Script References")]
         [SerializeField] private EnemyRotator enemyRotator;
+        [SerializeField] private EnemyDroneGunController gunController;
         
         [Header("Movement Settings")]
         [SerializeField] private Ease easeType;
-        [SerializeField] private float moveSpeed;
+        
+        [Header("Data")]
+        [SerializeField] private EnemyDataScriptable enemyData;
         
         private float _direction;
         private bool _isPlayerDetected;
+        private float _moveSpeed;
+
+        private void Awake()
+        {
+            _moveSpeed = 2f;
+        }
 
         private void OnEnable()
         {
@@ -32,17 +42,18 @@ namespace Controllers.EnemyDrone
         {
             Reverse();
             HandlePlayerDetectedPhase();
-            if (_isPlayerDetected) return;
+            if (_isPlayerDetected)
+            {
+                gunController.Fire();
+                return;
+            }
             HandleMovement();
         }
-
-        private void FixedUpdate()
-        {
-        }
+        
 
         private void HandleMovement()
         {
-            Vector3 moveVector = new Vector3(moveSpeed, 0, 0);
+            Vector3 moveVector = new Vector3(_moveSpeed, 0, 0);
             transform.position += moveVector * Time.deltaTime;
         }
 
@@ -50,8 +61,8 @@ namespace Controllers.EnemyDrone
         {
             if (objectDetector.IsLayerDetected())
             {
-                moveSpeed = -moveSpeed;
-                enemyRotator.SetRotationToMoveDirection(moveSpeed);
+                _moveSpeed = -_moveSpeed;
+                enemyRotator.SetRotationToMoveDirection(_moveSpeed);
             }
         }
         
@@ -66,7 +77,7 @@ namespace Controllers.EnemyDrone
             else
             {
                 _isPlayerDetected = false;
-                enemyRotator.SetRotationToMoveDirection(moveSpeed);
+                enemyRotator.SetRotationToMoveDirection(_moveSpeed);
             }
         }
     }

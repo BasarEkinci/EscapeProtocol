@@ -15591,7 +15591,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  detectionRadius: 0.1
+  detectionRadius: 0.15
 --- !u!1 &3468451396068264693
 GameObject:
   m_ObjectHideFlags: 0
@@ -35730,10 +35730,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2972294
-  m_Height: 2
+  m_Radius: 0.17957042
+  m_Height: 1.8960222
   m_Direction: 1
-  m_Center: {x: -4.7349036e-17, y: 1, z: 0.0279181}
+  m_Center: {x: 1.3526296e-17, y: 0.9480111, z: 0.008764327}
 --- !u!114 &312147477067224692
 MonoBehaviour:
   m_ObjectHideFlags: 0

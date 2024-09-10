@@ -4991,7 +4991,7 @@ GameObject:
   - component: {fileID: 4673256733696620895}
   - component: {fileID: 4968195967213034397}
   m_Layer: 6
-  m_Name: EnemyBullet
+  m_Name: DroneBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5049,6 +5049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 3367264073099164076, guid: af6c3aeea40342041aafb02867642369,
     type: 3}
+  damage: 5
 --- !u!54 &4968195967213034397
 Rigidbody:
   m_ObjectHideFlags: 0

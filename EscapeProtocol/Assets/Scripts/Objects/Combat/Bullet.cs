@@ -6,6 +6,7 @@ namespace Objects.Combat
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private GameObject hitEffect;
+        [SerializeField] private int damage = 10;
 
         private void OnCollisionEnter(Collision other)
         {
@@ -14,7 +15,7 @@ namespace Objects.Combat
             IDamageable enemy = other.collider.GetComponent<IDamageable>();
             if(enemy != null)
             {
-                enemy.TakeDamage(10);
+                enemy.TakeDamage(damage);
                 gameObject.SetActive(false);
             }
         }
