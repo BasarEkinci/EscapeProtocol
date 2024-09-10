@@ -59,27 +59,27 @@ namespace Objects
                 }
             }
         }
+        
         /// <summary>
-        /// 
+        /// performs the necessary calculations to launch the bomb parabolically
         /// </summary>
         private void ThrowGrenade()
         {
             if (_currentGrenadeCount == 0) return;
             _grenadeSpawnPoint = grenadeSpawnPoints[Random.Range(0,1)];
             _targetPosition = MouseToWorldPosition.Instance.GetCursorWorldPoint();
-            Vector3 throwAngle = CalculateGrenadeThrowDirection(_grenadeSpawnPoint.position, _targetPosition);
+            Vector3 throwDirection = CalculateGrenadeThrowDirection(_grenadeSpawnPoint.position, _targetPosition);
             GameObject grenade = Instantiate(grenadePrefab, _grenadeSpawnPoint.position, Quaternion.identity);
-            grenade.GetComponent<Rigidbody>().AddForce(throwAngle * throwForce, ForceMode.VelocityChange);
+            grenade.GetComponent<Rigidbody>().AddForce(throwDirection, ForceMode.Impulse);
             _currentGrenadeCount--;
             grenadeAmountText.text = _currentGrenadeCount.ToString();
         }
         
         private Vector3 CalculateGrenadeThrowDirection(Vector3 grenadeSpawnPoint, Vector3 targetPosition)
         {
-            float horizontalDistance = targetPosition.x - grenadeSpawnPoint.x;
-            float verticalDistance = targetPosition.y - grenadeSpawnPoint.y;
-            Vector3 throwAngle = new Vector3(horizontalDistance, verticalDistance, 0);
-            return throwAngle;
+            float xDirection = targetPosition.x - grenadeSpawnPoint.x;
+            Vector3 throwDirection = new Vector3(xDirection, throwForce, 0);
+            return throwDirection;
         }
         
         private void PlayParticles()
