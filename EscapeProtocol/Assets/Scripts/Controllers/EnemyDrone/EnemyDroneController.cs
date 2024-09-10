@@ -1,5 +1,6 @@
 ﻿using Data.UnityObjects;
 using DG.Tweening;
+using Managers;
 using Movements;
 using Objects;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Controllers.EnemyDrone
         [SerializeField] private ObjectDetector objectDetector;
         [SerializeField] private EnemyArea enemyArea;
         
-        [Header("Script References")]
+        [Header("Object References")]
         [SerializeField] private EnemyRotator enemyRotator;
         [SerializeField] private EnemyDroneGunController gunController;
         
@@ -27,10 +28,12 @@ namespace Controllers.EnemyDrone
         private float _direction;
         private bool _isPlayerDetected;
         private float _moveSpeed;
+        private AudioSource _audioSource;
 
         private void Awake()
         {
             _moveSpeed = 2f;
+            _audioSource = GetComponent<AudioSource>();
         }
 
         private void OnEnable()
@@ -45,6 +48,7 @@ namespace Controllers.EnemyDrone
             HandlePlayerDetectedPhase();
             if (_isPlayerDetected)
             {
+                SoundManager.PLaySound(soundData,"PlayerDetected",_audioSource);
                 gunController.Fire();
                 return;
             }
@@ -73,10 +77,12 @@ namespace Controllers.EnemyDrone
             {
                 enemyRotator.SetRotationToTarget(transform.position, enemyArea.Target.transform.position);
                 enemyRotator.GetAim(enemyArea.Target.transform.position);
+                _audioSource.Stop();
                 _isPlayerDetected = true;
             }
             else
             {
+                SoundManager.PLaySound(soundData,"Hover",_audioSource);
                 _isPlayerDetected = false;
                 enemyRotator.SetRotationToMoveDirection(_moveSpeed);
             }
