@@ -1,6 +1,7 @@
 using Data.UnityObjects;
 using DG.Tweening;
 using Inputs;
+using Managers;
 using UnityEngine;
 
 namespace Objects.Interactable.Elevator
@@ -10,10 +11,11 @@ namespace Objects.Interactable.Elevator
         #region Serialized Fields
         [SerializeField] private Transform floor1;
         [SerializeField] private Transform floor2;
+        [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private float duration;
         #endregion
-        
         public bool IsMoving => _isMoving;
+        
 
         #region Private Variables
         private int _currentFloor;
@@ -22,10 +24,12 @@ namespace Objects.Interactable.Elevator
         private string _playerTag = "Player";
         #endregion
         
+        private AudioSource _audioSource;
         private InputHandler _inputHandler;
         private void Awake()
         {
             _inputHandler = new InputHandler();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         private void Start()
@@ -62,18 +66,22 @@ namespace Objects.Interactable.Elevator
                 _isMoving = true;
                 if (_currentFloor == 1)
                 {
+                    SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
                     transform.DOMove(floor2.position, duration).OnComplete(() =>
                     {
                         _currentFloor = 2;
                         _isMoving = false;
+                        _audioSource.Stop();
                     });
                 }
                 else if (_currentFloor == 2)
                 {
+                    SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
                     transform.DOMove(floor1.position, duration).OnComplete(() =>
                     {
                         _currentFloor = 1;
                         _isMoving = false;
+                        _audioSource.Stop();
                     });
                 }
             }

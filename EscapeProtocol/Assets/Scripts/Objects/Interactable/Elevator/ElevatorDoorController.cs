@@ -35,7 +35,6 @@ namespace Objects.Interactable.Elevator
             if (_elevatorMovementController.IsMoving)
             {
                 _canOpen = false;
-                SoundManager.PLaySound(soundData, "ElevatorMovement");
             }
             else
             {
