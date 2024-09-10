@@ -9,10 +9,14 @@ namespace Objects.Interactable.Elevator
     public class ElevatorMovementController : MonoBehaviour
     {
         #region Serialized Fields
+        [Header("Movement Settings")]
         [SerializeField] private Transform floor1;
         [SerializeField] private Transform floor2;
-        [SerializeField] private SoundDataScriptable soundData;
+        [SerializeField] private Ease easeType;
         [SerializeField] private float duration;
+        
+        [Header("Data")]
+        [SerializeField] private SoundDataScriptable soundData;
         #endregion
         public bool IsMoving => _isMoving;
         
@@ -67,7 +71,7 @@ namespace Objects.Interactable.Elevator
                 if (_currentFloor == 1)
                 {
                     SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
-                    transform.DOMove(floor2.position, duration).OnComplete(() =>
+                    transform.DOMove(floor2.position, duration).SetEase(easeType).OnComplete(() =>
                     {
                         _currentFloor = 2;
                         _isMoving = false;
@@ -77,7 +81,7 @@ namespace Objects.Interactable.Elevator
                 else if (_currentFloor == 2)
                 {
                     SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
-                    transform.DOMove(floor1.position, duration).OnComplete(() =>
+                    transform.DOMove(floor1.position, duration).SetEase(easeType).OnComplete(() =>
                     {
                         _currentFloor = 1;
                         _isMoving = false;
