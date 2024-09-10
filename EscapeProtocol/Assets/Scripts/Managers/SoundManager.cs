@@ -1,4 +1,3 @@
-using System;
 using Data.UnityObjects;
 using Data.ValueObjects;
 using UnityEngine;
@@ -8,13 +7,13 @@ namespace Managers
     [RequireComponent(typeof(AudioSource))]
     public class SoundManager : MonoBehaviour
     {
-        private static SoundManager Instance;
+        private static SoundManager _instance;
         private AudioSource _audioSource;
         private void Awake()
         {
-            if (Instance == null)
+            if (_instance == null)
             {
-                Instance = this;
+                _instance = this;
                 _audioSource = GetComponent<AudioSource>();
 //                DontDestroyOnLoad(gameObject);
             }
@@ -29,7 +28,7 @@ namespace Managers
         {
             SoundList soundList = FindSoundListByName(soundData, soundName);
             AudioClip[] clips = soundList.Sounds;
-            AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
+            AudioClip randomClip = clips[Random.Range(0, clips.Length)];
 
             if (source)
             {
@@ -39,8 +38,8 @@ namespace Managers
             }
             else
             {
-                Instance._audioSource.outputAudioMixerGroup = soundList.MixerGroup;
-                Instance._audioSource.PlayOneShot(randomClip, volume * soundList.Volume);
+                _instance._audioSource.outputAudioMixerGroup = soundList.MixerGroup;
+                _instance._audioSource.PlayOneShot(randomClip, volume * soundList.Volume);
             }
         }
         private static SoundList FindSoundListByName(SoundDataScriptable soundData, string audioListName)
