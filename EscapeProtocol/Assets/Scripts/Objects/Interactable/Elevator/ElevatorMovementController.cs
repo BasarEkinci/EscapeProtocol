@@ -2,6 +2,7 @@ using Data.UnityObjects;
 using DG.Tweening;
 using Inputs;
 using Managers;
+using TMPro;
 using UnityEngine;
 
 namespace Objects.Interactable.Elevator
@@ -17,6 +18,8 @@ namespace Objects.Interactable.Elevator
         
         [Header("Data")]
         [SerializeField] private SoundDataScriptable soundData;
+        
+        [SerializeField] private TMP_Text elevatorText;
         #endregion
         public bool IsMoving => _isMoving;
         
@@ -38,7 +41,8 @@ namespace Objects.Interactable.Elevator
 
         private void Start()
         {
-          _currentFloor = 1;   
+          _currentFloor = 1;
+          elevatorText.text = _currentFloor.ToString();
         }
         private void OnTriggerStay(Collider other)
         {
@@ -70,20 +74,24 @@ namespace Objects.Interactable.Elevator
                 _isMoving = true;
                 if (_currentFloor == 1)
                 {
+                    elevatorText.text = "\\/";
                     SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
                     transform.DOMove(floor2.position, duration).SetEase(easeType).OnComplete(() =>
                     {
                         _currentFloor = 2;
+                        elevatorText.text = _currentFloor.ToString();
                         _isMoving = false;
                         _audioSource.Stop();
                     });
                 }
                 else if (_currentFloor == 2)
                 {
+                    elevatorText.text = "/\\";
                     SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
                     transform.DOMove(floor1.position, duration).SetEase(easeType).OnComplete(() =>
                     {
                         _currentFloor = 1;
+                        elevatorText.text = _currentFloor.ToString();
                         _isMoving = false;
                         _audioSource.Stop();
                     });

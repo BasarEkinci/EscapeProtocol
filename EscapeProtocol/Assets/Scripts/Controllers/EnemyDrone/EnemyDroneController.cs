@@ -82,7 +82,6 @@ namespace Controllers.EnemyDrone
             }
             else
             {
-                SoundManager.PLaySound(soundData,"Hover",_audioSource);
                 _isPlayerDetected = false;
                 enemyRotator.SetRotationToMoveDirection(_moveSpeed);
             }
