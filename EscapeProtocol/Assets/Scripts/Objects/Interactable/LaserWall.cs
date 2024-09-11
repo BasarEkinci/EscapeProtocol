@@ -21,21 +21,27 @@ namespace Objects.Interactable
         private void OnCollisionEnter(Collision other)
         {
             IDamageable player = other.gameObject.GetComponent<IDamageable>();
-            player?.TakeDamage(30);
-            CinemachineShake.Instance.ShakeCamera(4,0.1f);
-            HitEvents(other.GetContact(0).point);
+            if (player != null)
+            {
+                player.TakeDamage(30);
+                CinemachineShake.Instance.ShakeCamera(4,0.1f);
+                HitEvents(other.GetContact(0).point);   
+            }
         }
 
 
         private void OnCollisionStay(Collision other)
         {
             IDamageable player = other.gameObject.GetComponent<IDamageable>();
-            if (Time.time > _nextDamageTime)
+            if (player != null)
             {
-                CinemachineShake.Instance.ShakeCamera(5,0.1f);
-                player?.TakeDamage(30);
-                HitEvents(other.GetContact(0).point);
-                _nextDamageTime = Time.time + _damageInterval;
+                if (Time.time > _nextDamageTime)
+                {
+                    CinemachineShake.Instance.ShakeCamera(5,0.1f);
+                    player?.TakeDamage(30);
+                    HitEvents(other.GetContact(0).point);
+                    _nextDamageTime = Time.time + _damageInterval;
+                }    
             }
         }
 

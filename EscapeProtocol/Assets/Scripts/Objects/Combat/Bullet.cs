@@ -1,5 +1,4 @@
 using Combat;
-using Controllers.Player;
 using UnityEngine;
 
 namespace Objects.Combat
@@ -10,17 +9,15 @@ namespace Objects.Combat
         [SerializeField] private int damage = 10;
 
         private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject.TryGetComponent(out Collider coll))
-            {
-                Instantiate(hitEffect, transform.position, Quaternion.identity);
-                IDamageable enemy = other.collider.GetComponent<IDamageable>();
-                if(enemy != null)
-                {
-                    enemy.TakeDamage(damage);
-                    gameObject.SetActive(false);
-                }    
-            }
+        { 
+            Vector3 hitPoint = other.GetContact(0).point;
+            Instantiate(hitEffect, hitPoint, Quaternion.identity); 
+            var enemy = other.collider.GetComponent<IDamageable>(); 
+            if(enemy != null) 
+            { 
+                enemy.TakeDamage(damage); 
+                gameObject.SetActive(false);
+            }    
         }
     }
 }
