@@ -20,13 +20,6 @@ namespace Objects.Interactable
         
         [Header("Settings")]
         [SerializeField] private int damage;
-        
-        private AudioSource _audioSource;
-
-        private void Awake()
-        {
-            _audioSource = GetComponent<AudioSource>();
-        }
 
         private void OnEnable()
         {
@@ -36,9 +29,9 @@ namespace Objects.Interactable
         private void OnTriggerEnter(Collider other)
         {
             IDamageable player = GetDamageable(other);
-            mineLight.color = Color.Lerp(activeMaterial.color, inactiveMaterial.color, 0.5f);
             if(player != null)
             {
+                mineLight.color = Color.Lerp(activeMaterial.color, inactiveMaterial.color, 0.5f);
                 SoundManager.PLaySound(soundData,"MineActivate");
             }
         }
@@ -46,10 +39,13 @@ namespace Objects.Interactable
         private void OnTriggerExit(Collider other)
         {
             IDamageable player = GetDamageable(other);
-            player?.TakeDamage(damage);
-            CinemachineShake.Instance.ShakeCamera(2,0.2f);
-            Instantiate(explosionParticle, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+                CinemachineShake.Instance.ShakeCamera(2,0.2f);
+                Instantiate(explosionParticle, transform.position, Quaternion.identity);
+                Destroy(gameObject);   
+            }
         }
         
         private IDamageable GetDamageable(Collider other)
