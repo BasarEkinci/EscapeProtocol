@@ -1,6 +1,7 @@
-﻿using Data.UnityObjects;
+﻿using AnimationStateMachine;
+using AnimationStateMachine.Drone;
+using Data.UnityObjects;
 using DG.Tweening;
-using Managers;
 using Movements;
 using Objects;
 using UnityEngine;
@@ -25,6 +26,11 @@ namespace Controllers.EnemyDrone
         [SerializeField] private EnemyDataScriptable enemyData;
         [SerializeField] private SoundDataScriptable soundData;
         
+        public bool IsPlayerDetected => _isPlayerDetected;
+        public AudioSource AudioSource => _audioSource;
+        
+        
+        private IState<EnemyDroneController> _currentState;
         private float _direction;
         private bool _isPlayerDetected;
         private float _moveSpeed;
@@ -38,31 +44,22 @@ namespace Controllers.EnemyDrone
 
         private void OnEnable()
         {
-            transform.DOMoveY(transform.position.y + 0.2f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(easeType);
+            _currentState = new DronePatrolState();
         }
         
 
         private void Update()
         {
-            Reverse();
-            HandlePlayerDetectedPhase();
-            if (_isPlayerDetected)
-            {
-                SoundManager.PLaySound(soundData,"PlayerDetected",_audioSource);
-                gunController.Fire();
-                return;
-            }
-            HandleMovement();
+            _currentState.UpdateState(this);
         }
         
-
-        private void HandleMovement()
+        internal void HandleMovement()
         {
             Vector3 moveVector = new Vector3(_moveSpeed, 0, 0);
             transform.position += moveVector * Time.deltaTime;
         }
 
-        private void Reverse()
+        internal void Reverse()
         {
             if (objectDetector.IsLayerDetected())
             {
@@ -71,20 +68,27 @@ namespace Controllers.EnemyDrone
             }
         }
         
-        private void HandlePlayerDetectedPhase()
+        internal void HandlePlayerDetectedPhase()
         {
             if (enemyArea.IsPlayerInArea && enemyArea.Target.activeSelf)
             {
                 enemyRotator.SetRotationToTarget(transform.position, enemyArea.Target.transform.position);
                 enemyRotator.GetAim(enemyArea.Target.transform.position);
-                _audioSource.Stop();
                 _isPlayerDetected = true;
+                gunController.Fire();
             }
             else
             {
                 _isPlayerDetected = false;
                 enemyRotator.SetRotationToMoveDirection(_moveSpeed);
             }
+        }
+
+        internal void ChangeState(IState<EnemyDroneController> state)
+        {
+            _currentState.ExitState(this);
+            _currentState = state;
+            _currentState.EnterState(this);
         }
     }
 }
