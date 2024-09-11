@@ -9,6 +9,8 @@ namespace Controllers.Enemy
     public class EnemyHealthController : MonoBehaviour, IDamageable
     {
         [SerializeField] private GameObject explosionParticle;
+        [SerializeField] private GameObject enemyArea;
+        [SerializeField] private GameObject thisGameObject;
         [SerializeField] private EnemyDataScriptable enemyData;
         [SerializeField] private Material material;
         [SerializeField] private Transform bodyTransform;
@@ -45,7 +47,8 @@ namespace Controllers.Enemy
         {
             CinemachineShake.Instance.ShakeCamera(3,0.22f);
             Instantiate(explosionParticle,bodyTransform.position, Quaternion.identity);
-            gameObject.SetActive(false);
+            Destroy(enemyArea);
+            Destroy(thisGameObject);
         }
     }
 }

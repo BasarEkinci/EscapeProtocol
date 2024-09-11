@@ -1,4 +1,5 @@
-﻿using Controllers.Player;
+﻿using System.Collections;
+using Controllers.Player;
 using Data.UnityObjects;
 using DG.Tweening;
 using Managers;
@@ -10,9 +11,14 @@ namespace Objects.Interactable
     {
         [SerializeField] private int healthAmount = 15;
         [SerializeField] private SoundDataScriptable soundData;
+        
+        private Tween _tween;
         private void OnEnable()
         {
-            transform.DORotate(Vector3.up * 90,0.5f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+            if (transform != null)
+            {
+                transform.DORotate(Vector3.up * 90,0.5f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -23,6 +29,15 @@ namespace Objects.Interactable
                 SoundManager.PLaySound(soundData,"Medkit");
                 player.IncreaseHealth(healthAmount);
                 Destroy(gameObject,0.1f);
+            }
+        }
+        
+        IEnumerator NullCheck()
+        {
+            yield return new WaitForSeconds(0.1f);
+            if (transform != null)
+            {
+                transform.DORotate(Vector3.up * 90,0.5f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
             }
         }
     }

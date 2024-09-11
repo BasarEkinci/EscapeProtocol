@@ -1,9 +1,11 @@
-﻿using AnimationStateMachine;
+﻿using System;
+using AnimationStateMachine;
 using AnimationStateMachine.Drone;
 using Data.UnityObjects;
 using DG.Tweening;
 using Movements;
 using Objects;
+using Signals;
 using UnityEngine;
 using Utilities;
 
@@ -34,6 +36,7 @@ namespace Controllers.EnemyDrone
         private float _direction;
         private bool _isPlayerDetected;
         private float _moveSpeed;
+        private bool _isPlayerKilled;
         private AudioSource _audioSource;
 
         private void Awake()
@@ -44,9 +47,15 @@ namespace Controllers.EnemyDrone
 
         private void OnEnable()
         {
+            PlayerSignals.Instance.OnPlayerDeath += OnPlayerDeath;
             _currentState = new DronePatrolState();
         }
-        
+
+        private void OnPlayerDeath()
+        {
+            
+        }
+
 
         private void Update()
         {
@@ -70,7 +79,7 @@ namespace Controllers.EnemyDrone
         
         internal void HandlePlayerDetectedPhase()
         {
-            if (enemyArea.IsPlayerInArea && enemyArea.Target.activeSelf)
+            if (enemyArea.IsPlayerInArea && enemyArea.Target)
             {
                 enemyRotator.SetRotationToTarget(transform.position, enemyArea.Target.transform.position);
                 enemyRotator.GetAim(enemyArea.Target.transform.position);

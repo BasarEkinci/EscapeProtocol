@@ -1,7 +1,9 @@
+using System;
 using Combat;
 using Data.UnityObjects;
 using DG.Tweening;
 using Objects;
+using Signals;
 using UnityEngine;
 
 namespace Controllers.Player
@@ -39,6 +41,11 @@ namespace Controllers.Player
             _healColor = Color.green;
         }
 
+        private void OnEnable()
+        {
+            material.color = Color.white;
+        }
+
         public void TakeDamage(int damage)
         {
             _currentHealth -= damage;
@@ -58,9 +65,10 @@ namespace Controllers.Player
         }
         private void Death()
         {
+            PlayerSignals.Instance.OnPlayerDeath?.Invoke();
             CinemachineShake.Instance.ShakeCamera(3,0.22f);
             Instantiate(explosionParticle,transform.position, Quaternion.identity);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
