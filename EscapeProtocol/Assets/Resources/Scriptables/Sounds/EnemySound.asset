@@ -23,3 +23,8 @@ MonoBehaviour:
     MixerGroup: {fileID: 0}
     Sounds:
     - {fileID: 8300000, guid: 16c1b7e02047a23408f0e2b53b595fad, type: 3}
+  - Name: Explosion
+    Volume: 0.2
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: 92a5f1412d51e9648a30b93852ced3ca, type: 3}
