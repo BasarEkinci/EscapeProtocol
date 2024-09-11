@@ -11,6 +11,7 @@ namespace Objects.Interactable.Elevator
         #region Referances
         private ElevatorMovementController _elevatorMovementController;
         private Animator _animator;
+        private AudioSource _audioSource;
         #endregion
         
         #region Private Variables
@@ -26,6 +27,7 @@ namespace Objects.Interactable.Elevator
         
         private void Awake()
         {
+            _audioSource = GetComponentInParent<AudioSource>();
             _elevatorMovementController = GetComponentInParent<ElevatorMovementController>();
             _animator = GetComponent<Animator>();
         }
@@ -50,7 +52,7 @@ namespace Objects.Interactable.Elevator
             if (other.CompareTag(_playerTag) && _canOpen)
             {
                 _isPlayerNearby = true;
-                SoundManager.PLaySound(soundData,"ElevatorDoorOpen");
+                SoundManager.PLaySound(soundData,"ElevatorDoorOpen",_audioSource);
             }
         }
 
@@ -59,7 +61,7 @@ namespace Objects.Interactable.Elevator
             if (other.CompareTag(_playerTag) && _canOpen)
             {
                 _isPlayerNearby = false;
-                SoundManager.PLaySound(soundData,"ElevatorDoorClose");
+                SoundManager.PLaySound(soundData,"ElevatorDoorClose",_audioSource);
             }
         }
         

@@ -57,7 +57,7 @@ namespace Objects.Interactable
                 {
                     upperDoor.transform.DOMove(upperDoorEndPoint.position, duration).SetEase(easeType);
                     lowerDoor.transform.DOMove(lowerDoorEndPoint.position, duration).SetEase(easeType);
-                    SoundManager.PLaySound(soundData,"Door",_audioSource,1);
+                    SoundManager.PLaySound(soundData,"Door",_audioSource);
                 }    
             }
             else
@@ -66,7 +66,7 @@ namespace Objects.Interactable
                 {
                     upperDoor.transform.DOMove(upperDoorEndPoint.position, duration).SetEase(easeType);
                     lowerDoor.transform.DOMove(lowerDoorEndPoint.position, duration).SetEase(easeType);
-                    SoundManager.PLaySound(soundData,"Door",_audioSource,1);
+                    SoundManager.PLaySound(soundData,"Door",_audioSource);
                 }  
             }
         }

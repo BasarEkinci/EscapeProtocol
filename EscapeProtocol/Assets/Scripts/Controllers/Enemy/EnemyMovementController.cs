@@ -16,6 +16,7 @@ namespace Controllers.Enemy
 
         public bool IsPlayerDetected => _isPlayerDetected;
         public Animator Animator => _animator;
+        public AudioSource AudioSource => _audioSource;
         
         #endregion
 
@@ -44,11 +45,13 @@ namespace Controllers.Enemy
         private Animator _animator;
         private Rigidbody _rb;
         private IState<EnemyMovementController> _currentState;
+        private AudioSource _audioSource;
         
         #endregion
         
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
             _animator = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();
         }

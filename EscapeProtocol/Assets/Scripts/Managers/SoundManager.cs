@@ -23,7 +23,13 @@ namespace Managers
             }
         }
 
-
+        /// <summary>
+        /// Plays a sound from the soundData scriptable object
+        /// </summary>
+        /// <param name="soundData"> Scriptable object for a sound</param>
+        /// <param name="soundName"> The given name on sound in scriptable object that include</param>
+        /// <param name="source"> Audio source in the gameobject. It can be null</param>
+        /// <param name="volume"> Volume parameter for sound (For gameobjects that do not have audiosource, default value is "1")</param>
         public static void PLaySound(SoundDataScriptable soundData, string soundName, AudioSource source = null, float volume = 1)
         {
             SoundList soundList = FindSoundListByName(soundData, soundName);

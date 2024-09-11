@@ -11,6 +11,13 @@ namespace Objects.Interactable
         [SerializeField] private GameObject hitParticle;
         private float _nextDamageTime = 0;
         private float _damageInterval = 1.5f;
+        private AudioSource _audioSource;
+
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
+
         private void OnCollisionEnter(Collision other)
         {
             IDamageable player = other.gameObject.GetComponent<IDamageable>();
@@ -34,7 +41,7 @@ namespace Objects.Interactable
 
         private void HitEvents(Vector3 position)
         {
-            SoundManager.PLaySound(soundData, "LaserWallHit");
+            SoundManager.PLaySound(soundData, "LaserWallHit",_audioSource);
             Instantiate(hitParticle,position + Vector3.up,transform.rotation);
         }
     }

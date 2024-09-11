@@ -15,10 +15,12 @@ namespace Controllers.EnemyDrone
         
         [SerializeField] private SoundDataScriptable soundData;
         private float _timer;
+        private AudioSource _audioSource;
         
         private Queue<GameObject> _bullets;
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
             _bullets = new Queue<GameObject>();
 
             for (int i = 0; i < 20; i++)
@@ -43,7 +45,7 @@ namespace Controllers.EnemyDrone
                         bullet.SetActive(true);
                         bullet.transform.position = firePoint.position;
                         bullet.transform.rotation = firePoint.rotation;
-                        SoundManager.PLaySound(soundData,"LaserGun");
+                        SoundManager.PLaySound(soundData,"LaserGun",_audioSource);
                         bullet.GetComponent<Rigidbody>().velocity = firePoint.transform.up * 50;
                         ReturnToPool(bullet).Forget();
                     }

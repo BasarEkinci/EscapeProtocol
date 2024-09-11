@@ -14,6 +14,7 @@ namespace Objects
         
         private float _countdown;
         private bool _hasExploded = false;
+        private AudioSource _audioSource;
         private void OnEnable()
         {
             _countdown = delay;
@@ -46,7 +47,7 @@ namespace Objects
                     damageable.TakeDamage(20);
                 }
             }
-            SoundManager.PLaySound(soundData,"Grenade");
+            SoundManager.PLaySound(soundData,"Grenade",_audioSource);
             CinemachineShake.Instance.ShakeCamera(1,0.2f);
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
         }

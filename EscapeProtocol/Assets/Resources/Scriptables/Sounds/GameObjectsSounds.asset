@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: GameObjectsSounds
   m_EditorClassIdentifier: 
   sounds:
-  - Name: Explosion
-    Volume: 1
-    MixerGroup: {fileID: 0}
-    Sounds:
-    - {fileID: 8300000, guid: 92a5f1412d51e9648a30b93852ced3ca, type: 3}
   - Name: Door
     Volume: 1
     MixerGroup: {fileID: 0}
@@ -58,3 +53,8 @@ MonoBehaviour:
     MixerGroup: {fileID: 0}
     Sounds:
     - {fileID: 8300000, guid: 8d5588a5e2f8f604bae300df0bf8703c, type: 3}
+  - Name: Explosion
+    Volume: 1
+    MixerGroup: {fileID: 0}
+    Sounds:
+    - {fileID: 8300000, guid: 92a5f1412d51e9648a30b93852ced3ca, type: 3}

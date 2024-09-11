@@ -20,6 +20,13 @@ namespace Objects.Interactable
         
         [Header("Settings")]
         [SerializeField] private int damage;
+        
+        private AudioSource _audioSource;
+
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
 
         private void OnEnable()
         {
@@ -40,10 +47,9 @@ namespace Objects.Interactable
         {
             IDamageable player = GetDamageable(other);
             player?.TakeDamage(damage);
-            SoundManager.PLaySound(soundData,"Explosion");
             CinemachineShake.Instance.ShakeCamera(2,0.2f);
             Instantiate(explosionParticle, transform.position, Quaternion.identity);
-            Destroy(gameObject,0.1f);
+            Destroy(gameObject);
         }
         
         private IDamageable GetDamageable(Collider other)

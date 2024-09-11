@@ -29,11 +29,13 @@ namespace Objects
         [SerializeField] private SoundDataScriptable soundData;
         
         private InputHandler _inputHandler;
+        private AudioSource _audioSource;
         private Transform _grenadeSpawnPoint;
         private Vector3 _targetPosition;
         private int _currentGrenadeCount;
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
             _inputHandler = new InputHandler();
         }
 
@@ -49,13 +51,13 @@ namespace Objects
             {
                 if (_currentGrenadeCount != 0)
                 {
-                    SoundManager.PLaySound(soundData,"ThrowGrenade");
+                    SoundManager.PLaySound(soundData,"ThrowGrenade",_audioSource);
                     PlayParticles();
                     ThrowGrenade();   
                 }
                 else
                 {
-                    SoundManager.PLaySound(soundData,"Empty");
+                    SoundManager.PLaySound(soundData,"Empty",_audioSource);
                 }
             }
         }

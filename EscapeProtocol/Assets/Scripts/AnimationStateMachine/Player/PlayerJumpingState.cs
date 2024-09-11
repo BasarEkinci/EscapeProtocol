@@ -1,4 +1,5 @@
 ﻿using Controllers.Player;
+using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using Managers;
 using UnityEngine;
@@ -9,10 +10,10 @@ namespace AnimationStateMachine.Player
     {
         private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
         private readonly SoundDataScriptable _soundData = Resources.Load<SoundDataScriptable>("Scriptables/Sounds/PlayerSoundData");
-
+        
         public void EnterState(PlayerMovementController player)
         {
-            SoundManager.PLaySound(_soundData,"Jump");
+            SoundManager.PLaySound(_soundData,"Jump",player.AudioSource);
         }
 
         public void UpdateState(PlayerMovementController player)
@@ -38,7 +39,7 @@ namespace AnimationStateMachine.Player
 
         public void ExitState(PlayerMovementController player)
         {
-            SoundManager.PLaySound(_soundData,"Land");
+            SoundManager.PLaySound(_soundData,"Land",player.AudioSource);
         }
     }
 }

@@ -1,9 +1,6 @@
-﻿using System;
-using Combat;
-using Cysharp.Threading.Tasks;
+﻿using Combat;
 using Data.UnityObjects;
 using DG.Tweening;
-using Managers;
 using Objects;
 using UnityEngine;
 
@@ -11,10 +8,10 @@ namespace Controllers.Enemy
 {
     public class EnemyHealthController : MonoBehaviour, IDamageable
     {
-        [SerializeField] private ParticleSystem explosionParticle;
-        [SerializeField] private SoundDataScriptable soundData;
+        [SerializeField] private GameObject explosionParticle;
         [SerializeField] private EnemyDataScriptable enemyData;
         [SerializeField] private Material material;
+        [SerializeField] private Transform bodyTransform;
         public int Health => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
         
@@ -41,15 +38,13 @@ namespace Controllers.Enemy
             _currentHealth = Mathf.Max(_currentHealth, 0);
             if (_currentHealth <= 0)
             {
-                Death().Forget();
+                Death();
             }
         }
-        private async UniTaskVoid Death()
+        private void Death()
         {
-            SoundManager.PLaySound(soundData, "Explosion");
             CinemachineShake.Instance.ShakeCamera(3,0.22f);
-            explosionParticle.Play();
-            await UniTask.Delay(TimeSpan.FromSeconds(0.5), ignoreTimeScale: false);
+            Instantiate(explosionParticle,bodyTransform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
     }

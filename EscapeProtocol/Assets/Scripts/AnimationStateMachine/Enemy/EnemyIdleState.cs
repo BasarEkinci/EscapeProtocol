@@ -13,7 +13,7 @@ namespace AnimationStateMachine.Enemy
         public void EnterState(EnemyMovementController enemy)
         {
             enemy.Animator.SetBool(IsPlayerDetected,true);
-            SoundManager.PLaySound(_soundData,"Target");
+            SoundManager.PLaySound(_soundData,"Target",enemy.AudioSource);
         }
 
         public void UpdateState(EnemyMovementController enemy)

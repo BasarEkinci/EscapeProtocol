@@ -15,6 +15,7 @@ namespace Controllers.Player
         public bool IsMovingForward => _isMovingForward;
         public bool IsGrounded => _isGrounded;
         public Animator Animator => _animator;
+        public AudioSource AudioSource => _audioSource;
 
         #endregion
         
@@ -46,6 +47,7 @@ namespace Controllers.Player
         #region UnityComponents
 
         private Rigidbody _rigidbody;
+        private AudioSource _audioSource;
 
         #endregion
 
@@ -63,6 +65,7 @@ namespace Controllers.Player
         
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
             _animator = GetComponentInChildren<Animator>();
             _rigidbody = GetComponent<Rigidbody>();
             _rotator = GetComponent<PlayerRotator>();

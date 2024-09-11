@@ -13,7 +13,6 @@ namespace Controllers.Player
     {
         #region Serialized Fields
         [SerializeField] private ParticleSystem explosionParticle;
-        [SerializeField] private SoundDataScriptable soundData;
         [SerializeField] private PlayerDataScriptable playerData;
         [SerializeField] private Material material;
         #endregion
@@ -28,6 +27,7 @@ namespace Controllers.Player
         private Color _defaultColor;
         private Color _damagedColor;
         private Color _healColor;
+        private AudioSource _audioSource;
         #endregion
         
         private void Awake()
@@ -61,7 +61,6 @@ namespace Controllers.Player
         }
         private async UniTaskVoid Death()
         {
-            SoundManager.PLaySound(soundData, "Explosion");
             CinemachineShake.Instance.ShakeCamera(3,0.22f);
             explosionParticle.Play();
             await UniTask.Delay(TimeSpan.FromSeconds(0.5), ignoreTimeScale: false);
