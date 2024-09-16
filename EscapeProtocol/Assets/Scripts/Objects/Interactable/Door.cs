@@ -53,7 +53,7 @@ namespace Objects.Interactable
         {
             if (isRequiredGuard)
             {
-                if (other.gameObject.CompareTag(_requiredTag) && !currentGuard.gameObject.activeSelf)
+                if (other.gameObject.CompareTag(_requiredTag) && currentGuard.gameObject == null)
                 {
                     upperDoor.transform.DOMove(upperDoorEndPoint.position, duration).SetEase(easeType);
                     lowerDoor.transform.DOMove(lowerDoorEndPoint.position, duration).SetEase(easeType);
@@ -75,7 +75,7 @@ namespace Objects.Interactable
         {
             if (isRequiredGuard)
             {
-                if (other.gameObject.CompareTag(_requiredTag) && !currentGuard.activeSelf)
+                if (other.gameObject.CompareTag(_requiredTag) && currentGuard.gameObject == null)
                 {
                     upperDoor.transform.DOMove(_upperDoorFirstPosition, duration).SetEase(easeType);
                     lowerDoor.transform.DOMove(_lowerDoorFirstPosition, duration).SetEase(easeType);
@@ -97,7 +97,7 @@ namespace Objects.Interactable
         {
             if (isRequiredGuard)
             {
-                if (!currentGuard.gameObject.activeSelf)
+                if (currentGuard.gameObject == null)
                 {
                     redLights.ForEach(light => light.SetActive(false));
                     greenLights.ForEach(light => light.SetActive(true));   

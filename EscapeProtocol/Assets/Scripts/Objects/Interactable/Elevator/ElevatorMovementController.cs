@@ -29,6 +29,7 @@ namespace Objects.Interactable.Elevator
         private bool _isPlayerInside;
         private bool _isMoving;
         private string _playerTag = "Player";
+        private Rigidbody _playerRb;
         #endregion
         
         private AudioSource _audioSource;
@@ -48,7 +49,8 @@ namespace Objects.Interactable.Elevator
         {
             if (other.CompareTag(_playerTag))
             {
-                other.transform.parent = transform;
+                _playerRb = other.GetComponent<Rigidbody>();
+               // other.transform.SetParent(transform);
                 _isPlayerInside = true;
             }
         }
@@ -62,8 +64,8 @@ namespace Objects.Interactable.Elevator
         {
             if (other.CompareTag(_playerTag))
             {
-                other.transform.parent = null;
                 _isPlayerInside = false;
+                //other.transform.SetParent(null);
             }
         }
         
@@ -78,10 +80,7 @@ namespace Objects.Interactable.Elevator
                     SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
                     transform.DOMove(floor2.position, duration).SetEase(easeType).OnComplete(() =>
                     {
-                        _currentFloor = 2;
-                        elevatorText.text = _currentFloor.ToString();
-                        _isMoving = false;
-                        _audioSource.Stop();
+                        ElevatorArriveActions(2);
                     });
                 }
                 else if (_currentFloor == 2)
@@ -90,13 +89,19 @@ namespace Objects.Interactable.Elevator
                     SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
                     transform.DOMove(floor1.position, duration).SetEase(easeType).OnComplete(() =>
                     {
-                        _currentFloor = 1;
-                        elevatorText.text = _currentFloor.ToString();
-                        _isMoving = false;
-                        _audioSource.Stop();
+                        ElevatorArriveActions(1);
                     });
                 }
             }
+        }
+
+        private void ElevatorArriveActions(int currentFloor)
+        {
+            _currentFloor = currentFloor;
+            elevatorText.text = _currentFloor.ToString();
+            _isMoving = false;
+            _audioSource.Stop();
+            _playerRb.isKinematic = false;
         }
     }
 }
