@@ -15,16 +15,19 @@ MonoBehaviour:
   sounds:
   - Name: PlayerDetected
     Volume: 1
-    MixerGroup: {fileID: 0}
+    MixerGroup: {fileID: 249096743365817063, guid: 4712d9b7c56b33d44898d29ff030b530,
+      type: 2}
     Sounds:
     - {fileID: 8300000, guid: 8013b20a3d6d5bb47ab0243c0c303044, type: 3}
   - Name: Hover
     Volume: 1
-    MixerGroup: {fileID: 0}
+    MixerGroup: {fileID: 249096743365817063, guid: 4712d9b7c56b33d44898d29ff030b530,
+      type: 2}
     Sounds:
     - {fileID: 8300000, guid: aff279e25c424324480cf320c55c2722, type: 3}
   - Name: Explosion
     Volume: 1
-    MixerGroup: {fileID: 0}
+    MixerGroup: {fileID: 249096743365817063, guid: 4712d9b7c56b33d44898d29ff030b530,
+      type: 2}
     Sounds:
     - {fileID: 8300000, guid: 92a5f1412d51e9648a30b93852ced3ca, type: 3}
