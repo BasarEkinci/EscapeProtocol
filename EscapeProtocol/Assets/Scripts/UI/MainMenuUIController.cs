@@ -1,5 +1,5 @@
-using System;
 using DG.Tweening;
+using Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +24,7 @@ namespace UI
 
         public void Play()
         {
+            GameManager.Instance.StartGame();
             SceneManager.LoadScene(sceneBuildIndex: 1);
         }
 

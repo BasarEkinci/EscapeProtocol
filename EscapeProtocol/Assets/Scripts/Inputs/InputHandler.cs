@@ -46,5 +46,10 @@ namespace Inputs
         {
             return _playerInputs.Player.Interact.triggered;
         }
+        
+        public bool GetPauseInput()
+        {
+            return _playerInputs.Player.StopGame.triggered;
+        }
     }
 }

@@ -6,6 +6,7 @@ using Data.UnityObjects;
 using Inputs;
 using Managers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Controllers.Player
 {
@@ -97,7 +98,7 @@ namespace Controllers.Player
 
 
         public void Fire()
-        {        
+        {       
             if (_bullets.Count > 0)
             {
                 GameObject bullet = _bullets.Dequeue();

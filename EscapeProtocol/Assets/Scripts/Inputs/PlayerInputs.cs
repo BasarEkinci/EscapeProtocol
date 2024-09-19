@@ -80,6 +80,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StopGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""17fd0939-ba84-4ecf-b6e1-baeae3fa647a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6314d1eb-61eb-4f95-b7ab-96c830d94f9f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StopGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -218,6 +238,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_PowerShoot = m_Player.FindAction("PowerShoot", throwIfNotFound: true);
         m_Player_ThrowGrenade = m_Player.FindAction("ThrowGrenade", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_StopGame = m_Player.FindAction("StopGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -285,6 +306,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PowerShoot;
     private readonly InputAction m_Player_ThrowGrenade;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_StopGame;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -295,6 +317,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @PowerShoot => m_Wrapper.m_Player_PowerShoot;
         public InputAction @ThrowGrenade => m_Wrapper.m_Player_ThrowGrenade;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @StopGame => m_Wrapper.m_Player_StopGame;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -322,6 +345,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @StopGame.started += instance.OnStopGame;
+            @StopGame.performed += instance.OnStopGame;
+            @StopGame.canceled += instance.OnStopGame;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -344,6 +370,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @StopGame.started -= instance.OnStopGame;
+            @StopGame.performed -= instance.OnStopGame;
+            @StopGame.canceled -= instance.OnStopGame;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -378,5 +407,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnPowerShoot(InputAction.CallbackContext context);
         void OnThrowGrenade(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnStopGame(InputAction.CallbackContext context);
     }
 }

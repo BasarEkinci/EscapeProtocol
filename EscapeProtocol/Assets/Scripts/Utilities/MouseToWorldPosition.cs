@@ -1,4 +1,5 @@
 ﻿using System;
+using Managers;
 using UnityEngine;
 
 namespace Utilities
@@ -25,12 +26,15 @@ namespace Utilities
         }
         internal Vector3 GetCursorWorldPoint(float zPosition = 0)
         {
-            var ray = _camera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hit, Mathf.Infinity))
-            { 
-                _lookPoint = hit.point; 
-                _lookPoint.z = zPosition;
-                
+            if (_camera != null)
+            {
+                var ray = _camera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out var hit, Mathf.Infinity))
+                {
+                    _lookPoint = hit.point;
+                    _lookPoint.z = zPosition;
+
+                }
             }
             return _lookPoint;
         }
