@@ -24,8 +24,8 @@ namespace UI
 
         public void Play()
         {
-            GameManager.Instance.StartGame();
             SceneManager.LoadScene(sceneBuildIndex: 1);
+            GameManager.Instance.StartGame();
         }
 
         public void Back()

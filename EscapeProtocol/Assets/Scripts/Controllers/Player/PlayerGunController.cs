@@ -59,6 +59,10 @@ namespace Controllers.Player
 
         private void Update()
         {
+            if (!SceneManager.GetSceneByBuildIndex(1).isLoaded || GameManager.Instance.IsGamePaused)
+            {
+                return;
+            }
             if (_inputHandler.GetAttackInput() && _canBaseShoot && !_isFiring)
             {
                 _isFiring = true;

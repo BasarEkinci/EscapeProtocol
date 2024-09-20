@@ -43,6 +43,7 @@ namespace Managers
                     PauseGame();
                 }
             }
+            Debug.Log(_currentScene);
         }
 
         public void StartGame()
