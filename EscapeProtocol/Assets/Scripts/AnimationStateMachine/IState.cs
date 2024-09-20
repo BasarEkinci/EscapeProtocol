@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace AnimationStateMachine
+﻿namespace AnimationStateMachine
 {
     public interface IState<T>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Audio
+namespace Audio.AnimationSounds
 {
     public class AnimationSoundPlayer : MonoBehaviour
     {

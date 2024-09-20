@@ -5,7 +5,6 @@ using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using Managers;
 using UnityEngine;
-using Utilities;
 
 namespace Controllers.Enemy
 {

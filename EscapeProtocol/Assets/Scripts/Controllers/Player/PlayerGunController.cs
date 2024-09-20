@@ -6,7 +6,6 @@ using Data.UnityObjects;
 using Inputs;
 using Managers;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Controllers.Player
 {

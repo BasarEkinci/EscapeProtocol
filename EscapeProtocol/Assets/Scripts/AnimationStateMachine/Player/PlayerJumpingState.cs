@@ -1,5 +1,4 @@
 ﻿using Controllers.Player;
-using Cysharp.Threading.Tasks;
 using Data.UnityObjects;
 using Managers;
 using UnityEngine;

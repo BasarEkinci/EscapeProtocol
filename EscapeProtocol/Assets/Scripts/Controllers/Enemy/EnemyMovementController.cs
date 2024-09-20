@@ -1,12 +1,10 @@
 using AnimationStateMachine;
 using AnimationStateMachine.Enemy;
-using Controllers.Player;
 using Data.UnityObjects;
 using Managers;
 using Movements;
 using Objects;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utilities;
 
 namespace Controllers.Enemy

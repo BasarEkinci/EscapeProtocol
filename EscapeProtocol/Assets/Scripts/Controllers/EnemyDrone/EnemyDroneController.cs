@@ -1,5 +1,4 @@
-﻿using System;
-using AnimationStateMachine;
+﻿using AnimationStateMachine;
 using AnimationStateMachine.Drone;
 using Data.UnityObjects;
 using DG.Tweening;
