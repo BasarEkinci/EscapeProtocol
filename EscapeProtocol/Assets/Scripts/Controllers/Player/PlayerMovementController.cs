@@ -2,6 +2,7 @@
 using AnimationStateMachine.Player;
 using Data.UnityObjects;
 using Inputs;
+using Managers;
 using Movements;
 using UnityEngine;
 using Utilities;
@@ -80,6 +81,10 @@ namespace Controllers.Player
         private void Update()
         {
             _isGrounded = detector.IsLayerDetected();
+            if (GameManager.Instance.IsGamePaused)
+            {
+                return;
+            }
             _rotator.SetRotationToTarget(transform.position,
                 MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
             _rotator.GetAim(MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));

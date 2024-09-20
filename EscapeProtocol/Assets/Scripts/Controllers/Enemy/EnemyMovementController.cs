@@ -2,6 +2,7 @@ using AnimationStateMachine;
 using AnimationStateMachine.Enemy;
 using Controllers.Player;
 using Data.UnityObjects;
+using Managers;
 using Movements;
 using Objects;
 using UnityEngine;
@@ -64,6 +65,10 @@ namespace Controllers.Enemy
         }
         private void Update()
         {
+            if (GameManager.Instance.IsGamePaused)
+            {
+                return;
+            }
             Reverse();
             HandlePlayerDetectedPhase();
             _currentState.UpdateState(this);
@@ -72,6 +77,10 @@ namespace Controllers.Enemy
         private void FixedUpdate()
         {
             if (enemyHealthController.IsDead || _isPlayerDetected) return;
+            if (GameManager.Instance.IsGamePaused)
+            {
+                return;
+            }
             Move();
         }
 

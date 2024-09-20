@@ -3,6 +3,7 @@ using AnimationStateMachine;
 using AnimationStateMachine.Drone;
 using Data.UnityObjects;
 using DG.Tweening;
+using Managers;
 using Movements;
 using Objects;
 using Signals;
@@ -59,6 +60,10 @@ namespace Controllers.EnemyDrone
 
         private void Update()
         {
+            if (GameManager.Instance.IsGamePaused)
+            {
+                return;
+            }
             _currentState.UpdateState(this);
         }
         

@@ -59,7 +59,7 @@ namespace Controllers.Player
 
         private void Update()
         {
-            if (!SceneManager.GetSceneByBuildIndex(1).isLoaded || GameManager.Instance.IsGamePaused)
+            if (GameManager.Instance.IsGamePaused)
             {
                 return;
             }
