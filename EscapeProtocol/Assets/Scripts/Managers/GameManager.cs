@@ -12,7 +12,6 @@ namespace Managers
     
     public class GameManager : MonoSingleton<GameManager>
     {
-        public GameScene CurrentScene => _currentScene;
         public bool IsGamePaused => _isGamePaused;
         
         private InputHandler _inputHandler;
@@ -43,18 +42,7 @@ namespace Managers
                     PauseGame();
                 }
             }
-            Debug.Log(_currentScene);
         }
-
-        public void StartGame()
-        {
-            _currentScene = GameScene.GameScene;
-        }
-        public void EndGame()
-        {
-            _currentScene = GameScene.MainMenuScene;
-        }
-        
         private void PauseGame()
         {
             _isGamePaused = true;

@@ -7,10 +7,11 @@ namespace Combat
     {
         [SerializeField] private Transform player;
         [SerializeField] private float zPos;
+        [SerializeField] private MouseToWorldPosition mouseToWorldPosition;
 
         private void Update()
         {
-            transform.position = MouseToWorldPosition.Instance.GetCursorWorldPoint(zPos);
+            transform.position = mouseToWorldPosition.GetCursorWorldPoint(zPos);
         }
     }
 }

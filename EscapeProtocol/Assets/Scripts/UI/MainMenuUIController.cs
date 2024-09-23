@@ -21,13 +21,6 @@ namespace UI
             _screenWidth = Screen.width;
             _screenHeight = Screen.height;
         }
-
-        public void Play()
-        {
-            SceneManager.LoadScene(sceneBuildIndex: 1);
-            GameManager.Instance.StartGame();
-        }
-
         public void Back()
         {
             panelsParent.GetComponent<RectTransform>().DOAnchorPos(Vector2.zero, duration);

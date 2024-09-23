@@ -30,7 +30,10 @@ namespace Controllers.Player
 
         [Header("PlayerData")]
         [SerializeField] private PlayerDataScriptable playerData;
-
+        
+        [Header("Aiming Settings")]
+        [SerializeField] private MouseToWorldPosition mouseToWorldPosition;
+        
         [SerializeField] private float jumpForce = 6;
 
         #endregion
@@ -86,8 +89,8 @@ namespace Controllers.Player
                 return;
             }
             _rotator.SetRotationToTarget(transform.position,
-                MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
-            _rotator.GetAim(MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z));
+                mouseToWorldPosition.GetCursorWorldPoint(transform.position.z));
+            _rotator.GetAim(mouseToWorldPosition.GetCursorWorldPoint(transform.position.z));
             _effectController.SetParticles(_isGrounded);
             if (_isGrounded && _inputHandler.GetJumpInput())
             {
@@ -99,6 +102,10 @@ namespace Controllers.Player
 
         private void FixedUpdate()
         {
+            if (GameManager.Instance.IsGamePaused)
+            {
+                return;
+            }
             _mover.Move(_inputHandler.GetMovementDirection().x);
             if (!_isGrounded && _rigidbody.velocity.y < 0)
             {
@@ -113,7 +120,7 @@ namespace Controllers.Player
         private void HandleMovementDirection()
         {
             Vector2 movementDirection = _inputHandler.GetMovementDirection();
-            float cursorWorldX = MouseToWorldPosition.Instance.GetCursorWorldPoint(transform.position.z).x;
+            float cursorWorldX = mouseToWorldPosition.GetCursorWorldPoint(transform.position.z).x;
             float playerPositionX = transform.position.x;
             float playerVelocityX = _rigidbody.velocity.x;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,7 +38,6 @@ namespace SceneManagement
         {
             mainMenuScreen.SetActive(false);
             loadingScreen.SetActive(true);
-            
             StartCoroutine(LoadSceneAsyncCoroutine(sceneName));
         }
         

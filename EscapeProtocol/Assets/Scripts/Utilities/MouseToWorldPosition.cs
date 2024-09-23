@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace Utilities
 {
-    public class MouseToWorldPosition : MonoSingleton<MouseToWorldPosition>
+    public class MouseToWorldPosition : MonoBehaviour
     {
         private Camera _camera;
         private Vector3 _lookPoint;
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             _camera = Camera.main;
         }
 

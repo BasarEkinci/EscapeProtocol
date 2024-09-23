@@ -21,6 +21,7 @@ namespace Objects
         [SerializeField] private GameObject grenadePrefab;
         [SerializeField] private List<Transform> grenadeSpawnPoints;
         [SerializeField] private float throwForce;
+        [SerializeField] private MouseToWorldPosition mouseToWorldPosition;
         
         [Header("Effects")]
         [SerializeField] private List<ParticleSystem> launchEffects;
@@ -69,7 +70,7 @@ namespace Objects
         {
             if (_currentGrenadeCount == 0) return;
             _grenadeSpawnPoint = grenadeSpawnPoints[Random.Range(0,1)];
-            _targetPosition = MouseToWorldPosition.Instance.GetCursorWorldPoint();
+            _targetPosition = mouseToWorldPosition.GetCursorWorldPoint();
             Vector3 throwDirection = CalculateGrenadeThrowDirection(_grenadeSpawnPoint.position, _targetPosition);
             GameObject grenade = Instantiate(grenadePrefab, _grenadeSpawnPoint.position, Quaternion.identity);
             grenade.GetComponent<Rigidbody>().AddForce(throwDirection, ForceMode.Impulse);

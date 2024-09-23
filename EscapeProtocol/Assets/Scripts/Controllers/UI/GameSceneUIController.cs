@@ -83,13 +83,6 @@ namespace Controllers.UI
             PlayerPrefs.SetFloat("SFXVolume", volume);
             PlayerPrefs.Save();
         }
-
-        public void ReturnToMainMenu()
-        {
-            GameManager.Instance.EndGame();
-            SceneManager.LoadScene(0);
-        }
-        
         public void ExitGame()
         {
             Debug.Log("Game Exited");
