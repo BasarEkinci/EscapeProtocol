@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5139862820471037820}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Foot_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8644266027944790461}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: ArmPlacement_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7782182134859438618}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 4585537311051782879}
   - component: {fileID: 2431842063914085242}
   - component: {fileID: 2790198455536053468}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 206591841786903059}
   - component: {fileID: 7226176902049221333}
   - component: {fileID: 8228752290441757649}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: PlayerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5106,7 +5106,7 @@ GameObject:
   - component: {fileID: 7636169119171505871}
   - component: {fileID: 7374082945621406678}
   - component: {fileID: 4009722686991697319}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: CFXR Fire Breath (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9923,7 +9923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383680008429665925}
   - component: {fileID: 2852796423272733526}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10095,7 +10095,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7311133516079754463}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Toe_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10224,7 +10224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494324701077489320}
   - component: {fileID: 4742448019248980539}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: AssaultRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10495,7 +10495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5845866713847004120}
   - component: {fileID: 9190596006636653267}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10668,7 +10668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 698357864729608284}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Toe_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10703,7 +10703,7 @@ GameObject:
   - component: {fileID: 1551687232928236431}
   - component: {fileID: 6222003412362409136}
   - component: {fileID: 99949999154922086}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: CFXR Smoke Source 3D (1)
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
@@ -15412,7 +15412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6891552383741743059}
   - component: {fileID: 3670713660482653275}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Body1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15633,7 +15633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8234639474591039973}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperLeg_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15827,7 +15827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5053870692081860763}
   - component: {fileID: 1627344006549384563}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Backpack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16001,7 +16001,7 @@ GameObject:
   - component: {fileID: 3578975591275502878}
   - component: {fileID: 1120786312137518434}
   - component: {fileID: 2146863614647591519}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20769,7 +20769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6958032443191051071}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20803,7 +20803,7 @@ GameObject:
   - component: {fileID: 7527934329696319016}
   - component: {fileID: 3816398042628264996}
   - component: {fileID: 1787288367046928715}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25666,7 +25666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3073936444799990661}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: LowerLeg_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25763,7 +25763,7 @@ GameObject:
   - component: {fileID: 8420211481117552827}
   - component: {fileID: 8623083917965328531}
   - component: {fileID: 5044667886163511909}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30531,7 +30531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376711101432519876}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperLeg_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30598,7 +30598,7 @@ GameObject:
   - component: {fileID: 3678361851536437316}
   - component: {fileID: 7632213173823973673}
   - component: {fileID: 1251766552087746099}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: CFXR Fire Breath (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35414,7 +35414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4374226423178299195}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: ArmPlacement_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35508,7 +35508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6273849773875369599}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Toetip_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35570,7 +35570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8324626269435798536}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: BackPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35612,7 +35612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5815462760517536855}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: ArmPosition_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35675,13 +35675,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7246670177361933503}
-  - component: {fileID: 8807928901380438431}
   - component: {fileID: 312147477067224692}
   - component: {fileID: 1937492937335417037}
   - component: {fileID: 985861113102293197}
   - component: {fileID: 2208510980755550059}
   - component: {fileID: 1181521721428533980}
   - component: {fileID: 6771192880336476073}
+  - component: {fileID: 960662268881555819}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -35706,34 +35706,10 @@ Transform:
   - {fileID: 5831218842076082244}
   - {fileID: 23180847746059533}
   - {fileID: 1744065991285431209}
-  - {fileID: 7127609640794452654}
   - {fileID: 6374736335438375188}
   - {fileID: 8394918989744416026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!136 &8807928901380438431
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5735037008755967905}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17957042
-  m_Height: 1.8960222
-  m_Direction: 1
-  m_Center: {x: 1.3526296e-17, y: 0.9480111, z: 0.008764327}
 --- !u!114 &312147477067224692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35762,6 +35738,7 @@ MonoBehaviour:
   soundData: {fileID: 11400000, guid: 3a00699698a37b54486cb4969d01caf9, type: 2}
   detector: {fileID: 40403128891611698}
   playerData: {fileID: 11400000, guid: 6f01b0499d04aed419d506ec0f1f55a7, type: 2}
+  mouseToWorldPosition: {fileID: 0}
   jumpForce: 5
 --- !u!114 &985861113102293197
 MonoBehaviour:
@@ -35775,8 +35752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee67d7e9845c4994e9eefa9e6c2efe8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionParticle: {fileID: 7127609640794452655}
-  soundData: {fileID: 11400000, guid: b45a827654700a942b35b34e210b1b75, type: 2}
+  explosionParticle: {fileID: 8557775784185514156, guid: 238d74d2f6b0dd24288d819e44662612,
+    type: 3}
   playerData: {fileID: 11400000, guid: 6f01b0499d04aed419d506ec0f1f55a7, type: 2}
   material: {fileID: 2100000, guid: 78660c09ff101ea4cb77de408a9527da, type: 2}
 --- !u!54 &2208510980755550059
@@ -35803,9 +35780,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 88
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &1181521721428533980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35845,11 +35822,35 @@ MonoBehaviour:
   grenadeSpawnPoints:
   - {fileID: 6374736335438375188}
   - {fileID: 8394918989744416026}
-  throwForce: 1.5
+  throwForce: 5
+  mouseToWorldPosition: {fileID: 0}
   launchEffects:
   - {fileID: 19204420091873412}
   - {fileID: 1935064875898649739}
   soundData: {fileID: 11400000, guid: 3a00699698a37b54486cb4969d01caf9, type: 2}
+--- !u!136 &960662268881555819
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735037008755967905}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.9858952
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.0101385, z: 0}
 --- !u!1 &5760656177272458130
 GameObject:
   m_ObjectHideFlags: 0
@@ -35890,7 +35891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3603534971206260093}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Toetip_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35953,7 +35954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6439809855888663550}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Foot_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35988,7 +35989,7 @@ GameObject:
   - component: {fileID: 6230707173038302749}
   - component: {fileID: 7880459773004923404}
   - component: {fileID: 6192810199259140477}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: CFXR Fire Breath (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40839,7 +40840,7 @@ GameObject:
   - component: {fileID: 4894069249474173943}
   - component: {fileID: 1684251014473696053}
   - component: {fileID: 6659331413198161786}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45435,7 +45436,7 @@ GameObject:
   - component: {fileID: 8076263536193628066}
   - component: {fileID: 4263866278517095142}
   - component: {fileID: 4697699806521984358}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50028,7 +50029,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5851991902034180043}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: LowerLeg_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50060,7 +50061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6579876269180861932}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: ArmPlacement_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50093,7 +50094,7 @@ GameObject:
   - component: {fileID: 8112145938326684136}
   - component: {fileID: 3784169036761246190}
   - component: {fileID: 6333190043996799391}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54786,7 +54787,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8424791699599146516}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54852,7 +54853,7 @@ GameObject:
   - component: {fileID: 3957862801181812059}
   - component: {fileID: 806172906448895970}
   - component: {fileID: 7738629534168667333}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: CFXR Fire Breath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59732,7 +59733,7 @@ GameObject:
   - component: {fileID: 8965489821468818505}
   - component: {fileID: 6301850218916673290}
   - component: {fileID: 935688284228352875}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64567,7 +64568,7 @@ GameObject:
   - component: {fileID: 2173761317378165072}
   - component: {fileID: 8567575971380662156}
   - component: {fileID: 3508525184051397471}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: CFXR Smoke Source 3D
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
@@ -69276,7 +69277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8064574534381640381}
   - component: {fileID: 4045910785011317661}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: head1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69408,167 +69409,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -71.52329, y: 10.616158, z: -1.0935726}
     m_Extent: {x: 26.513672, y: 26.529358, z: 17.550735}
   m_DirtyAABB: 0
---- !u!1001 &6725035054874487577
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7246670177361933503}
-    m_Modifications:
-    - target: {fileID: 2677161697790701523, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3658496226646509723, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266022153310513744, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266022153310513747, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484798939050, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484798939051, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914550, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000059604645
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Name
-      value: CFXR2 WW Explosion (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484909914553, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484999142884, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184484999142885, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184486453238240, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184486453238243, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184486781064076, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4593184486781064079, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5379617032493812626, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7679181874253475382, guid: 2e1e9506f5904a64b81744324fb7cd50,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4593184484909914548, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
---- !u!4 &7127609640794452654 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4593184484909914551, guid: 2e1e9506f5904a64b81744324fb7cd50,
-    type: 3}
-  m_PrefabInstance: {fileID: 6725035054874487577}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &7127609640794452655 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4593184484909914550, guid: 2e1e9506f5904a64b81744324fb7cd50,
-    type: 3}
-  m_PrefabInstance: {fileID: 6725035054874487577}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7753367896345300216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69577,6 +69417,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8324626269435798536}
     m_Modifications:
+    - target: {fileID: 1884066662378001187, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 2095736692012533852, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
       propertyPath: playOnAwake
@@ -69592,6 +69437,16 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4458560176817016659, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194858763094222876, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5455761676196182613, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
       propertyPath: playOnAwake
@@ -69602,6 +69457,21 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7157542036316810385, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7662978127529844557, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945546543435814981, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8161582751897776243, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
       propertyPath: playOnAwake
@@ -69611,6 +69481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaunchGrenadeEffect (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526757498734533569, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 9166639960230979983, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
@@ -69685,7 +69560,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4458560176817016659, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 194198903013487339}
   m_SourcePrefab: {fileID: 100100000, guid: b891da12d55ac65488ca28a7bbda7ae6, type: 3}
 --- !u!4 &1490424844551169399 stripped
 Transform:
@@ -69699,6 +69578,35 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 7753367896345300216}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6216801327124956075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4458560176817016659, guid: b891da12d55ac65488ca28a7bbda7ae6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7753367896345300216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &194198903013487339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216801327124956075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &8144757813619718391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69707,6 +69615,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8324626269435798536}
     m_Modifications:
+    - target: {fileID: 1884066662378001187, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 2095736692012533852, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
       propertyPath: playOnAwake
@@ -69722,6 +69635,16 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4458560176817016659, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194858763094222876, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5455761676196182613, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
       propertyPath: playOnAwake
@@ -69732,6 +69655,21 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7157542036316810385, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7662978127529844557, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945546543435814981, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8161582751897776243, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
       propertyPath: playOnAwake
@@ -69741,6 +69679,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaunchGrenadeEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526757498734533569, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 9166639960230979983, guid: b891da12d55ac65488ca28a7bbda7ae6,
         type: 3}
@@ -69815,7 +69758,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4458560176817016659, guid: b891da12d55ac65488ca28a7bbda7ae6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 337972205569053688}
   m_SourcePrefab: {fileID: 100100000, guid: b891da12d55ac65488ca28a7bbda7ae6, type: 3}
 --- !u!198 &19204420091873412 stripped
 ParticleSystem:
@@ -69829,3 +69776,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8144757813619718391}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5537178832525752228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4458560176817016659, guid: b891da12d55ac65488ca28a7bbda7ae6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8144757813619718391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &337972205569053688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537178832525752228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0

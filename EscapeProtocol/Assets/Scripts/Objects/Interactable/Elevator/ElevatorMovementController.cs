@@ -5,6 +5,7 @@ using Managers;
 using TMPro;
 using UnityEngine;
 
+
 namespace Objects.Interactable.Elevator
 {
     public class ElevatorMovementController : MonoBehaviour
@@ -14,11 +15,12 @@ namespace Objects.Interactable.Elevator
         [SerializeField] private Transform floor1;
         [SerializeField] private Transform floor2;
         [SerializeField] private Ease easeType;
-        [SerializeField] private float duration;
+        [SerializeField] private float speed;
         
         [Header("Data")]
         [SerializeField] private SoundDataScriptable soundData;
         
+        [Header("Text")]
         [SerializeField] private TMP_Text elevatorText;
         #endregion
         public bool IsMoving => _isMoving;
@@ -29,7 +31,9 @@ namespace Objects.Interactable.Elevator
         private bool _isPlayerInside;
         private bool _isMoving;
         private string _playerTag = "Player";
-        private Rigidbody _playerRb;
+        private float _direction;
+        private Rigidbody _rb;
+        private Transform _targetFloor;
         #endregion
         
         private AudioSource _audioSource;
@@ -38,6 +42,7 @@ namespace Objects.Interactable.Elevator
         {
             _inputHandler = new InputHandler();
             _audioSource = GetComponent<AudioSource>();
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void Start()
@@ -45,63 +50,66 @@ namespace Objects.Interactable.Elevator
           _currentFloor = 1;
           elevatorText.text = _currentFloor.ToString();
         }
-        private void OnTriggerStay(Collider other)
+        private void Update()
         {
-            if (other.CompareTag(_playerTag))
-            {
-                _playerRb = other.GetComponent<Rigidbody>();
-               // other.transform.SetParent(transform);
-                _isPlayerInside = true;
-            }
+            HandleElevatorTargetFloor();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             HandleElevatorMovement();
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(_playerTag))
+            if(other.gameObject.CompareTag("Player"))
             {
-                _isPlayerInside = false;
-                //other.transform.SetParent(null);
-            }
-        }
-        
-        private void HandleElevatorMovement()
-        {
-            if (_isPlayerInside && _inputHandler.GetInteractInput() && !_isMoving)
-            {
-                _isMoving = true;
-                if (_currentFloor == 1)
-                {
-                    elevatorText.text = "\\/";
-                    SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
-                    transform.DOMove(floor2.position, duration).SetEase(easeType).OnComplete(() =>
-                    {
-                        ElevatorArriveActions(2);
-                    });
-                }
-                else if (_currentFloor == 2)
-                {
-                    elevatorText.text = "/\\";
-                    SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
-                    transform.DOMove(floor1.position, duration).SetEase(easeType).OnComplete(() =>
-                    {
-                        ElevatorArriveActions(1);
-                    });
-                }
+                _isPlayerInside = true;
+                Debug.Log("Player is inside");
+                other.transform.SetParent(transform);
             }
         }
 
-        private void ElevatorArriveActions(int currentFloor)
+        private void OnTriggerExit(Collider other)
         {
-            _currentFloor = currentFloor;
-            elevatorText.text = _currentFloor.ToString();
-            _isMoving = false;
-            _audioSource.Stop();
-            _playerRb.isKinematic = false;
+            if(other.gameObject.CompareTag("Player"))
+            {
+                _isPlayerInside = false;
+                other.transform.SetParent(null);
+            }
+        }
+        
+        
+        private void HandleElevatorMovement()
+        {
+            if (_isPlayerInside && _inputHandler.GetInteractInput())
+            {
+                _rb.velocity = new Vector3(_rb.velocity.x, speed * _direction, _rb.velocity.z);
+            }
+        }
+
+        private void HandleElevatorTargetFloor()
+        {
+            if (transform.position == floor1.position)
+            {
+                elevatorText.text = "1";
+                _direction = -1;
+                _targetFloor = floor2;
+                _isMoving = false;
+            }
+            else if (transform.position == floor2.position)
+            {
+                elevatorText.text = "2";
+                _direction = 1;
+                _targetFloor = floor1;
+                _isMoving = false;
+            }
+            else
+            {
+                _isMoving = true;
+                elevatorText.text = _direction > 0 ? "/\\" : "\\/";
+                SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
+            }
         }
     }
 }
