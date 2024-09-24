@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AnimationStateMachine.Elevator
 {
-    public class OpenedState : IState<ElevatorDoorController>
+    public class DoorOpenedState : IState<ElevatorDoorController>
     {
         private static readonly int IsClosing = Animator.StringToHash("IsClosing");
 
@@ -18,7 +18,7 @@ namespace AnimationStateMachine.Elevator
             door.Animator.SetBool(IsClosing,isClosing);
             if (door.IsMoving() || !door.IsPlayerNearby)
             {
-                door.ChangeState(new ClosedState());
+                door.ChangeState(new DoorClosedState());
             }       
         }
 

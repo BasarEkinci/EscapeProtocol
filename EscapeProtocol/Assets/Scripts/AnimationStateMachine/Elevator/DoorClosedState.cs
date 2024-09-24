@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AnimationStateMachine.Elevator
 {
-    public class ClosedState : IState<ElevatorDoorController>
+    public class DoorClosedState : IState<ElevatorDoorController>
     {
         private static readonly int CanOpen = Animator.StringToHash("CanOpen");
 
@@ -18,7 +18,7 @@ namespace AnimationStateMachine.Elevator
             door.Animator.SetBool(CanOpen, canOpen);
             if (!door.IsMoving() && door.IsPlayerNearby)
             {
-                door.ChangeState(new OpenedState());
+                door.ChangeState(new DoorOpenedState());
             }
         }
 

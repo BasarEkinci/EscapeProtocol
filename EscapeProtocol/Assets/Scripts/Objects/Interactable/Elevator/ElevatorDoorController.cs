@@ -34,7 +34,7 @@ namespace Objects.Interactable.Elevator
 
         private void Start()
         {
-            _currentState = new ClosedState();
+            _currentState = new DoorClosedState();
         }
 
         private void Update()
