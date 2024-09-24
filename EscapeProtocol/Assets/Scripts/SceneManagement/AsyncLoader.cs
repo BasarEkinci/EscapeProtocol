@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using Managers;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,22 +23,12 @@ namespace SceneManagement
         {
             loadingText.text = "Loading...";
         }
-
-        private void Update()
-        {
-            if (loadingScreen.activeSelf)
-            {
-                LoadingTextAnimation();
-            }
-        }
-
         public void LoadSceneAsync(string sceneName)
         {
             mainMenuScreen.SetActive(false);
             loadingScreen.SetActive(true);
             StartCoroutine(LoadSceneAsyncCoroutine(sceneName));
         }
-        
         IEnumerator LoadSceneAsyncCoroutine(string sceneName)
         {
             AsyncOperation asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
@@ -53,18 +41,6 @@ namespace SceneManagement
                 yield return null;
             }
         }
-
-        private void LoadingTextAnimation()
-        {
-            _currentTime += Time.deltaTime;
-            float time = Mathf.RoundToInt(_currentTime);
-            loadingText.text = (time % 2) switch
-            {
-                0 => "Loading.",
-                1 => "Loading..",
-                2 => "Loading...",
-                _ => loadingText.text
-            };
-        }
+        
     }
 }
