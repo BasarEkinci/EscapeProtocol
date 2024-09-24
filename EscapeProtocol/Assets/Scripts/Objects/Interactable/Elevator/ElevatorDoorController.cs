@@ -1,3 +1,5 @@
+using AnimationStateMachine;
+using AnimationStateMachine.Elevator;
 using Data.UnityObjects;
 using Managers;
 using UnityEngine;
@@ -8,21 +10,19 @@ namespace Objects.Interactable.Elevator
     {
         [SerializeField] private SoundDataScriptable soundData;
 
+        public Animator Animator => _animator;
+        public bool IsPlayerNearby => _isPlayerNearby;
+        
         #region Referances
         private ElevatorMovementController _elevatorMovementController;
         private Animator _animator;
         private AudioSource _audioSource;
+        private IState<ElevatorDoorController> _currentState;
         #endregion
         
         #region Private Variables
-        private bool _canOpen;
         private bool _isPlayerNearby;
         private string _playerTag = "Player";
-        #endregion
-
-        #region Animator Hashes
-        private static readonly int CanOpen = Animator.StringToHash("CanOpen");
-        private static readonly int IsPlayerNearby = Animator.StringToHash("IsPlayerNearby");
         #endregion
         
         private void Awake()
@@ -34,42 +34,51 @@ namespace Objects.Interactable.Elevator
 
         private void Start()
         {
-            _canOpen = true;
+            _currentState = new ClosedState();
         }
 
         private void Update()
         {
-            if (_elevatorMovementController.IsMoving)
-            {
-                _canOpen = false;
-            }
-            else
-            {
-                _canOpen = true;
-            }
-            
-            _animator.SetBool(CanOpen, _canOpen);
-            _animator.SetBool(IsPlayerNearby, _isPlayerNearby);
+            _currentState.UpdateState(this);
         }
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(_playerTag) && _canOpen)
+            if (other.CompareTag(_playerTag))
             {
                 _isPlayerNearby = true;
-                SoundManager.PLaySound(soundData,"ElevatorDoorOpen",_audioSource);
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag(_playerTag) && _canOpen)
+            if (other.CompareTag(_playerTag))
             {
                 _isPlayerNearby = false;
-                SoundManager.PLaySound(soundData,"ElevatorDoorClose",_audioSource);
             }
         }
+
+        public void PlayOpenSound()
+        {
+            SoundManager.PLaySound(soundData,"ElevatorDoorOpen",_audioSource);   
+        }
         
+        public void PlayCloseSound()
+        {
+            SoundManager.PLaySound(soundData,"ElevatorDoorClose",_audioSource);
+        }
+
+        public bool IsMoving()
+        {
+            return _elevatorMovementController.IsMoving;
+        }
+
+        public void ChangeState(IState<ElevatorDoorController> state)
+        {
+            state?.ExitState(this);
+            _currentState = state;
+            state?.EnterState(this);
+        }
     }
     
 }
