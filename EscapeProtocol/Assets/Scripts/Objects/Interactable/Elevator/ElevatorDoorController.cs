@@ -32,6 +32,11 @@ namespace Objects.Interactable.Elevator
             _animator = GetComponent<Animator>();
         }
 
+        private void Start()
+        {
+            _canOpen = true;
+        }
+
         private void Update()
         {
             if (_elevatorMovementController.IsMoving)
@@ -52,7 +57,6 @@ namespace Objects.Interactable.Elevator
             if (other.CompareTag(_playerTag) && _canOpen)
             {
                 _isPlayerNearby = true;
-                Debug.Log("Player is nearby");
                 SoundManager.PLaySound(soundData,"ElevatorDoorOpen",_audioSource);
             }
         }

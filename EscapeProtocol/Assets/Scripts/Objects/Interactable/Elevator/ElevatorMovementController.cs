@@ -1,9 +1,10 @@
+using System;
+using System.Collections.Generic;
 using Data.UnityObjects;
-using DG.Tweening;
 using Inputs;
-using Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace Objects.Interactable.Elevator
@@ -11,10 +12,9 @@ namespace Objects.Interactable.Elevator
     public class ElevatorMovementController : MonoBehaviour
     {
         #region Serialized Fields
-        [Header("Movement Settings")]
-        [SerializeField] private Transform floor1;
-        [SerializeField] private Transform floor2;
-        [SerializeField] private Ease easeType;
+
+        [Header("Movement Settings")] 
+        [SerializeField] private List<Transform> elevatorFloors;
         [SerializeField] private float speed;
         
         [Header("Data")]
@@ -22,17 +22,18 @@ namespace Objects.Interactable.Elevator
         
         [Header("Text")]
         [SerializeField] private TMP_Text elevatorText;
+        
+        [Header("References")]
+        [SerializeField] private TriggerElevator trigger;
         #endregion
         public bool IsMoving => _isMoving;
         
 
         #region Private Variables
-        private int _currentFloor;
         private bool _isPlayerInside;
         private bool _isMoving;
-        private string _playerTag = "Player";
+        private bool _canMove;
         private float _direction;
-        private Rigidbody _rb;
         private Transform _targetFloor;
         #endregion
         
@@ -42,73 +43,69 @@ namespace Objects.Interactable.Elevator
         {
             _inputHandler = new InputHandler();
             _audioSource = GetComponent<AudioSource>();
-            _rb = GetComponent<Rigidbody>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
-          _currentFloor = 1;
-          elevatorText.text = _currentFloor.ToString();
+            SetTargetFloor();
+            _isMoving = false;
         }
+
         private void Update()
         {
-            HandleElevatorTargetFloor();
+            if (trigger.IsPlayerInside && _inputHandler.GetInteractInput())
+            {
+                _canMove = true;
+            }
+
+            if (_isMoving)
+            {
+                elevatorText.text = _direction switch
+                {
+                    1 => "/\\",
+                    -1 => "\\/",
+                    _ => elevatorText.text
+                };
+            }
         }
 
         private void FixedUpdate()
         {
             HandleElevatorMovement();
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if(other.gameObject.CompareTag("Player"))
-            {
-                _isPlayerInside = true;
-                Debug.Log("Player is inside");
-                other.transform.SetParent(transform);
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if(other.gameObject.CompareTag("Player"))
-            {
-                _isPlayerInside = false;
-                other.transform.SetParent(null);
-            }
-        }
-        
         
         private void HandleElevatorMovement()
         {
-            if (_isPlayerInside && _inputHandler.GetInteractInput())
+            float distance = Vector3.Distance(transform.position, _targetFloor.position);
+            if (distance <= 0.01)
             {
-                _rb.velocity = new Vector3(_rb.velocity.x, speed * _direction, _rb.velocity.z);
+               _canMove = false;
+               _isMoving = false;
+               SetTargetFloor();
+            }
+            if (_canMove)
+            {
+                _isMoving = true;
+                transform.position += new Vector3(0, _direction * speed * Time.deltaTime, 0);
             }
         }
 
-        private void HandleElevatorTargetFloor()
+        private void SetTargetFloor()
         {
-            if (transform.position == floor1.position)
+            float distanceBetweenWith0 = Vector3.Distance(transform.position, elevatorFloors[0].position);
+            float distanceBetweenWith1 = Vector3.Distance(transform.position, elevatorFloors[1].position);
+            
+            if (distanceBetweenWith0 < distanceBetweenWith1)
             {
-                elevatorText.text = "1";
+                _targetFloor = elevatorFloors[1];
                 _direction = -1;
-                _targetFloor = floor2;
-                _isMoving = false;
+                elevatorText.text = "0";
             }
-            else if (transform.position == floor2.position)
+            else if (distanceBetweenWith0 > distanceBetweenWith1)
             {
-                elevatorText.text = "2";
+                _targetFloor = elevatorFloors[0];
                 _direction = 1;
-                _targetFloor = floor1;
-                _isMoving = false;
-            }
-            else
-            {
-                _isMoving = true;
-                elevatorText.text = _direction > 0 ? "/\\" : "\\/";
-                SoundManager.PLaySound(soundData,"ElevatorMovement",_audioSource);
+                elevatorText.text = "1";   
             }
         }
     }
