@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Audio;
 using DG.Tweening;
 using Managers;
@@ -18,10 +20,12 @@ namespace Controllers.UI
         [SerializeField] private Slider musicVolumeSlider;
         [SerializeField] private Slider sfxVolumeSlider;
         [SerializeField] private Slider uiVolumeSlider;
-        
+
+        private Tween[] _tweens = new Tween[5];
+
         private void Start()
         {
-            pausePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.up * Screen.height, 0);
+            _tweens[0] = pausePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.up * Screen.height, 0);
         }
 
         private void OnEnable()
@@ -56,14 +60,14 @@ namespace Controllers.UI
             uiVolumeSlider.value = AudioDataSaver.Instance.GetVolume("UIVolume");
             
             
-            gamePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.down * Screen.height, 0.5f);
-            pausePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.zero, 0.5f);
+            _tweens[1] = gamePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.down * Screen.height, 0.5f);
+            _tweens[2] = pausePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.zero, 0.5f);
         }
         
         private void ResumeGame()
-        { 
-            gamePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.zero, 0.5f);
-            pausePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.up * Screen.height, 0.5f);        
+        {
+            _tweens[3] = gamePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.zero, 0.5f);
+            _tweens[4] = pausePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.up * Screen.height, 0.5f);        
         }
         
         public void MasterVolumeChanged(float volume)
@@ -93,6 +97,14 @@ namespace Controllers.UI
         public void ExitGame()
         {
             Debug.Log("Game Exited");
+        }
+
+        private void OnDisable()
+        {
+            foreach (var _tween in _tweens)
+            {
+                _tween?.Kill();
+            }
         }
     }
 }

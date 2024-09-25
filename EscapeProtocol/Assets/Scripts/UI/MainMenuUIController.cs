@@ -1,7 +1,5 @@
 using DG.Tweening;
-using Managers;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -16,6 +14,7 @@ namespace UI
 
         private float _screenWidth;
         private float _screenHeight;
+        private Tween[] _tweens = new Tween[3];
         private void Start()
         {
             _screenWidth = Screen.width;
@@ -23,21 +22,30 @@ namespace UI
         }
         public void Back()
         {
-            panelsParent.GetComponent<RectTransform>().DOAnchorPos(Vector2.zero, duration);
+            _tweens[0] = panelsParent.GetComponent<RectTransform>().DOAnchorPos(Vector2.zero, duration);
         }
         
         public void Credit()
         {
-            panelsParent.GetComponent<RectTransform>().DOAnchorPos(Vector2.down * _screenHeight, duration);
+            _tweens[1] = panelsParent.GetComponent<RectTransform>().DOAnchorPos(Vector2.down * _screenHeight, duration);
         }
 
         public void Options()
         {
-            panelsParent.GetComponent<RectTransform>().DOAnchorPos(Vector2.left * _screenWidth, duration);
+            _tweens[2] =panelsParent.GetComponent<RectTransform>().DOAnchorPos(Vector2.left * _screenWidth, duration);
         }
 
         public void Exit()
         {
+            Application.Quit();
+        }
+
+        private void OnDisable()
+        {
+            foreach (var tween in _tweens)
+            {
+                tween?.Kill();
+            }
         }
     }
 }

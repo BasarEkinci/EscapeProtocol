@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Controllers.Player;
+﻿using Controllers.Player;
 using Data.UnityObjects;
 using DG.Tweening;
 using Managers;
@@ -15,10 +14,7 @@ namespace Objects.Interactable
         private Tween _tween;
         private void OnEnable()
         {
-            if (transform != null)
-            {
-                transform.DORotate(Vector3.up * 90,0.5f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
-            }
+            _tween = transform.DORotate(Vector3.up * 90,0.5f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -32,13 +28,9 @@ namespace Objects.Interactable
             }
         }
         
-        IEnumerator NullCheck()
+        private void OnDisable()
         {
-            yield return new WaitForSeconds(0.1f);
-            if (transform != null)
-            {
-                transform.DORotate(Vector3.up * 90,0.5f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
-            }
+            _tween?.Kill();
         }
     }
 }
