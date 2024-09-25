@@ -46,11 +46,13 @@ namespace Managers
         private void PauseGame()
         {
             _isGamePaused = true;
+            Cursor.visible = true;
         }
 
         private void ResumeGame()
         {
             _isGamePaused = false;
+            Cursor.visible = false;
         }
     }
 }

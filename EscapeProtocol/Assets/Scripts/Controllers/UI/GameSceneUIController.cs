@@ -30,10 +30,10 @@ namespace Controllers.UI
 
         private void OnEnable()
         {
-            MasterVolumeChanged(AudioDataSaver.Instance.GetVolume("MasterVolume"));
-            MusicVolumeChanged(AudioDataSaver.Instance.GetVolume("MusicVolume"));
-            SfxVolumeChanged(AudioDataSaver.Instance.GetVolume("SFXVolume"));
-            UIVolumeChanged(AudioDataSaver.Instance.GetVolume("UIVolume"));
+            MasterVolumeChanged(DataSaver.Instance.GetDataFloat("MasterVolume"));
+            MusicVolumeChanged(DataSaver.Instance.GetDataFloat("MusicVolume"));
+            SfxVolumeChanged(DataSaver.Instance.GetDataFloat("SFXVolume"));
+            UIVolumeChanged(DataSaver.Instance.GetDataFloat("UIVolume"));
         }
 
         private void Update()
@@ -54,10 +54,10 @@ namespace Controllers.UI
         private void PauseGame()
         { 
                         
-            masterVolumeSlider.value = AudioDataSaver.Instance.GetVolume("MasterVolume");
-            musicVolumeSlider.value = AudioDataSaver.Instance.GetVolume("MusicVolume");
-            sfxVolumeSlider.value = AudioDataSaver.Instance.GetVolume("SFXVolume");
-            uiVolumeSlider.value = AudioDataSaver.Instance.GetVolume("UIVolume");
+            masterVolumeSlider.value = DataSaver.Instance.GetDataFloat("MasterVolume");
+            musicVolumeSlider.value = DataSaver.Instance.GetDataFloat("MusicVolume");
+            sfxVolumeSlider.value = DataSaver.Instance.GetDataFloat("SFXVolume");
+            uiVolumeSlider.value = DataSaver.Instance.GetDataFloat("UIVolume");
             
             
             _tweens[1] = gamePanel.GetComponent<RectTransform>().DOAnchorPos(Vector2.down * Screen.height, 0.5f);
@@ -73,25 +73,25 @@ namespace Controllers.UI
         public void MasterVolumeChanged(float volume)
         {
             audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
-            AudioDataSaver.Instance.SaveVolume("MasterVolume", volume);
+            DataSaver.Instance.SaveDataFloat("MasterVolume", volume);
         }
         
         public void MusicVolumeChanged(float volume)
         {
             audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-            AudioDataSaver.Instance.SaveVolume("MusicVolume", volume);
+            DataSaver.Instance.SaveDataFloat("MusicVolume", volume);
         }
         
         public void SfxVolumeChanged(float volume)
         {
             audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-            AudioDataSaver.Instance.SaveVolume("SFXVolume", volume);
+            DataSaver.Instance.SaveDataFloat("SFXVolume", volume);
         }
         
         public void UIVolumeChanged(float volume)
         {
             audioMixer.SetFloat("UIVolume", Mathf.Log10(volume) * 20);
-            AudioDataSaver.Instance.SaveVolume("UIVolume", volume);
+            DataSaver.Instance.SaveDataFloat("UIVolume", volume);
         }
         
         public void ExitGame()
