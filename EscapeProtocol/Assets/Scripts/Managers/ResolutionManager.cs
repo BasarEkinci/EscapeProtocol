@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Audio;
 using TMPro;
 using UnityEngine;
@@ -12,7 +11,8 @@ namespace Managers
         [SerializeField] private TMP_Dropdown resolutionDropdown;
         
         private Resolution[] _resolutions;
-
+        
+        private bool _isFullScreen;
         private void Start()
         {
             _resolutions = Screen.resolutions;
@@ -36,13 +36,23 @@ namespace Managers
             resolutionDropdown.RefreshShownValue();
         }
 
-        private void OnEnable()
+        public void SetResolutionToSystemDefault()
         {
-            /*int resolutionIndex = DataSaver.Instance.GetDataInt("Resolution");
-            Resolution resolution = _resolutions[resolutionIndex];
-            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);*/
+            int screenHeigh = Screen.currentResolution.height;
+            int screenWidth = Screen.currentResolution.width;
+            
+            for (var i = 0; i < _resolutions.Length; i++)
+            {
+                if (_resolutions[i].width == screenWidth && _resolutions[i].height == screenHeigh)
+                {
+                    resolutionDropdown.value = i;
+                    Screen.SetResolution(_resolutions[i].width, _resolutions[i].height, _isFullScreen);
+                    resolutionDropdown.RefreshShownValue();
+                    break;
+                }
+            }
         }
-
+        
         public void SetResolution(int resolutionIndex)
         {
             Resolution resolution = _resolutions[resolutionIndex];
@@ -51,7 +61,8 @@ namespace Managers
         }
         public void SetWindowType(bool isFulScreen)
         {
-            Screen.fullScreen = isFulScreen;
+            _isFullScreen = isFulScreen;
+            Screen.fullScreen = _isFullScreen;
         }
     }
 }
