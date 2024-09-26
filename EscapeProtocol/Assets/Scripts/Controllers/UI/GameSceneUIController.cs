@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Controllers.UI
 {

@@ -1,7 +1,6 @@
 using UnityEngine;
-using Utilities;
 
-namespace Audio
+namespace Utilities
 {
     public class DataSaver : MonoSingleton<DataSaver>
     {
