@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Utilities;
 
 namespace Managers
@@ -9,11 +11,11 @@ namespace Managers
     {
         
         [SerializeField] private TMP_Dropdown resolutionDropdown;
-        
+        [SerializeField] private Toggle fullScreenToggle;
         private Resolution[] _resolutions;
         
         private bool _isFullScreen;
-        private void Start()
+        private void Awake()
         {
             _resolutions = Screen.resolutions;
             resolutionDropdown.ClearOptions();
@@ -34,6 +36,11 @@ namespace Managers
             resolutionDropdown.AddOptions(options);
             resolutionDropdown.value = resolutionIndex;
             resolutionDropdown.RefreshShownValue();
+        }
+
+        private void OnEnable()
+        {
+            InitializeValues();
         }
 
         public void SetResolutionToSystemDefault()
@@ -63,6 +70,16 @@ namespace Managers
         {
             _isFullScreen = isFulScreen;
             Screen.fullScreen = _isFullScreen;
+        }
+
+        private void InitializeValues()
+        {
+            Resolution resolution = _resolutions[DataSaver.Instance.GetDataInt("Resolution")];
+            bool windowType = DataSaver.Instance.GetDataInt("WindowType") == 1;
+            Screen.SetResolution(resolution.width, resolution.height, windowType);
+            resolutionDropdown.value = DataSaver.Instance.GetDataInt("Resolution");
+            resolutionDropdown.RefreshShownValue();
+            fullScreenToggle.isOn = windowType;
         }
     }
 }
