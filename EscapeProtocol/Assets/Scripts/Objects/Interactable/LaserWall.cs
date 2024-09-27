@@ -21,12 +21,9 @@ namespace Objects.Interactable
         private void OnCollisionEnter(Collision other)
         {
             IDamageable player = other.gameObject.GetComponent<IDamageable>();
-            if (player != null)
-            {
-                player.TakeDamage(30);
-                CinemachineShake.Instance.ShakeCamera(4,0.1f);
-                HitEvents(other.GetContact(0).point);   
-            }
+            player?.TakeDamage(30);
+            HitEvents(other.GetContact(0).point); 
+            CinemachineShake.Instance.ShakeCamera(4,0.1f);
         }
 
 

@@ -40,7 +40,7 @@ namespace Managers
 
         private void OnEnable()
         {
-            InitializeValues();
+            //InitializeValues();
         }
 
         public void SetResolutionToSystemDefault()

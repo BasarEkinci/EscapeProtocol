@@ -99,13 +99,13 @@ namespace Objects.Interactable.Elevator
             {
                 _targetFloor = elevatorFloors[1];
                 _direction = -1;
-                elevatorText.text = "0";
+                elevatorText.text = "-";
             }
             else if (distanceBetweenWith0 > distanceBetweenWith1)
             {
                 _targetFloor = elevatorFloors[0];
                 _direction = 1;
-                elevatorText.text = "1";   
+                elevatorText.text = "-";   
             }
         }
     }
